@@ -15,33 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="oop.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Circle.cpp">
+    <ClCompile Include="11 程序设计案例_点和圆的关系.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Person.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Student.cpp">
+    <ClCompile Include="Circle.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Circle.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Person.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Student.h">
+    <ClInclude Include="Circle.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

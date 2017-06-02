@@ -2,9 +2,11 @@
 
 Person::Person()
 {
+    cout << "Person" << this->Name << "被构造" << endl;
 }
 Person::~Person()
 {
+    cout << "Person" << this->Name << "被析构" << endl;
 }
 void Person::SetName(string name)
 {

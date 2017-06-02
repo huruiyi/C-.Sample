@@ -15,33 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="oop.cpp">
+    <ClCompile Include="10 程序设计案例_设计立方体类.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Circle.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Point.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Person.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Student.cpp">
+    <ClCompile Include="Cube.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Circle.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Point.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Person.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Student.h">
+    <ClInclude Include="Cube.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

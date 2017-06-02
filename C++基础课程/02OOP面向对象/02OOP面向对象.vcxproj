@@ -143,12 +143,13 @@
     <ClCompile Include="oop.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Student.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Point.h" />
-    <ClInclude Include="student.h" />
+    <ClInclude Include="Student.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
