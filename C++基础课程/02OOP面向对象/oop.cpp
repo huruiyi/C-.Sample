@@ -29,16 +29,21 @@ namespace 静态成员
         {
             return this->pTotal;
         }
+
+        void ShowTotal()
+        {
+            cout << "总人数：" << this->pTotal << endl;
+        }
+        static void Show()
+        {
+            //this->Country;
+        }
+
         ~Person()
         {
             this->pTotal--;
             cout << "------------------析构（" << this->Name << "---" << this << "）------------------" << endl << endl;
         }
-        void ShowTotal()
-        {
-            cout << "总人数：" << this->pTotal << endl;
-        }
-
     private:
         static int pTotal;
     };
@@ -271,5 +276,10 @@ int main()
 
     Demo2();
     system("pause");
+
+    //int *pi = new int(5);
+    //double *pd = new double();
+    //char *pc = new char[10];
+    //string *ps = new string(10);  //error
     return 0;
 }
