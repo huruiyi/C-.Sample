@@ -6,6 +6,24 @@ MyArray::MyArray()
     this->mSize = 0;
     this->pArray = new int[this->mCapacity];
 }
+
+MyArray::MyArray(std::initializer_list<int> list)
+{
+    std::cout << "size:" << list.size() << std::endl;
+    this->mCapacity = list.size();
+    this->mSize = list.size();
+    this->pArray = new int[this->mCapacity];
+
+    //拿到指向第一个数据的指针
+    const int *beg = list.begin();
+    const int *end = list.end();
+
+    for (int i = 0; beg != end; ++beg, ++i)
+    {
+        this->pArray[i] = *beg;
+    }
+}
+
 MyArray::MyArray(int capacity)
 {
     this->mCapacity = capacity;
@@ -22,6 +40,7 @@ MyArray::MyArray(int n, int ele)
         this->pArray[i] = ele;
     }
 }
+
 MyArray::MyArray(const MyArray& arr)
 {
     this->mCapacity = arr.mSize;
@@ -32,6 +51,12 @@ MyArray::MyArray(const MyArray& arr)
         this->pArray[i] = arr.pArray[i];
     }
 }
+
+int& MyArray::operator[](int index)
+{
+    return this->pArray[index];
+}
+
 MyArray::~MyArray()
 {
     if (this->pArray != NULL)

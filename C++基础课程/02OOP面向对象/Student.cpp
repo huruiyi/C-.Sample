@@ -24,5 +24,3 @@ void Student::ShowInfo()
 {
     cout << this->sName << this->Age << endl;
 }
-
- 

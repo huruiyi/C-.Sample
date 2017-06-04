@@ -6,6 +6,68 @@
 #include "Student.h"
 using namespace std;
 
+#define Connect(X, Y) X##Y
+#define Connect2(X, Y) Connect(X, Y)
+#define ToString(X) #X
+#define ToString2(X) ToString(X)
+
+namespace NDemo
+{
+    void Demo0()
+    {
+        Person p;
+        p.SetName("赵四");
+        p.SetAge(20);
+
+        cout << p.GetName() << "  " << p.GetAge() << endl;
+        p.ShowPersonInfo();
+
+        Person *per = new Person();
+        per->SetName("张三");
+        delete per;
+    }
+    void Demo1()
+    {
+        Circle circle;
+        circle.setHeart(10, 10);
+        circle.setR(20);
+
+        Point point;
+        point.setX(10);
+        point.setY(30);
+
+        circle.judgeCirleAndPointRelation(point);
+
+        Circle *c = new Circle();
+        delete c;
+    }
+    void Demo2()
+    {
+        Student stu("拉布拉多", 3);
+        stu.ShowInfo();
+    }
+    void Demo3()
+    {
+        int *p1 = new int;
+        delete p1;
+        int *p2 = new int[10];
+        p2[0] = 123;
+        p2[1] = 456;
+
+        //int *pi = new int(5);
+        //double *pd = new double();
+        //char *pc = new char[10];
+        //string *ps = new string(10);  //error
+    }
+    void Demo4()
+    {
+        cout << Connect(123, 456) << endl;
+        cout << Connect2(123, 456) << endl;
+        cout << ToString(123) << endl;
+        cout << ToString2(123) << endl;
+    }
+}
+
 namespace 静态成员
 {
     class Person
@@ -235,51 +297,298 @@ namespace 友元成员函数
     }
 }
 
-void Demo0()
+namespace 运算符重载加号
 {
-    Person p;
-    p.SetName("赵四");
-    p.SetAge(20);
+    class Person
+    {
+    public:
+        int mA;
+        int mB;
+        Person(int a, int b)
+        {
+            this->mA = a;
+            this->mB = b;
+        }
+        Person operator+(const Person &person)
+        {
+            Person p(this->mA + person.mA, this->mB + person.mB);
+            return p;
+        }
+        Person operator+(int val)
+        {
+            Person p(this->mA + val, this->mB + val);
+            return p;
+        }
+    };
+    Person  operator+(int val, const Person &person)
+    {
+        Person p(person.mA + val, person.mB + val);
+        return p;
+    }
 
-    cout << p.GetName() << "  " << p.GetAge() << endl;
-    p.ShowPersonInfo();
-
-    Person *per = new Person();
-    per->SetName("张三");
-    delete per;
+    void test()
+    {
+        Person p1(100, 200);
+        Person p2(200, 100);
+        p1 + p2;
+        p1 + 12;
+        12 + p1;
+    }
 }
-void Demo1()
+
+namespace 运算符重载减号
 {
-    Circle circle;
-    circle.setHeart(10, 10);
-    circle.setR(20);
+    class Student
+    {
+    public:
+        Student() {}
+        Student(int a, int b)
+        {
+            this->mA = a;
+            this->mB = b;
+        }
+        Student operator[](std::initializer_list<Student> list) {}
+        int mA;
+        int mB;
+    };
 
-    Point point;
-    point.setX(10);
-    point.setY(30);
+    class Person
+    {
+        friend class Student;
+    public:
+        Person(int a, int b) :mA(a), mB(b)
+        {
+        }
 
-    circle.judgeCirleAndPointRelation(point);
+        Person operator -(const Student &stu)
+        {
+            Person p(this->mA - stu.mA, this->mB - stu.mB);
+            return p;
+        }
+    private:
+        int mA;
+        int mB;
+    };
 
-    Circle *c = new Circle();
-    delete c;
+    void test0(Student stu)
+    {
+    }
+    void test1(Student & stu)
+    {
+    }
+
+    void test2(Student * stu)
+    {
+    }
+    void test()
+    {
+        Student s1(123, 456);
+        Student s2(147, 258);
+        Student stus[] = { s1,s2 };
+        Student sx1 = stus[0];
+
+        Student &s3 = s1;
+        test0(s1);
+        test1(s3);
+        test2(&s1);
+    }
 }
-void Demo2()
+
+namespace 运算符重载MyInteger
 {
-    Student stu("拉布拉多", 3);
-    stu.ShowInfo();
+    class  MyInteger
+    {
+    public:
+        MyInteger()
+        {
+            mNum = 0;
+        }
+        MyInteger& operator++()
+        {
+            ++mNum;
+            return *this;
+        }
+
+        MyInteger operator++(int)
+        {
+            MyInteger temp(*this);
+            ++mNum;
+            return temp;
+        }
+    private:
+        int mNum;
+    };
+    void test()
+    {
+        MyInteger my;
+        MyInteger mi = ++my;
+        int a = 10;
+        cout << a++ << endl;
+        cout << a << endl;
+    }
+}
+
+namespace 运算符重载左移
+{
+    class Person
+    {
+        friend   ostream& operator<<(ostream &out, Person &person);
+    public:
+        Person(int a, int b)
+        {
+            this->mA = a;
+            this->mB = b;
+        }
+
+        int mA;
+        int mB;
+    };
+
+    ostream& operator<<(ostream &out, Person &person)
+    {
+        out << person.mA << " " << person.mB;
+        return out;
+    }
+    void test()
+    {
+        Person p(123, 456);
+        cout << p << endl;
+    }
+}
+
+namespace 运算符重载赋值
+{
+    class Person
+    {
+    public:
+        int mA;
+        int mB;
+        Person(int a, int b)
+        {
+            this->mA = a;
+            this->mB = b;
+        }
+    };
+    class Student
+    {
+    public:
+        char *pName;
+        int mAge;
+        Student(const char *name, int age)
+        {
+            this->pName = new char[strlen(name) + 1];
+            strcpy(this->pName, name);
+            this->mAge = age;
+        }
+        Student(const Student &stu)
+        {
+            cout << "拷贝" << endl;
+            this->pName = new char[strlen(stu.pName) + 1];
+            strcpy(this->pName, stu.pName);
+            this->mAge = stu.mAge;
+        }
+
+        Student &operator=(const Student &stu)
+        {
+            cout << "赋值重载" << endl;
+            if (this->pName)
+            {
+                delete this->pName;
+                this->pName = NULL;
+            }
+            this->pName = new char[strlen(stu.pName) + 1];
+            strcpy(this->pName, stu.pName);
+            this->mAge = stu.mAge;
+            return *this;
+        }
+        ~Student()
+        {
+            if (this->pName)
+            {
+                delete this->pName;
+                this->pName = NULL;
+            }
+        }
+    };
+    void test1()
+    {
+        //调用默认的赋值运算符（适用于没有指向堆空间的成员变量）
+        Person p1(123, 456);
+        Person p2(147, 258);
+        cout << p1.mA << "  " << p1.mB << endl;
+        cout << p2.mA << "  " << p2.mB << endl;
+        p2 = p1;
+        cout << p1.mA << "  " << p1.mB << endl;
+        cout << p2.mA << "  " << p2.mB << endl;
+    }
+    void test2()
+    {
+        //调用自定义的赋值运算符（适用于有指向堆空间的成员变量）
+        Student s1("u1", 30);
+        Student s2("u2", 50);
+        cout << s1.pName << "  " << s1.mAge << endl;
+        cout << s2.pName << "  " << s2.mAge << endl;
+        s1 = s2;
+        cout << s1.pName << "  " << s1.mAge << endl;
+        cout << s2.pName << "  " << s2.mAge << endl;
+    }
+}
+
+namespace 自定义类型转化
+{
+    class Student
+    {
+    public:
+        Student(int a, int b)
+        {
+            this->mA = a;
+            this->mB = b;
+        }
+
+    public:
+        int mA;
+        int mB;
+    };
+    class Person
+    {
+    public:
+        Person(int age)
+        {
+            this->m_Age = age;
+        }
+        operator int()
+        {
+            return this->m_Age;
+        }
+
+        operator bool()
+        {
+            return this->m_Age > 0;
+        }
+
+        operator Student()
+        {
+            return Student(m_Age, m_Age);
+        }
+    public:
+        int m_Age;
+    };
+    void test()
+    {
+        Person p(100);
+        int age = p;
+        cout << age << endl;
+
+        bool b = p;
+        cout << b << endl;
+
+        Student s = p;
+    }
 }
 int main()
 {
-    int *p1 = new int;
-    delete p1;
-    int *p2 = new int;
+    自定义类型转化::test();
 
-    Demo2();
     system("pause");
-
-    //int *pi = new int(5);
-    //double *pd = new double();
-    //char *pc = new char[10];
-    //string *ps = new string(10);  //error
     return 0;
 }
