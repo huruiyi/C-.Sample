@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
+  <Class Name="Base">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAQAA=</HashCode>
+      <FileName>06 继承中的对象的构造和析构.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Car" Collapsed="true">
+    <Position X="8" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>06 继承中的对象的构造和析构.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plane">
+    <Position X="6.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>06 继承中的对象的构造和析构.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Derived">
+    <Position X="3.25" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAABAAAAAAEAAAEAAAAAAAA=</HashCode>
+      <FileName>06 继承中的对象的构造和析构.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>06 继承中的对象的构造和析构.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="C">
+    <Position X="6.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>06 继承中的对象的构造和析构.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="B">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAEAAAA=</HashCode>
+      <FileName>06 继承中的对象的构造和析构.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

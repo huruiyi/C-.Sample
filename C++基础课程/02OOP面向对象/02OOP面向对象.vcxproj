@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="MyArray.cpp" />
+    <ClCompile Include="MyString.cpp" />
     <ClCompile Include="oop.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Point.cpp" />
@@ -147,6 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="MyArray.h" />
+    <ClInclude Include="MyString.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Student.h" />

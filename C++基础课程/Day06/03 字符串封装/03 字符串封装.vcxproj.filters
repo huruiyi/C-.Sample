@@ -15,22 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="oop.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Circle.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Point.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Person.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Student.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MyArray.cpp">
+    <ClCompile Include="03 字符串封装.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MyString.cpp">
@@ -38,21 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Circle.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Point.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Person.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Student.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MyArray.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MyString.h">
       <Filter>头文件</Filter>
     </ClInclude>

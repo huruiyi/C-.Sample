@@ -4,6 +4,8 @@
 #include"Circle.h"
 #include"Point.h"
 #include "Student.h"
+#include "MyArray.h"
+#include "MyString.h"
 using namespace std;
 
 #define Connect(X, Y) X##Y
@@ -372,13 +374,16 @@ namespace 运算符重载减号
 
     void test0(Student stu)
     {
+        stu.mA = 1;
     }
     void test1(Student & stu)
     {
+        stu.mA = 2;
     }
 
     void test2(Student * stu)
     {
+        stu->mA = 3;
     }
     void test()
     {
@@ -388,9 +393,11 @@ namespace 运算符重载减号
         Student sx1 = stus[0];
 
         Student &s3 = s1;
-        test0(s1);
-        test1(s3);
-        test2(&s1);
+
+        Student s4(123, 789);
+        test0(s4);//不会修改s4的值
+        test1(s4);
+        test2(&s4);
     }
 }
 
@@ -585,9 +592,84 @@ namespace 自定义类型转化
         Student s = p;
     }
 }
+
+namespace 指针运算符的重载
+{
+    class Person
+    {
+    public:
+        Person(string name, int age)
+        {
+            this->Name = name;
+            this->Age = age;
+        }
+        void ShowPersonInfo()
+        {
+            cout << this->Name << "  " << this->Age << endl;
+        }
+    public:
+        string Name;
+        int Age;
+    };
+
+    class SmartPointer
+    {
+    public:
+        SmartPointer(Person * p)
+        {
+            pPerson = p;
+        }
+        Person *operator->()
+        {
+            return pPerson;
+        }
+        Person &operator*()
+        {
+            return *pPerson;
+        }
+        ~SmartPointer()
+        {
+            if (pPerson != NULL)
+            {
+                delete pPerson;
+                pPerson = NULL;
+            }
+        }
+    private:
+        Person *pPerson;
+    };
+
+    void test()
+    {
+        SmartPointer sp = new Person("张三", 20);
+        sp->ShowPersonInfo();
+        (*sp).ShowPersonInfo();
+    }
+}
+namespace 自定义数组
+{
+    void 大括号运算符重载()
+    {
+        MyArray arr = { 1,2,3,4,5,6,7,8,9 };
+        arr.foreach();
+    }
+    void  加等于运算符重载()
+    {
+        MyArray arr;
+        arr += 1, 2, 3, 4, 5, 6, 7, 8, 9;
+        arr.foreach();
+    }
+}
+
+void MyStringTest()
+{
+    MyString m("Hello");
+
+    int s = 0;
+}
 int main()
 {
-    自定义类型转化::test();
+    指针运算符的重载::test();
 
     system("pause");
     return 0;
