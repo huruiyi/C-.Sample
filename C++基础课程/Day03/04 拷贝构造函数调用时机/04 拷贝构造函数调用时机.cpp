@@ -45,10 +45,9 @@ void test01()
 
 Person CreatePerson()
 {
-
     cout << "-----------------" << endl;
     Person person;
-    cout << "CreatePerson:"<<(int)&person << endl;
+    cout << "CreatePerson:" << (int)&person << endl;
     return person;
 }
 
@@ -56,7 +55,7 @@ void test02()
 {
     Person person = CreatePerson();
     cout << "-----------------" << endl;
-    cout <<"test02:"<< (int)&person << endl;
+    cout << "test02:" << (int)&person << endl;
 }
 
 #if 0

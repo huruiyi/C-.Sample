@@ -41,7 +41,8 @@ public:
         mAge = age;
     }
 
-    //重新编写赋值函数规则（返回一诺那个）
+    //重新编写赋值函数规则
+#if 1
     Student& operator=(const Student &person)
     {
         //先把自身的内存释放调用
@@ -59,6 +60,7 @@ public:
 
         return *this;
     }
+#endif
 
     Student(const Student &person)
     {
@@ -93,6 +95,7 @@ void test02()
     s1 = s2;
 
     cout << "---------------" << endl;
+    cout << "&s1：" << &s1 << "   &s2：" << &s2 << endl;
     cout << "Name:" << s1.pName << " Age:" << s1.mAge << endl;
     cout << "Name:" << s2.pName << " Age:" << s2.mAge << endl;
 

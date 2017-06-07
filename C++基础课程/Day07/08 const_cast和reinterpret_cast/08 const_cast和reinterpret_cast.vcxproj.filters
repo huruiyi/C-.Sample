@@ -15,13 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="06 深拷贝和浅拷贝.cpp">
+    <ClCompile Include="08 const_cast和reinterpret_cast.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="浅拷贝.png">
-      <Filter>资源文件</Filter>
-    </Image>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include "Person.h"
 #include"Circle.h"
@@ -18,14 +18,14 @@ namespace NDemo
     void Demo0()
     {
         Person p;
-        p.SetName("ÕÔËÄ");
+        p.SetName("èµµå››");
         p.SetAge(20);
 
         cout << p.GetName() << "  " << p.GetAge() << endl;
         p.ShowPersonInfo();
 
         Person *per = new Person();
-        per->SetName("ÕÅÈı");
+        per->SetName("å¼ ä¸‰");
         delete per;
     }
     void Demo1()
@@ -45,7 +45,7 @@ namespace NDemo
     }
     void Demo2()
     {
-        Student stu("À­²¼À­¶à", 3);
+        Student stu("æ‹‰å¸ƒæ‹‰å¤š", 3);
         stu.ShowInfo();
     }
     void Demo3()
@@ -70,12 +70,12 @@ namespace NDemo
     }
 }
 
-namespace ¾²Ì¬³ÉÔ±
+namespace é™æ€æˆå‘˜
 {
     class Person
     {
     public:
-        const static string Country;//²»¿ÉÒÔĞŞ¸Ä
+        const static string Country;//ä¸å¯ä»¥ä¿®æ”¹
         string Name;
         Person()
         {
@@ -86,7 +86,7 @@ namespace ¾²Ì¬³ÉÔ±
         {
             this->pTotal++;
             this->Name = name;
-            cout << "------------------¹¹Ôì£¨" << this->Name << "---" << this << "£©------------------" << endl;
+            cout << "------------------æ„é€ ï¼ˆ" << this->Name << "---" << this << "ï¼‰------------------" << endl;
         }
 
         int  GetTotal()
@@ -96,7 +96,7 @@ namespace ¾²Ì¬³ÉÔ±
 
         void ShowTotal()
         {
-            cout << "×ÜÈËÊı£º" << this->pTotal << endl;
+            cout << "æ€»äººæ•°ï¼š" << this->pTotal << endl;
         }
         static void Show()
         {
@@ -106,12 +106,12 @@ namespace ¾²Ì¬³ÉÔ±
         ~Person()
         {
             this->pTotal--;
-            cout << "------------------Îö¹¹£¨" << this->Name << "---" << this << "£©------------------" << endl << endl;
+            cout << "------------------ææ„ï¼ˆ" << this->Name << "---" << this << "ï¼‰------------------" << endl << endl;
         }
     private:
         static int pTotal;
     };
-    const string Person::Country = "ÖĞ¹ú";
+    const string Person::Country = "ä¸­å›½";
     int   Person::pTotal = 0;
 
     void test()
@@ -134,12 +134,12 @@ namespace ¾²Ì¬³ÉÔ±
     }
 }
 
-namespace ¶ÔÏóÄ£ĞÍ
+namespace å¯¹è±¡æ¨¡å‹
 {
     class Person
     {
     public:
-        //·Ç¾²Ì¬³ÉÔ±º¯ÊıÓĞthisÖ¸Õë£¬¾²Ì¬³ÉÔ±Ã»ÓĞ
+        //éé™æ€æˆå‘˜å‡½æ•°æœ‰thisæŒ‡é’ˆï¼Œé™æ€æˆå‘˜æ²¡æœ‰
         void showPerson()
         {
             cout << this->mAge << endl;
@@ -161,7 +161,7 @@ namespace ¶ÔÏóÄ£ĞÍ
     }
 }
 
-namespace thisÖ¸Õë¼ÓÇ¿
+namespace thisæŒ‡é’ˆåŠ å¼º
 {
     class Person
     {
@@ -182,8 +182,8 @@ namespace thisÖ¸Õë¼ÓÇ¿
         }
         void showPerson() const
         {
-            //this->mA = 123;   const ĞŞÊÎµÄº¯Êı£¬²»ÄÜÔÚ±¾º¯ÊıÖĞĞŞ¸Ä³ÉÔ±±äÁ¿µÄÖµ£¨³ıÁËmutableĞŞÊÎµÄ³ÉÔ±±äÁ¿£©
-            //const Person * const this Ïàµ±ÓÚthis
+            //this->mA = 123;   const ä¿®é¥°çš„å‡½æ•°ï¼Œä¸èƒ½åœ¨æœ¬å‡½æ•°ä¸­ä¿®æ”¹æˆå‘˜å˜é‡çš„å€¼ï¼ˆé™¤äº†mutableä¿®é¥°çš„æˆå‘˜å˜é‡ï¼‰
+            //const Person * const this ç›¸å½“äºthis
             if (this)
             {
                 this->mB = 123;
@@ -204,31 +204,31 @@ namespace thisÖ¸Õë¼ÓÇ¿
     void test()
     {
         Person *person = NULL;
-        person->showPerson(); //Õı³£
-                              //person->mA = 123;      //Òì³£
+        person->showPerson(); //æ­£å¸¸
+                              //person->mA = 123;      //å¼‚å¸¸
 
         const Person *person1 = new Person;
-        //person1->printperson1();//³£¶ÔÏóÖ»ÄÜµ÷ÓÃ¸ö³£º¯Êı
+        //person1->printperson1();//å¸¸å¯¹è±¡åªèƒ½è°ƒç”¨ä¸ªå¸¸å‡½æ•°
         person1->printPerson2();
-        //55 person1->mA = 123; //³£¶ÔÏó²»ÄÜĞŞ¸ÄÀàµÄÆÕÍ¨³ÉÔ±±äÁ¿£¬³ıÁËmutabelĞŞÊÎµÄ
-        person1->mB = 123; //³£¶ÔÏóÖ»ÄÜ·ÃÎÊmutableĞŞÊÎµÄ³ÉÔ±±äÁ¿
+        //55 person1->mA = 123; //å¸¸å¯¹è±¡ä¸èƒ½ä¿®æ”¹ç±»çš„æ™®é€šæˆå‘˜å˜é‡ï¼Œé™¤äº†mutabelä¿®é¥°çš„
+        person1->mB = 123; //å¸¸å¯¹è±¡åªèƒ½è®¿é—®mutableä¿®é¥°çš„æˆå‘˜å˜é‡
         //person1->mC = 456;
         delete person1;
     }
 }
 
-namespace friendÓÑÔªÈ«¾Öº¯Êı
+namespace friendå‹å…ƒå…¨å±€å‡½æ•°
 {
     class Building
     {
-        //ÓÑÔªÖ»ÊÇÉùÃ÷£¬²»ÊÇÀàµÄ³ÉÔ±
+        //å‹å…ƒåªæ˜¯å£°æ˜ï¼Œä¸æ˜¯ç±»çš„æˆå‘˜
         friend class GoodFriend;
         friend void GoodGay(Building &building);
     public:
         Building()
         {
-            mSittingRoom = "¿ÍÌü";
-            mBedRoom = "ÎÔÊÒ";
+            mSittingRoom = "å®¢å…";
+            mBedRoom = "å§å®¤";
         }
     public:
         string mSittingRoom;
@@ -267,12 +267,12 @@ namespace friendÓÑÔªÈ«¾Öº¯Êı
     {
         Building building;
         GoodGay(building);
-        //building.mBedRoom = "";//´Ë´¦·ÃÎÊÊÜÏŞ
-        building.mSittingRoom = "¿ÍÌü";
+        //building.mBedRoom = "";//æ­¤å¤„è®¿é—®å—é™
+        building.mSittingRoom = "å®¢å…";
     };
 }
 
-namespace ÓÑÔª³ÉÔ±º¯Êı
+namespace å‹å…ƒæˆå‘˜å‡½æ•°
 {
     class Person;
     class GirlFriend
@@ -299,7 +299,7 @@ namespace ÓÑÔª³ÉÔ±º¯Êı
     }
 }
 
-namespace ÔËËã·ûÖØÔØ¼ÓºÅ
+namespace è¿ç®—ç¬¦é‡è½½åŠ å·
 {
     class Person
     {
@@ -338,7 +338,7 @@ namespace ÔËËã·ûÖØÔØ¼ÓºÅ
     }
 }
 
-namespace ÔËËã·ûÖØÔØ¼õºÅ
+namespace è¿ç®—ç¬¦é‡è½½å‡å·
 {
     class Student
     {
@@ -395,13 +395,13 @@ namespace ÔËËã·ûÖØÔØ¼õºÅ
         Student &s3 = s1;
 
         Student s4(123, 789);
-        test0(s4);//²»»áĞŞ¸Äs4µÄÖµ
+        test0(s4);//ä¸ä¼šä¿®æ”¹s4çš„å€¼
         test1(s4);
         test2(&s4);
     }
 }
 
-namespace ÔËËã·ûÖØÔØMyInteger
+namespace è¿ç®—ç¬¦é‡è½½MyInteger
 {
     class  MyInteger
     {
@@ -435,7 +435,7 @@ namespace ÔËËã·ûÖØÔØMyInteger
     }
 }
 
-namespace ÔËËã·ûÖØÔØ×óÒÆ
+namespace è¿ç®—ç¬¦é‡è½½å·¦ç§»
 {
     class Person
     {
@@ -463,7 +463,7 @@ namespace ÔËËã·ûÖØÔØ×óÒÆ
     }
 }
 
-namespace ÔËËã·ûÖØÔØ¸³Öµ
+namespace è¿ç®—ç¬¦é‡è½½èµ‹å€¼
 {
     class Person
     {
@@ -489,7 +489,7 @@ namespace ÔËËã·ûÖØÔØ¸³Öµ
         }
         Student(const Student &stu)
         {
-            cout << "¿½±´" << endl;
+            cout << "æ‹·è´" << endl;
             this->pName = new char[strlen(stu.pName) + 1];
             strcpy(this->pName, stu.pName);
             this->mAge = stu.mAge;
@@ -497,7 +497,7 @@ namespace ÔËËã·ûÖØÔØ¸³Öµ
 
         Student &operator=(const Student &stu)
         {
-            cout << "¸³ÖµÖØÔØ" << endl;
+            cout << "èµ‹å€¼é‡è½½" << endl;
             if (this->pName)
             {
                 delete this->pName;
@@ -519,7 +519,7 @@ namespace ÔËËã·ûÖØÔØ¸³Öµ
     };
     void test1()
     {
-        //µ÷ÓÃÄ¬ÈÏµÄ¸³ÖµÔËËã·û£¨ÊÊÓÃÓÚÃ»ÓĞÖ¸Ïò¶Ñ¿Õ¼äµÄ³ÉÔ±±äÁ¿£©
+        //è°ƒç”¨é»˜è®¤çš„èµ‹å€¼è¿ç®—ç¬¦ï¼ˆé€‚ç”¨äºæ²¡æœ‰æŒ‡å‘å †ç©ºé—´çš„æˆå‘˜å˜é‡ï¼‰
         Person p1(123, 456);
         Person p2(147, 258);
         cout << p1.mA << "  " << p1.mB << endl;
@@ -530,7 +530,7 @@ namespace ÔËËã·ûÖØÔØ¸³Öµ
     }
     void test2()
     {
-        //µ÷ÓÃ×Ô¶¨ÒåµÄ¸³ÖµÔËËã·û£¨ÊÊÓÃÓÚÓĞÖ¸Ïò¶Ñ¿Õ¼äµÄ³ÉÔ±±äÁ¿£©
+        //è°ƒç”¨è‡ªå®šä¹‰çš„èµ‹å€¼è¿ç®—ç¬¦ï¼ˆé€‚ç”¨äºæœ‰æŒ‡å‘å †ç©ºé—´çš„æˆå‘˜å˜é‡ï¼‰
         Student s1("u1", 30);
         Student s2("u2", 50);
         cout << s1.pName << "  " << s1.mAge << endl;
@@ -541,7 +541,7 @@ namespace ÔËËã·ûÖØÔØ¸³Öµ
     }
 }
 
-namespace ×Ô¶¨ÒåÀàĞÍ×ª»¯
+namespace è‡ªå®šä¹‰ç±»å‹è½¬åŒ–
 {
     class Student
     {
@@ -593,7 +593,7 @@ namespace ×Ô¶¨ÒåÀàĞÍ×ª»¯
     }
 }
 
-namespace Ö¸ÕëÔËËã·ûµÄÖØÔØ
+namespace æŒ‡é’ˆè¿ç®—ç¬¦çš„é‡è½½
 {
     class Person
     {
@@ -641,19 +641,20 @@ namespace Ö¸ÕëÔËËã·ûµÄÖØÔØ
 
     void test()
     {
-        SmartPointer sp = new Person("ÕÅÈı", 20);
+        SmartPointer sp = new Person("å¼ ä¸‰", 20);
         sp->ShowPersonInfo();
         (*sp).ShowPersonInfo();
     }
 }
-namespace ×Ô¶¨ÒåÊı×é
+
+namespace è‡ªå®šä¹‰æ•°ç»„
 {
-    void ´óÀ¨ºÅÔËËã·ûÖØÔØ()
+    void å¤§æ‹¬å·è¿ç®—ç¬¦é‡è½½()
     {
         MyArray arr = { 1,2,3,4,5,6,7,8,9 };
         arr.foreach();
     }
-    void  ¼ÓµÈÓÚÔËËã·ûÖØÔØ()
+    void  åŠ ç­‰äºè¿ç®—ç¬¦é‡è½½()
     {
         MyArray arr;
         arr += 1, 2, 3, 4, 5, 6, 7, 8, 9;
@@ -663,13 +664,476 @@ namespace ×Ô¶¨ÒåÊı×é
 
 void MyStringTest()
 {
-    MyString m("Hello");
+    /*
+     1ï¼šåˆå§‹åŒ–
+     MyString(const char *s);
+     MyString(int n, char  ch);
+     MyString(const MyString &str);
+  */
+    MyString s1 = "ABCDEFG";
+    s1.ShowInfo();
 
-    int s = 0;
+    MyString s2(5, 'B');
+    s2.ShowInfo();
+
+    MyString s3(s1);
+    s3.ShowInfo();
+
+    /************************************************************************/
+    /*  èµ‹å€¼é‡è½½    MyString &operator=(const MyString &str);            */
+    /************************************************************************/
+    MyString s4 = s2;
+    s4.ShowInfo();
+
+    /************************************************************************/
+    /*    å–å€¼é‡è½½  char &operator[](int index);                                      */
+    /************************************************************************/
+    MyString s5("123456789");
+    cout << s5[2] << endl;
+
+    /************************************************************************/
+    /*         ç›¸åŠ æ“ä½œï¼Œè¿”å›çš„æ˜¯æ–°å€¼
+     *         MyString operator+(const MyString &str);
+     *         MyString operator+(const char  *c);                                    */
+     /************************************************************************/
+
+    MyString s6("123456");
+    MyString s7("abcdef");
+
+    MyString s8 = s6 + s7;
+    MyString s9 = s6 + "54321";
+    s6.ShowInfo();
+    s7.ShowInfo();
+    s8.ShowInfo();
+    s9.ShowInfo();
+
+    /************************************************************************/
+    /*  è¿½åŠ æ“ä½œï¼Œè¿”å›çš„æ˜¯è‡ªèº«ï¼Œå…ˆå‰çš„åªåœ°å€ï¼Œå€¼è¦å¤„ç†
+                MyString &operator+=(const MyString &str);
+                MyString &operator+=(const char *c);                               */
+                /************************************************************************/
+
+    cout << "/************************************************************************/" << endl;
+    MyString s10("123456");
+    MyString s11("789");
+    s10.ShowInfo();
+    s11.ShowInfo();
+    s10 += s11;
+    s10.ShowInfo();
+    s11.ShowInfo();
+
+    cout << "/************************************************************************/" << endl;
+    MyString s12("123");
+    s12.ShowInfo();
+    s12 += "456";
+    s12.ShowInfo();
+
+    /************************************************************************/
+    /*  åˆ¤æ–­
+                bool operator==(const MyString &str);
+                bool operator==(const char *s);                                         */
+                /************************************************************************/
+
+    MyString s13 = "abc";
+    MyString s14 = "abc";
+    MyString s15 = "def";
+    cout << (s13 == s14 ? "ç›¸ç­‰" : "ä¸ç›¸ç­‰") << endl;
+    cout << (s13 == s15 ? "ç›¸ç­‰" : "ä¸ç›¸ç­‰") << endl;
+    const char *ch1 = "abc";
+    const char *ch2 = "def";
+    cout << (s13 == ch1 ? "ç›¸ç­‰" : "ä¸ç›¸ç­‰") << endl;
+    cout << (s13 == ch2 ? "ç›¸ç­‰" : "ä¸ç›¸ç­‰") << endl;
+
+    /************************************************************************/
+    /*  //è·å–å­—ç¬¦å¤§å°
+                    int size();
+    //  MyString->const char *
+                  const char * c_str();                                                          */
+                  /************************************************************************/
+    MyString s16 = "abcdef";
+    cout << s16.c_str() << endl;
+
+    /************************************************************************/
+    /* >>è¾“å…¥                                                                     */
+    /************************************************************************/
+    MyString s18 = "123";
+    cin >> s18;
+}
+
+namespace Animalå¤šæ€
+{
+    class Animal
+    {
+    public:
+        virtual void Speak()
+        {
+            cout << "Animal::Speak()" << endl;
+        }
+    };
+
+    class Dog :public Animal
+    {
+    public:
+        void Speak() override
+        {
+            cout << "Dog::Speak()" << endl;
+        }
+    };
+
+    class Cat :public Animal
+    {
+    public:
+        void Speak() override
+        {
+            cout << "Cat::Speak()" << endl;
+        }
+    };
+
+    void DoLogic(Animal &animal)
+    {
+        animal.Speak();
+    }
+    void test()
+    {
+        Animal animal;
+        DoLogic(animal);
+
+        Dog dog;
+        DoLogic(dog);
+
+        Cat cat;
+        DoLogic(cat);
+    }
+
+    void test2()
+    {
+        Animal *animal = new Dog;
+        animal->Speak();
+    }
+}
+
+namespace åŠ¨ç‰©å›­å¤šæ€æ¡ˆä¾‹
+{
+    class Animal
+    {
+    public:
+        virtual void Speak() = 0;
+        virtual ~Animal() = 0;
+    };
+    Animal::~Animal()
+    {
+    }
+    class Dog :public Animal
+    {
+    public:
+        Dog()
+        {
+            cout << "æ„é€ Dog" << endl;
+        }
+        void Speak() override
+        {
+            cout << "Dog::Speak()" << endl;
+        }
+        ~Dog()
+        {
+            cout << "ææ„Dog" << endl;
+        }
+    };
+    class Cat :public Animal
+    {
+    public:
+        Cat()
+        {
+            cout << "æ„é€ Cat" << endl;
+        }
+        void Speak() override
+        {
+            cout << "Cat::Speal()" << endl;
+        }
+        ~Cat()
+        {
+            cout << "ææ„Cat" << endl;
+        }
+    };
+
+    class Duck :public Animal
+    {
+    public:
+        Duck()
+        {
+            cout << "æ„é€ Duck" << endl;
+        }
+        void Speak() override
+        {
+            cout << "Duck::Speal()" << endl;
+        }
+        ~Duck()
+        {
+            cout << "ææ„Duck" << endl;
+        }
+    };
+
+    class Zoo
+    {
+    public:
+        Zoo()
+        {
+            cout << "æ„é€ Zoo" << endl;
+
+            this->pAnimals = new Animal*[20];
+            this->mSize = 0;
+        }
+        void Add(Animal *animal)
+        {
+            if (this->mSize == 20)
+            {
+                return;
+            }
+            this->pAnimals[this->mSize] = animal;
+            this->mSize++;
+        }
+        void Show()
+        {
+            for (int index = 0; index < this->mSize; ++index)
+            {
+                this->pAnimals[index]->Speak();
+            }
+        }
+
+        ~Zoo()
+        {
+            cout << "ææ„Zoo" << endl;
+            if (this->pAnimals != NULL)
+            {
+                for (int i = 0; i < this->mSize; ++i)
+                {
+                    delete this->pAnimals[i];
+                    this->pAnimals[i] = NULL;
+                }
+            }
+            delete this->pAnimals;
+            this->pAnimals = NULL;
+        }
+    public:
+        Animal **pAnimals;
+        int mSize;
+    };
+    void test()
+    {
+        /*       Cat cat;
+               Animal &animal = cat;
+               cat.Speak();
+       */
+        Zoo zoo;
+        zoo.Add(new Cat);
+        zoo.Add(new Duck);
+        zoo.Add(new Dog);
+        zoo.Show();
+    }
+}
+
+namespace Static_cast_Demo
+{
+    /*
+    é™æ€è½¬æ¢(static_cast)
+         1ï¼šç”¨äºç±»å±‚æ¬¡ç»“æ„ä¸­åŸºç±»ï¼ˆçˆ¶ç±»ï¼‰å’Œæ´¾ç”Ÿç±»ï¼ˆå­ç±»ï¼‰ä¹‹é—´æŒ‡é’ˆæˆ–å¼•ç”¨çš„è½¬æ¢ã€‚
+         2ï¼šè¿›è¡Œä¸Šè¡Œè½¬æ¢ï¼ˆæŠŠæ´¾ç”Ÿç±»çš„æŒ‡é’ˆæˆ–å¼•ç”¨è½¬æ¢æˆåŸºç±»è¡¨ç¤ºï¼‰æ˜¯å®‰å…¨çš„ï¼›
+         3ï¼šè¿›è¡Œä¸‹è¡Œè½¬æ¢ï¼ˆæŠŠåŸºç±»æŒ‡é’ˆæˆ–å¼•ç”¨è½¬æ¢æˆæ´¾ç”Ÿç±»è¡¨ç¤ºï¼‰æ—¶ï¼Œç”±äºæ²¡æœ‰åŠ¨æ€ç±»å‹æ£€æŸ¥ï¼Œæ‰€ä»¥æ˜¯ä¸å®‰å…¨çš„ã€‚
+         4ï¼šç”¨äºåŸºæœ¬æ•°æ®ç±»å‹ä¹‹é—´çš„è½¬æ¢ï¼Œå¦‚æŠŠintè½¬æ¢æˆcharï¼ŒæŠŠcharè½¬æ¢æˆintã€‚è¿™ç§è½¬æ¢çš„å®‰å…¨æ€§ä¹Ÿè¦å¼€å‘äººå‘˜æ¥ä¿è¯ã€‚
+    */
+    class Animal {};
+    class Dog : public Animal {};
+    class Other {};
+
+    //åŸºç¡€æ•°æ®ç±»å‹è½¬æ¢
+    void test01()
+    {
+        char a = 'a';
+        double b = static_cast<double>(a);
+    }
+
+    //ç»§æ‰¿å…³ç³»æŒ‡é’ˆäº’ç›¸è½¬æ¢
+    void test02()
+    {
+        //ç»§æ‰¿å…³ç³»æŒ‡é’ˆè½¬æ¢
+        Animal* animal01 = NULL;
+        Dog* dog01 = NULL;
+        //å­ç±»æŒ‡é’ˆè½¬æˆçˆ¶ç±»æŒ‡é’ˆ,å®‰å…¨(å°ç±»è½¬å¤§ç±»)
+        Animal* animal02 = static_cast<Animal*>(dog01);
+        //çˆ¶ç±»æŒ‡é’ˆè½¬æˆå­ç±»æŒ‡é’ˆï¼Œä¸å®‰å…¨
+        Dog* dog02 = static_cast<Dog*>(animal01);
+    }
+
+    //ç»§æ‰¿å…³ç³»å¼•ç”¨ç›¸äº’è½¬æ¢
+    void test03()
+    {
+        Animal ani_ref;
+        Dog dog_ref;
+        //ç»§æ‰¿å…³ç³»æŒ‡é’ˆè½¬æ¢
+        Animal& animal01 = ani_ref;
+        Dog& dog01 = dog_ref;
+        //å­ç±»æŒ‡é’ˆè½¬æˆçˆ¶ç±»æŒ‡é’ˆ,å®‰å…¨
+        Animal& animal02 = static_cast<Animal&>(dog01);
+        //çˆ¶ç±»æŒ‡é’ˆè½¬æˆå­ç±»æŒ‡é’ˆï¼Œä¸å®‰å…¨
+        Dog& dog02 = static_cast<Dog&>(animal01);
+    }
+
+    //æ— ç»§æ‰¿å…³ç³»æŒ‡é’ˆè½¬æ¢
+    void test04()
+    {
+        Animal* animal01 = NULL;
+        Other* other01 = NULL;
+
+        //è½¬æ¢å¤±è´¥
+        //Animal* animal02 = static_cast<Animal*>(other01);
+    }
+}
+
+namespace Dynamic_cast_Demo
+{
+    /*
+    åŠ¨æ€è½¬æ¢(dynamic_cast)
+         dynamic_castä¸»è¦ç”¨äºç±»å±‚æ¬¡é—´çš„ä¸Šè¡Œè½¬æ¢å’Œä¸‹è¡Œè½¬æ¢ï¼›
+         åœ¨ç±»å±‚æ¬¡é—´è¿›è¡Œä¸Šè¡Œè½¬æ¢æ—¶ï¼Œdynamic_castå’Œstatic_castçš„æ•ˆæœæ˜¯ä¸€æ ·çš„ï¼›
+         åœ¨è¿›è¡Œä¸‹è¡Œè½¬æ¢æ—¶ï¼Œdynamic_castå…·æœ‰ç±»å‹æ£€æŸ¥çš„åŠŸèƒ½ï¼Œæ¯”static_castæ›´å®‰å…¨ï¼›
+         å«æœ‰virtualå‡½æ•°çš„åŸºç±»å’Œå­ç±»ä¹‹é—´çš„è½¬æ¢ã€‚
+     */
+    class Animal
+    {
+    public:
+        virtual void ShowName() = 0;
+    };
+    class Dog : public Animal
+    {
+        virtual void ShowName() {
+            cout << "I am a dog!" << endl;
+        }
+    };
+    class Other
+    {
+    public:
+        void PrintSomething()
+        {
+            cout << "æˆ‘æ˜¯å…¶ä»–ç±»!" << endl;
+        }
+    };
+
+    //æ™®é€šç±»å‹è½¬æ¢
+    void test01()
+    {
+        //ä¸æ”¯æŒåŸºç¡€æ•°æ®ç±»å‹
+        int a = 10;
+        //double a = dynamic_cast<double>(a);
+    }
+
+    //ç»§æ‰¿å…³ç³»æŒ‡é’ˆ
+    void test02()
+    {
+        Animal* animal01 = NULL;
+        Dog* dog01 = new Dog;
+
+        //å­ç±»æŒ‡é’ˆè½¬æ¢æˆçˆ¶ç±»æŒ‡é’ˆ å¯ä»¥
+        Animal* animal02 = dynamic_cast<Animal*>(dog01);
+        animal02->ShowName();
+        //çˆ¶ç±»æŒ‡é’ˆè½¬æ¢æˆå­ç±»æŒ‡é’ˆ ä¸å¯ä»¥
+        //Dog* dog02 = dynamic_cast<Dog*>(animal01);
+    }
+
+    //ç»§æ‰¿å…³ç³»å¼•ç”¨
+    void test03()
+    {
+        Dog dog_ref;
+        Dog& dog01 = dog_ref;
+
+        //å­ç±»å¼•ç”¨è½¬æ¢æˆçˆ¶ç±»å¼•ç”¨ å¯ä»¥
+        Animal& animal02 = dynamic_cast<Animal&>(dog01);
+        animal02.ShowName();
+    }
+
+    //æ— ç»§æ‰¿å…³ç³»æŒ‡é’ˆè½¬æ¢
+    void test04()
+    {
+        Animal* animal01 = NULL;
+        Other* other = NULL;
+
+        //ä¸å¯ä»¥
+        //Animal* animal02 = dynamic_cast<Animal*>(other);
+    }
+}
+
+namespace Const_Cast_Demo
+{
+    /*
+     è¯¥è¿ç®—ç¬¦ç”¨æ¥ä¿®æ”¹ç±»å‹çš„constå±æ€§ã€‚ã€‚
+         å¸¸é‡æŒ‡é’ˆè¢«è½¬åŒ–æˆéå¸¸é‡æŒ‡é’ˆï¼Œå¹¶ä¸”ä»ç„¶æŒ‡å‘åŸæ¥çš„å¯¹è±¡ï¼›
+         å¸¸é‡å¼•ç”¨è¢«è½¬æ¢æˆéå¸¸é‡å¼•ç”¨ï¼Œå¹¶ä¸”ä»ç„¶æŒ‡å‘åŸæ¥çš„å¯¹è±¡ï¼›
+         æ³¨æ„:ä¸èƒ½ç›´æ¥å¯¹éæŒ‡é’ˆå’Œéå¼•ç”¨çš„å˜é‡ä½¿ç”¨const_castæ“ä½œç¬¦å»ç›´æ¥ç§»é™¤å®ƒçš„const
+     */
+     //å¸¸é‡æŒ‡é’ˆè½¬æ¢æˆéå¸¸é‡æŒ‡é’ˆ
+    void test01()
+    {
+        //ç»™æŒ‡é’ˆå¢åŠ const
+        int* p = new int;
+        Person* person = new Person;
+        const int* const_p = const_cast<const int*>(p);
+        const Person* const_person = const_cast<const Person*>(person);
+
+        delete person;
+        delete p;
+
+        //å»æ‰const
+        const Person* p2 = new Person;
+        Person* p3 = const_cast<Person*>(p2);
+    }
+
+    //å¸¸é‡å¼•ç”¨è½¬æ¢æˆéå¸¸é‡å¼•ç”¨
+    void test02()
+    {
+        int a = 10;
+        int& p_ref = a;
+        Person person;
+        Person& person_ref = person;
+
+        const int& const_b = const_cast<const int&>(p_ref);
+        const Person& const_person = const_cast<const Person&>(person_ref);
+    }
+}
+
+namespace x
+{
+    //éçº¯è™šææ„å‡½æ•°
+    class A
+    {
+    public:
+        virtual ~A();
+    };
+
+    A::~A() {}
+
+    //çº¯ææ„å‡½æ•°
+    class B
+    {
+    public:
+        virtual ~B() = 0;
+    };
+
+    B::~B() {}
+
+    //Bæ˜¯æŠ½è±¡ç±»
+    //åˆ™ï¼š
+     //B fun(int); //Error
+    //B *p; //Ok
+    //int fun(B);//Error
+    //B Obj;//Error
+    void test() {
+        A a; //Aç±»ä¸æ˜¯æŠ½è±¡ç±»ï¼Œå¯ä»¥å®ä¾‹åŒ–å¯¹è±¡
+         //B b; //B   ç±»æ˜¯æŠ½è±¡ç±»ï¼Œä¸å¯ä»¥å®ä¾‹åŒ–å¯¹è±¡
+    }
+
 }
 int main()
 {
-    Ö¸ÕëÔËËã·ûµÄÖØÔØ::test();
+    åŠ¨ç‰©å›­å¤šæ€æ¡ˆä¾‹::test();
 
     system("pause");
     return 0;

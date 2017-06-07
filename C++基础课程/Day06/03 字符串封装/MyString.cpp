@@ -30,14 +30,6 @@ MyString::MyString(const MyString &str)
     strcpy(this->pString, str.pString);
     this->mSize = str.mSize;
 }
-MyString::~MyString()
-{
-    if (pString != NULL)
-    {
-        delete[] this->pString;
-        pString = NULL;
-    }
-}
 
 MyString& MyString::operator=(const MyString &str)
 {
@@ -213,6 +205,16 @@ int MyString::size()
 const char* MyString::c_str()
 {
     return this->pString;
+}
+
+//Îö¹¹
+MyString::~MyString()
+{
+    if (pString != NULL)
+    {
+        delete[] this->pString;
+        pString = NULL;
+    }
 }
 
 //Êä³ö×Ö·û´®

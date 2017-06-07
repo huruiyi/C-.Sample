@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A3C5894C-146A-489A-A118-7BE5DDBBBB4B}</ProjectGuid>
-    <RootNamespace>My06深拷贝和浅拷贝</RootNamespace>
+    <ProjectGuid>{490C1634-7332-4D4A-B3FB-A8B9484FCC4B}</ProjectGuid>
+    <RootNamespace>My01C多态</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -64,10 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="06 深拷贝和浅拷贝.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="浅拷贝.png" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -74,8 +74,25 @@ void test02()
     p8 = p7; //¸³Öµº¯Êý
 }
 
-int main() {
-    test02();
+void test03()
+{
+    char *ch1 = "Hello";
+    char * ch2 = new char[strlen(ch1) + 1];
+
+    strcpy(ch2, "Hello");
+    cout << ch1 << "   " << ch2 << endl;
+    delete ch2;
+    cout << &ch1 << "   " << &ch2 << endl;
+}
+
+void test04()
+{
+    Person p1(10, 20);
+    Person p2(10, 20);
+}
+int main()
+{
+    test03();
 
     system("pause");
     return EXIT_SUCCESS;
