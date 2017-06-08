@@ -47,6 +47,7 @@ public:
 
 void test()
 {
+    Student s1 = Person(10);
     Person p(100);
     int ret = p;
     cout << "ret = " << ret << endl;
@@ -63,7 +64,8 @@ void test()
     Student s = p;
 }
 
-int main() {
+int main()
+{
     test();
 
     system("pause");

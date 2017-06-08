@@ -23,6 +23,14 @@ void test1()
     printf("%p-%s\n", p3, p3);
     printf("%p-%s\n", p4, p4);
 }
+
+void test2()
+{
+    int a = 123;
+    int &ra = a;
+    int b = ra;
+    cout << b;
+}
 int main()
 {
     test0();
