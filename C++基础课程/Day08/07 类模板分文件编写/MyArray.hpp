@@ -1,27 +1,34 @@
 #pragma once
 #include<iostream>
 
-template<class T> class MyArray;
+//template<class T> class MyArray;
 
 //template<class T> void showArray(MyArray<T> &arr);
-template<class T> std::ostream& operator<<(std::ostream& out, MyArray<T> &arr);
+//template<class T> std::ostream& operator<<(std::ostream& out, MyArray<T> &arr);
 
 template<class T>
 class MyArray
 {
     //普通函数声明 还是 函数模板声明？
     //这是一个普通函数声明
-    friend std::ostream& operator<<<>(std::ostream& out, MyArray<T> &arr);
-    //friend void showArray<>(MyArray<T> &arr);
+    //friend std::ostream& operator<<<>(std::ostream& out, MyArray<T> &arr);
 
     //友元函数模板
-    template<class TT> friend void showArray(MyArray<TT> &arr);
+    //template<class TT> friend void showArray(MyArray<TT> &arr);
+
+    //friend void showArray<>(MyArray<T> &arr);
+
 public:
-    MyArray();
+    T *pAddress;
+    int mSize;
+    int mCapcity;
+
+public:
+    MyArray(int size);
     ~MyArray();
     void Push(const T &pAddress)
     {
-        if (this->mSize >= 10)
+        if (this->mSize >= mCapcity)
         {
             return;
         }
@@ -31,29 +38,32 @@ public:
             mSize++;
         }
     }
-public:
-    T *pAddress;
-    int mSize;
+
+    T operator[] (int index)
+    {
+        if (this->mCapcity <= index)
+        {
+            throw string("访问越界");
+        }
+        return   this->pAddress[index];
+    }
 };
 
-template<class T> MyArray<T>::MyArray()
+template<class T> MyArray<T>::MyArray(int size)
 {
-    this->pAddress = new T[10];
+    this->pAddress = new T[size];
+    this->mCapcity = size;
 }
 
 template<class T> MyArray<T>::~MyArray()
 {
-    //for (int i = 0; i < this->mSize; i++)
-    //{
-    //    delete this->pAddress[i];
-    //    this->pAddress[i] = NULL;
-    //}
     //不能越界，申请多少空间，才能释放多少内存
     delete this->pAddress;
 }
 
 template<class T> std::ostream& operator<<(std::ostream& out, MyArray<T> &arr)
 {
+    showArray(arr);
     return out;
 }
 
@@ -63,5 +73,5 @@ template<class T> void showArray(MyArray<T> &arr)
     {
         cout << arr.pAddress[i] << "  ";
     }
-    cout << "普通友元函数！" << endl;
+    cout << endl;
 }

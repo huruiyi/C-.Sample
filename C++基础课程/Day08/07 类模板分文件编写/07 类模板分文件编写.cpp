@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
+#include<string>
 using namespace std;
 #include"MyArr.hpp";
 
@@ -21,18 +22,27 @@ void test0()
 }
 void test1()
 {
-    MyArray<int> arr;
+    MyArray<int> arr(5);
     arr.Push(11);
     arr.Push(12);
     arr.Push(13);
     arr.Push(14);
     arr.Push(15);
     arr.Push(16);
-    arr.Push(17);
-    arr.Push(18);
-    arr.Push(19);
-    arr.Push(20);
-    arr.Push(21);
+
+    try
+    {
+        int arrItem2 = arr[2];
+        cout << arrItem2 << endl;
+
+        int arrItem5 = arr[5];
+        cout << arrItem5 << endl;
+    }
+    catch (const string &str)
+    {
+        cout << str << endl;
+    }
+
     cout << arr;
     showArray(arr);
 }
