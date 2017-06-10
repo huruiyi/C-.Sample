@@ -7,7 +7,7 @@
  * 3：类模版函数声明的定义（必须指定类型）
 /************************************************************************/
 
-template<class T> class LinkNode;
+ 
 
 template<class T>
 class LinkNode
@@ -27,7 +27,7 @@ LinkNode<T>::LinkNode(T *data)
     this->pData = data;
 }
 
-template<class T> class LinkList;
+ 
 
 template<class T>
 class LinkList
@@ -46,7 +46,7 @@ public:
 template<class T>
 LinkList<T>::LinkList()
 {
-    cout << "" << endl;
+    cout << "  " << endl;
 }
 
 template<class T>
