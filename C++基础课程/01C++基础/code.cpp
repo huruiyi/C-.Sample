@@ -103,6 +103,13 @@ void AverageDemo()
 #if 1
 void main()
 {
+    char *p = "123456789";
+    while (*p != '\0')
+    {
+        printf("%c %c\n", *p, p[0]);
+        p++;
+    }
+    printf("|");
     SetwDemo();
     system("pause");
 }
