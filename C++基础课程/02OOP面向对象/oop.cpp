@@ -1277,60 +1277,8 @@ namespace Exception
     }
 }
 
-namespace FileIO
-{
-    void test1()
-    {
-        //获取一个字符
-        char c = std::cin.get();
-        cout << c << endl;
-
-        c = cin.get();
-        cout << c << endl;
-
-        c = cin.get();
-        if (c == '\n')
-        {
-            cout << "newline" << endl;
-        }
-        else
-        {
-            cout << c << endl;
-        }
-    }
-
-    void test2()
-    {
-        char buf[5] = { 0 };
-        std::cin.get(buf, 5);//输入大于5个字符不能，不会报异常
-        cout << buf << endl;
-    }
-
-    void test3()
-    {
-        char buf[5] = { 0 };
-        cin.getline(buf, sizeof(buf));//不能大于缓冲区大小
-        cout << buf << endl;
-    }
-
-    void test4()
-    {
-        char ch = cin.peek();//只获取一个字符
-
-        ch = cin.get();
-
-        cout << ch << endl;
-    }
-
-
-    void test20()
-    {
-        ofstream ofs;
-    }
-}
 int main()
 {
-    FileIO::test4();
     system("pause");
     return 0;
 }

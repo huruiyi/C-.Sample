@@ -116,13 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mfc.h" />
-    <ClInclude Include="resource.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="01MFC.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="C:\Users\huruiyi\Desktop\bm.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

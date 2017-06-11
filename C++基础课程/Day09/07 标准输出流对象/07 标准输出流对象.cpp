@@ -10,18 +10,29 @@ cout.write() //从buffe中写num个字节到当前输出流中。
 
 void test01()
 {
-	//输出单个字符
-	cout.put('a').put('b').put('\n');
+    //输出单个字符
+    cout.put('a').put('b').put('\n');
+    cout.write("hello", 6).write("world", 6);
 
-	//输出字符串
-	char buf[] = "hello world!";
-	cout.write(buf,strlen(buf));
+    cout << "************" << endl;
+    //输出字符串
+    char buf[] = "hello world!";
+    cout.write(buf, strlen(buf));
+
+    cout << endl;
+    cout << "***************************************" << endl;
+    int len = strlen(buf);
+    for (int i = 0; i < len; i++)
+    {
+        cout << i << "：";
+        cout.write(buf, i);
+        cout << endl;
+    }
 }
 
-int main(){
-
-	test01();
-
-	system("pause");
-	return EXIT_SUCCESS;
+int main()
+{
+    test01();
+    system("pause");
+    return EXIT_SUCCESS;
 }
