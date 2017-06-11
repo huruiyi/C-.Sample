@@ -48,7 +48,7 @@ void MyFrame::OnPaint()
 {
     CPaintDC dc(this);
 
-    dc.Ellipse(10, 20, 20, 50);
+    dc.Ellipse(10, 10, 500, 500);
     SetWindowText(TEXT("这是我的第一个MFC应用程序"));
 
     CFont font;
