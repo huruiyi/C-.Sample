@@ -2,10 +2,18 @@
 //
 
 #include "stdafx.h"
-
+#include<string>
+#include <algorithm>
 using namespace std;
 
-//
+class Teacher
+{
+public:
+    Teacher(int id, int age) :ID(id), age(age) {}
+    int ID;
+    int age;
+};
+
 void test01()
 {
     //容器
@@ -30,15 +38,6 @@ void test01()
     int n = count(v.begin(), v.end(), 4);
     cout << "n:" << n << endl;
 }
-
-class Teacher
-{
-public:
-    Teacher(int id, int age) :ID(id), age(age) {}
-    int ID;
-    int age;
-};
-
 void test02()
 {
     vector<Teacher> v; //创建一个容器 指定里面放Teacher类型的数据
@@ -57,7 +56,6 @@ void test02()
         pStart++;
     }
 }
-
 //容器放类对象指针
 void test03()
 {
@@ -84,11 +82,9 @@ void test03()
     cout << endl;
 }
 
+
 int main()
 {
-    //test01();
-    //test02();
-    test03();
 
     system("pause");
     return EXIT_SUCCESS;

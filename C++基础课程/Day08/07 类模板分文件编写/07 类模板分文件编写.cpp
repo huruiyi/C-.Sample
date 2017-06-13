@@ -2,27 +2,26 @@
 #include<iostream>
 #include<string>
 using namespace std;
-#include"MyArr.hpp";
-
-#include"MyArray.hpp" //boost
-#include<vector>
-
+#include "MyArray1.hpp"
+#include "MyArray2.hpp";
+#include "MyArray3.hpp"
 //类模板不能分文件编写
 //C++独立编译
 //模板二次编译
 
 void test0()
 {
-    MyArr<int> *arr = new MyArr<int>;
+    MyArray2<int> *arr = new MyArray2<int>;
     arr->mSize = 100;
     int a = 123;
     int *p = &a;
     arr->pAddress = p;
     cout << arr;
 }
+
 void test1()
 {
-    MyArray<int> arr(5);
+    MyArray1<int> arr(5);
     arr.Push(11);
     arr.Push(12);
     arr.Push(13);
@@ -47,10 +46,19 @@ void test1()
     showArray(arr);
 }
 
+void test2()
+{
+    MyArray3<int> arr1;
+    MyArray3<int> arr2("Name", 123);
+    //ShowArray1(arr2);
+    //ShowArray2(arr2);
+    //ShowArray3(arr2);
+
+    cout << arr2;
+}
 int main()
 {
-    test1();
-
+    test2();
     system("pause");
     return EXIT_SUCCESS;
 }

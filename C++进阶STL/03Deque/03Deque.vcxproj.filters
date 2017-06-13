@@ -15,19 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="07 类模板分文件编写.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MyArray1.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MyArray2.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MyArray3.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
