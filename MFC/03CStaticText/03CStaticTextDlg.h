@@ -51,4 +51,6 @@ private:
     CButton m_btn_AddItem;
 public:
     afx_msg void OnCbnSelchangeComboxGrade();
+private:
+    CButton m_btn_fly;
 };
