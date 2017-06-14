@@ -82,10 +82,8 @@ void test03()
     cout << endl;
 }
 
-
 int main()
 {
-
     system("pause");
     return EXIT_SUCCESS;
 }

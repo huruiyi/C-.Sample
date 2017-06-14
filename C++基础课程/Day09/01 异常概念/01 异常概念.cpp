@@ -3,14 +3,14 @@
 #include<string>
 using namespace std;
 
-int doLogic(int a,int b)
+int doLogic(int a, int b)
 {
-	if (b == 0)
-	{
-		throw 10; //throw一个Int类型的异常
-	}
+    if (b == 0)
+    {
+        throw 10; //throw一个Int类型的异常
+    }
 
-	return  a / b;
+    return  a / b;
 }
 
 //1. 错误码本身没有含义
@@ -20,84 +20,75 @@ int doLogic(int a,int b)
 
 void test()
 {
-	try
-	{
-		doLogic(10, 0);
-	}
-	catch (int)
-	{
-		throw;
-	}
+    try
+    {
+        doLogic(10, 0);
+    }
+    catch (int)
+    {
+        throw;
+    }
 }
-
 
 void test01()
 {
-
-	//试着去执行可能会抛出异常的代码
-	try
-	{
-		test();
-	}
-	//如果try块中的语句真的抛出了异常，在这里捕获
-	//匹配异常通过异常类型
-	catch (int e)
-	{
-		cout << "除0错误:" << e << endl;
-	}
-
-
+    //试着去执行可能会抛出异常的代码
+    try
+    {
+        test();
+    }
+    //如果try块中的语句真的抛出了异常，在这里捕获
+    //匹配异常通过异常类型
+    catch (int e)
+    {
+        cout << "除0错误:" << e << endl;
+    }
 }
 
 void myFunc()
 {
-	//抛出const char *类型异常
-	//throw "hello exception!";
+    //抛出const char *类型异常
+    //throw "hello exception!";
 
-	//抛出string类型异常
-	//throw string("hello exception1");
+    //抛出string类型异常
+    //throw string("hello exception1");
 
-	//抛出double类型异常
-	//throw 3.14;
+    //抛出double类型异常
+    //throw 3.14;
 
-	//抛出Int类型异常
-	throw 10;
+    //抛出Int类型异常
+    throw 10;
 }
 
 //2. 异常是严格类型匹配
 void test02()
 {
-	try
-	{
-		myFunc();
-	}
-	catch (const char* e)
-	{
-		cout << "const char *类型异常！" << endl;
-	}
-	catch (string e)
-	{
-		cout << "string类型异常！" << endl;
-	}
-	catch (double e)
-	{
-		cout << "double类型异常！" << endl;
-	}
-	catch (...)
-	{
-		cout << "其他类型异常!" << endl;
-	}
+    try
+    {
+        myFunc();
+    }
+    catch (const char* e)
+    {
+        cout << "const char *类型异常！" << endl;
+    }
+    catch (string e)
+    {
+        cout << "string类型异常！" << endl;
+    }
+    catch (double e)
+    {
+        cout << "double类型异常！" << endl;
+    }
+    catch (...)
+    {
+        cout << "其他类型异常!" << endl;
+    }
 }
 
+int main() {
+    //test01();
+    test02();
 
-int main(){
-
-	//test01();
-	test02();
-
-	
-	
-
-	system("pause");
-	return EXIT_SUCCESS;
+    system("pause");
+    return EXIT_SUCCESS;
 }

@@ -7,132 +7,125 @@ using namespace std;
 class Person
 {
 public:
-	Person()
-	{
-		mAge = 0;
-	}
+    Person()
+    {
+        mAge = 0;
+    }
 
-	void setAge(int age)
-	{
-		if (age < 0 || age > 100)
-		{
-			throw out_of_range("年龄应该在0-100之间!");
-		}
+    void setAge(int age)
+    {
+        if (age < 0 || age > 100)
+        {
+            throw out_of_range("年龄应该在0-100之间!");
+        }
 
-		mAge = age;
-	}
+        mAge = age;
+    }
 public:
-	int mAge;
+    int mAge;
 };
 
 void test()
 {
-	
-	Person person;
+    Person person;
 
-	try
-	{
-		person.setAge(1000);
-	}
-	catch (exception &ex)
-	{
-		cout << ex.what() << endl;
-	}
-
+    try
+    {
+        person.setAge(1000);
+    }
+    catch (exception &ex)
+    {
+        cout << ex.what() << endl;
+    }
 }
 
 #endif
 
-
 class MyException : public exception
 {
 public:
-	MyException(const char *msg)
-	{
-		pErrorMsg = new char[strlen(msg) + 1];
-		strcpy(pErrorMsg, msg);
-	}
+    MyException(const char *msg)
+    {
+        pErrorMsg = new char[strlen(msg) + 1];
+        strcpy(pErrorMsg, msg);
+    }
 
-	MyException(const MyException &ex)
-	{
-		pErrorMsg = new char[strlen(ex.pErrorMsg) + 1];
-		strcpy(pErrorMsg, ex.pErrorMsg);
-	}
+    MyException(const MyException &ex)
+    {
+        pErrorMsg = new char[strlen(ex.pErrorMsg) + 1];
+        strcpy(pErrorMsg, ex.pErrorMsg);
+    }
 
-	MyException& operator=(const MyException &ex)
-	{
-		if (pErrorMsg != NULL)
-		{
-			delete[] pErrorMsg;
-			pErrorMsg = NULL;
-		}
+    MyException& operator=(const MyException &ex)
+    {
+        if (pErrorMsg != NULL)
+        {
+            delete[] pErrorMsg;
+            pErrorMsg = NULL;
+        }
 
-		pErrorMsg = new char[strlen(ex.pErrorMsg) + 1];
-		strcpy(pErrorMsg, ex.pErrorMsg);
+        pErrorMsg = new char[strlen(ex.pErrorMsg) + 1];
+        strcpy(pErrorMsg, ex.pErrorMsg);
 
-		return *this;
-	}
+        return *this;
+    }
 
-	virtual const char * what() const
-	{
-		return pErrorMsg;
-	}
+    virtual const char * what() const
+    {
+        return pErrorMsg;
+    }
 
-	~MyException()
-	{
-		if (pErrorMsg != NULL)
-		{
-			delete[] pErrorMsg;
-			pErrorMsg = NULL;
-		}
-	}
+    ~MyException()
+    {
+        if (pErrorMsg != NULL)
+        {
+            delete[] pErrorMsg;
+            pErrorMsg = NULL;
+        }
+    }
 public:
-	char *pErrorMsg;
+    char *pErrorMsg;
 };
-
 
 class Person
 {
 public:
-	Person()
-	{
-		mAge = 0;
-	}
+    Person()
+    {
+        mAge = 0;
+    }
 
-	void setAge(int age)
-	{
-		if (age < 0 || age > 100)
-		{
-			throw MyException("年龄应该在0-100之间!");
-		}
+    void setAge(int age)
+    {
+        if (age < 0 || age > 100)
+        {
+            throw MyException("年龄应该在0-100之间!");
+        }
 
-		mAge = age;
-	}
+        mAge = age;
+    }
 public:
-	int mAge;
+    int mAge;
 };
 
 void test02()
 {
+    Person person;
 
-	Person person;
-
-	try
-	{
-		person.setAge(1000);
-	}
-	catch (exception &ex)
-	{
-		cout << ex.what() << endl;
-	}
-
+    try
+    {
+        person.setAge(1000);
+    }
+    catch (exception &ex)
+    {
+        cout << ex.what() << endl;
+    }
 }
 
-int main(){
+int main() {
+    //test();
+    test02();
 
-	//test();
-	test02();
-
-	system("pause");
-	return EXIT_SUCCESS;
+    system("pause");
+    return EXIT_SUCCESS;
 }

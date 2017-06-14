@@ -39,7 +39,9 @@ void test01()
     //    cout << *itBegin << endl;
     //    itBegin++;
     //}
-
+    /*
+    *itBegin 指的是尖括号中的内容
+    */
     //for (vector<int>::iterator itBegin = v.begin(); itBegin < v.end(); itBegin++)
     //{
     //    cout << *itBegin << endl;

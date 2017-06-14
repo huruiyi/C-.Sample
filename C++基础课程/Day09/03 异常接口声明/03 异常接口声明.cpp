@@ -2,23 +2,21 @@
 #include<iostream>
 using namespace std;
 
-void func() throw(int,char)
+void func() throw(int, char)
 {
-	throw (double)3.14;
+    throw (double)3.14;
 }
 
-int main(){
+int main() {
+    try
+    {
+        func();
+    }
+    catch (double)
+    {
+        cout << "doubleÒì³££¡" << endl;
+    }
 
-	try
-	{
-		func();
-	}
-	catch (double)
-	{
-		cout << "doubleÒì³££¡" << endl;
-	}
-	
-
-	system("pause");
-	return EXIT_SUCCESS;
+    system("pause");
+    return EXIT_SUCCESS;
 }

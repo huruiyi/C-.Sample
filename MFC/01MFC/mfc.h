@@ -5,8 +5,6 @@ class WinApp :public CWinApp
     virtual BOOL InitInstance();
 };
 
-
-
 class MyFrame :public CFrameWnd
 {
 public:
