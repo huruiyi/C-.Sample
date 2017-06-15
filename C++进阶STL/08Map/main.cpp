@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <cstdlib>
+#include <vector>
 using namespace std;
 /*
     插入重复元素不会报错，但数据不会添加到map集合中
@@ -110,7 +111,6 @@ void test01()
     //test02_foreach(mp);
     //test04_find(mp, 6);
     test06_bound(mp);
-
 }
 
 class myCompareMap
@@ -134,9 +134,175 @@ void test02()
         cout << "key = " << it->first << " value = " << it->second << endl;
     }
 }
+
+namespace ke
+{
+    enum
+    {
+        CAIWU, RENLI, YANFA
+    };
+
+    class Worker
+    {
+    public:
+        string mName; //姓名
+        int mMoney; //工资
+    };
+
+    void createWorker(vector<Worker>&v)
+    {
+        string nameSeed = "ABCDE";
+        for (int i = 0; i < 5; i++)
+        {
+            string name = "员工";
+            name += nameSeed[i];
+
+            Worker w;
+            w.mName = name;
+            w.mMoney = rand() % 10000 + 10000; // 10000 ~ 19999
+
+                                               //将员工放入到容器中
+            v.push_back(w);
+        }
+    }
+
+    void setGroup(vector<Worker>&v, multimap<int, Worker>&m)
+    {
+        for (vector<Worker>::iterator it = v.begin(); it != v.end(); it++)
+        {
+            //随机产生部门编号
+            int departmentId = rand() % 3; // 0 1 2
+            //将员工放入到 m容器中
+            m.insert(make_pair(departmentId, *it));
+        }
+    }
+
+    void showGroup(multimap<int, Worker>&m)
+    {
+        // 0  A  0  B   1 C   2 D  2 E 假数据
+
+        cout << "财务部门员工如下：" << endl;
+
+        multimap<int, Worker>::iterator pos = m.find(CAIWU);
+        int countNum = m.count(CAIWU);
+        int num = 0;
+        for (; pos != m.end(), num < countNum; pos++, num++)
+        {
+            cout << "姓名： " << pos->second.mName << " 工资： " << pos->second.mMoney << endl;
+        }
+
+        cout << "-----------------------" << endl;
+
+        cout << "人力部门员工如下：" << endl;
+
+        pos = m.find(RENLI);
+        countNum = m.count(RENLI);
+        num = 0;
+        for (; pos != m.end(), num < countNum; pos++, num++)
+        {
+            cout << "姓名： " << pos->second.mName << " 工资： " << pos->second.mMoney << endl;
+        }
+
+        cout << "-----------------------" << endl;
+
+        cout << "研发部门员工如下：" << endl;
+        pos = m.find(YANFA);
+        countNum = m.count(YANFA);
+        num = 0;
+        for (; pos != m.end(), num < countNum; pos++, num++)
+        {
+            cout << "姓名： " << pos->second.mName << " 工资： " << pos->second.mMoney << endl;
+        }
+
+        cout << "-----------------------" << endl;
+    }
+    int main()
+    {
+        //创建员工
+        vector<Worker>v;
+        createWorker(v);
+
+        //将员工放入到各个部门中
+        //容器multimap 存放部门 以及相应的人员
+        multimap<int, Worker> m;
+        setGroup(v, m);
+
+        //分部门显示员工
+        showGroup(m);
+
+        //测试容器
+        /*for (vector<Worker>::iterator it = v.begin(); it != v.end();it++)
+        {
+        cout << "姓名： " << it->mName << " 工资： " << it->mMoney << endl;
+        }*/
+
+        system("pause");
+        return EXIT_SUCCESS;
+    }
+}
+
+template <typename A, typename B> void print_elem(const pair<A, B>& p)
+{
+    cout << "(" << p.first << ", " << p.second << ") ";
+}
+
+template <typename T> void print_collection(const T& t)
+{
+    cout << t.size() << " elements: ";
+
+    for (const auto& p : t)
+    {
+        print_elem(p);
+    }
+    cout << endl;
+}
+
+template <typename C, class T> void findit(const C& c, T val)
+{
+    cout << "Trying find() on value " << val << endl;
+    auto result = c.find(val);
+    if (result != c.end())
+    {
+        cout << "Element found: "; print_elem(*result); cout << endl;
+    }
+    else
+    {
+        cout << "Element not found." << endl;
+    }
+}
+
+void test07_multimap()
+{
+    multimap<int, string> m1({ { 40, "Zr" },{ 45, "Rh" } });
+    cout << "The starting multimap m1 is (key, value):" << endl;
+    print_collection(m1);
+
+    vector<pair<int, string>> v;
+    v.push_back(make_pair(43, "Tc"));
+    v.push_back(make_pair(41, "Nb"));
+    v.push_back(make_pair(46, "Pd"));
+    v.push_back(make_pair(42, "Mo"));
+    v.push_back(make_pair(44, "Ru"));
+    v.push_back(make_pair(44, "Ru")); // attempt a duplicate
+
+    cout << "Inserting the following vector data into m1:" << endl;
+    print_collection(v);
+
+    m1.insert(v.begin(), v.end());
+
+    cout << "The modified multimap m1 is (key, value):" << endl;
+    print_collection(m1);
+    cout << endl;
+    findit(m1, 45);
+    findit(m1, 6);
+}
 int main()
 {
-    test02();
+    ke::main();
+
+    test07_multimap();
+
+   
     system("pause");
     return 0;
 }

@@ -160,8 +160,13 @@ void CMy02CDialogDlg::OnBnClickedButtonExec()
 
 void CMy02CDialogDlg::OnBnClickedButtonShow()
 {
-    // TODO: 在此添加控件通知处理程序代码
+    ////dlg.Create(IDD_DIALOG_Show);//对话框只能创建一次
+ 
+    //第一种方法
+    //dlg.ShowWindow(SW_SHOWNORMAL);
 
-    //dlg.Create(IDD_DIALOG_Show);//对话框只能创建一次
-    dlg.ShowWindow(SW_SHOWNORMAL);
+    //第二种方法
+    CDialogShow* pdlgModeless = new CDialogShow(this);
+    pdlgModeless->Create(IDD_DIALOG_Show);
+    pdlgModeless->ShowWindow(SW_SHOWNORMAL);
 }
