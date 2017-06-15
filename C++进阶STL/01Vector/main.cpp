@@ -318,9 +318,37 @@ void test11()
     }
     cout << endl;
 }
+
+
+struct Sum {
+    Sum() { sum = 0; }
+    void operator()(int n) { sum += n; }
+
+    int sum;
+};
+void test_foreach()
+{
+    vector<int> nums{ 3, 4, 2, 9, 15, 267 };
+
+    cout << "before: ";
+    for (auto n : nums) {
+        cout << n << " ";
+    }
+    cout << '\n';
+
+    for_each(nums.begin(), nums.end(), [](int &n) { n++; });
+    Sum s = for_each(nums.begin(), nums.end(), Sum());
+
+    cout << "after:  ";
+    for (auto n : nums) {
+        cout << n << " ";
+    }
+    cout << '\n';
+    cout << "sum: " << s.sum << '\n';
+}
 int main()
 {
-    test09();
+    test_foreach();
 
     system("pause");
     return 0;

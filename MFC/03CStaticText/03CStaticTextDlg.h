@@ -3,6 +3,7 @@
 
 #pragma once
 #include "afxwin.h"
+#include "afxcmn.h"
 
 // CMy03CStaticTextDlg ¶Ô»°¿ò
 class CMy03CStaticTextDlg : public CDialogEx
@@ -53,4 +54,5 @@ public:
     afx_msg void OnCbnSelchangeComboxGrade();
 private:
     CButton m_btn_fly;
+    CListCtrl m_list_Control;
 };

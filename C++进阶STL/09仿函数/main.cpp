@@ -41,10 +41,15 @@ public:
     int count = 0; //统计MyPring调用次数
 };
 
-//void MyPrint2(int num)
-//{
-//	cout << num << endl;
-//}
+void test_foreach_vector_int(vector<int> &v)
+{
+    for_each(v.begin(), v.end(), [](int val) {cout << val << "\t"; });
+    cout << endl;
+}
+void MyPrint2(int num)
+{
+	cout << num << endl;
+}
 
 void test01()
 {
@@ -121,7 +126,7 @@ void foreach_MyStruct(vector<MyStruct> &strct)
     cout << endl;
 }
 
-void test_sort()
+void test_sort1()
 {
     using namespace std;
     vector <MyStruct> v1;
@@ -139,9 +144,22 @@ void test_sort()
     foreach_MyStruct(v1);
 }
 
+void test_sort2()
+{
+    int data[] = { 1, 2, 3, 4, 4, 3, 7, 8, 9, 10 };
+    std::vector<int> v(data, data + 10);
+
+    int target1 = 3;
+    int target2 = 5;
+    int num_items1 = std::count(v.begin(), v.end(), target1);
+    int num_items2 = std::count(v.begin(), v.end(), target2);
+
+    std::cout << "number: " << target1 << " count: " << num_items1 << '\n';
+    std::cout << "number: " << target2 << " count: " << num_items2 << '\n';
+}
 //防函数
 //一元谓词
-class GradeThan0
+class GradeThan20
 {
 public:
 
@@ -151,19 +169,29 @@ public:
     }
 };
 
+bool fun_GradeThan20(int val)
+{
+    return val > 20;
+}
+
 void test_find()
 {
     vector <int> v;
+    v.push_back(10);
+    v.push_back(80);
     v.push_back(10);
     v.push_back(40);
     v.push_back(30);
     v.push_back(20);
     v.push_back(50);
+    v.push_back(30);
+    v.push_back(70);
 
     //简单类型只需要提供查找的函数
     vector<int>::iterator pos1 = find_if(v.begin(), v.end(), [](int a) {return a > 20; });
-    vector<int>::iterator pos2 = find_if(v.begin(), v.end(), GradeThan0());
-    vector<int>::iterator pos3 = find(v.begin(), v.end(), 20);
+    vector<int>::iterator pos2 = find_if(v.begin(), v.end(), GradeThan20());
+    vector<int>::iterator pos3 = find_if(v.begin(), v.end(), fun_GradeThan20);
+    vector<int>::iterator pos4 = find(v.begin(), v.end(), 20);
     if (pos3 != v.end())
     {
         cout << "找到值：" << (*pos3) << endl;
@@ -172,6 +200,18 @@ void test_find()
     {
         cout << "未找到值" << endl;
     }
+
+    cout << "所有值：";
+    test_foreach_vector_int(v);
+    cout << "便利大于20的所有值" << endl;
+    vector<int>::iterator pos = find_if(v.begin(), v.end(), fun_GradeThan20);
+    while (pos != v.end())
+    {
+        cout << "找到值：" << (*pos) << "\t";
+        pos = pos + 1;
+        pos = find_if(pos, v.end(), fun_GradeThan20);
+    }
+    cout << endl;
 }
 
 void test_find_if()
@@ -264,6 +304,7 @@ void test07()
     sort(v.begin(), v.end(), less<int>());//默认的从小到大
     for_each(v.begin(), v.end(), [](int v) {cout << v << "\t"; });
 }
+
 
 class PrintVectorInt :public binary_function<int, int, void>
 {
@@ -362,6 +403,14 @@ void test_cout_if()
     int num1 = count_if(v.begin(), v.end(), [](int val) {return val > 5; });
     int num2 = count_if(v.begin(), v.end(), Cout_if());
     int num3 = count_if(v.begin(), v.end(), cout_if_gt5);
+
+
+    int data[] = { 1, 2, 3, 4, 4, 3, 7, 8, 9, 10 };
+    std::vector<int> v2(data, data + 10);
+
+    int num4 = std::count_if(v2.begin(), v2.end(), [](int i) {return i % 3 == 0; });
+
+    std::cout << "number divisible by three: " << num4 << '\n';
 }
 
 void test_random_shuffle()
@@ -466,9 +515,122 @@ void test_difference()
     copy(v3.begin(), v3.end(), ostream_iterator<int>(cout, "  "));
 }
 
+
+
+template<class InputIt, class T>
+InputIt find1(InputIt first, InputIt last, const T& value)
+{
+    for (; first != last; ++first)
+    {
+        if (*first == value) {
+            return first;
+        }
+    }
+    return last;
+}
+
+template<class InputIt, class UnaryPredicate>
+InputIt find_if1(InputIt first, InputIt last, UnaryPredicate p)
+{
+    for (; first != last; ++first) {
+        if (p(*first)) {
+            return first;
+        }
+    }
+    return last;
+}
+
+template<class InputIt, class UnaryPredicate>
+InputIt find_if_not1(InputIt first, InputIt last, UnaryPredicate q)
+{
+    for (; first != last; ++first) {
+        if (!q(*first)) {
+            return first;
+        }
+    }
+    return last;
+}
+
+template<class InputIt, class UnaryPredicate>
+InputIt find_if_not2(InputIt first, InputIt last, UnaryPredicate q)
+{
+    return find_if1(first, last, not1(q));
+}
+
+template<class InputIt, class ForwardIt>
+InputIt find_first_of1(InputIt first, InputIt last,
+    ForwardIt s_first, ForwardIt s_last)
+{
+    for (; first != last; ++first) {
+        for (ForwardIt it = s_first; it != s_last; ++it) {
+            if (*first == *it) {
+                return first;
+            }
+        }
+    }
+    return last;
+}
+
+template<class InputIt, class ForwardIt, class BinaryPredicate>
+InputIt find_first_of2(InputIt first, InputIt last,
+    ForwardIt s_first, ForwardIt s_last,
+    BinaryPredicate p)
+{
+    for (; first != last; ++first) {
+        for (ForwardIt it = s_first; it != s_last; ++it) {
+            if (p(*first, *it)) {
+                return first;
+            }
+        }
+    }
+    return last;
+}
+
+void test_find_first2()
+{
+    std::vector<int> v{ 0, 2, 3, 25, 5 };
+    std::vector<int> t{ 3, 19, 10, 2 };
+
+    auto result = std::find_first_of(v.begin(), v.end(), t.begin(), t.end());
+
+    if (result == v.end()) {
+        std::cout << "no elements of v were equal to 3, 19, 10 or 2\n";
+    }
+    else {
+        std::cout << "found a match at "
+            << std::distance(v.begin(), result) << "\n";
+    }
+}
+void test_find2()
+{
+    int n1 = 3;
+    int n2 = 5;
+
+    vector<int> v{ 0, 1, 2, 3, 4 };
+
+    auto result1 = find1(v.begin(), v.end(), n1);
+    auto result2 = find1(v.begin(), v.end(), n2);
+
+    if (result1 != v.end()) {
+        cout << "v contains: " << n1 << '\n';
+    }
+    else {
+        cout << "v does not contain: " << n1 << '\n';
+    }
+
+    if (result2 != v.end()) {
+        cout << "v contains: " << n2 << '\n';
+    }
+    else {
+        cout << "v does not contain: " << n2 << '\n';
+    }
+}
+
+
+
 int main()
 {
-    test_difference();
+    test_find2();
 
     system("pause");
 }

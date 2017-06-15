@@ -59,6 +59,7 @@ void CMy03CStaticTextDlg::DoDataExchange(CDataExchange* pDX)
     DDX_Control(pDX, IDC_COMBOX_Grade, m_cmb_grade);
     DDX_Control(pDX, IDC_BUTTON_AddItem, m_btn_AddItem);
     DDX_Control(pDX, IDC_BUTTON_Fly, m_btn_fly);
+    DDX_Control(pDX, IDC_LIS_Person, m_list_Control);
 }
 
 BEGIN_MESSAGE_MAP(CMy03CStaticTextDlg, CDialogEx)
@@ -135,6 +136,27 @@ BOOL CMy03CStaticTextDlg::OnInitDialog()
 
     m_cmb_grade.SetCurSel(2);
     //设置： data:1;2;3;4;5;6;
+
+    m_list_Control.InsertColumn(0, TEXT("第一列"), LVCFMT_CENTER, 80, 0);
+    m_list_Control.InsertColumn(1, TEXT("第二列"), LVCFMT_CENTER, 80, 0);
+    m_list_Control.InsertColumn(2, TEXT("第三列"), LVCFMT_CENTER, 80, 0);
+    m_list_Control.InsertColumn(3, TEXT("第四列"), LVCFMT_CENTER, 80, 0);
+    // m_list_Control View==>Report
+
+#if 1 /*创建系统托盘图标*/
+    NOTIFYICONDATA nd;//类成员变量
+                      //创建托盘图标
+    nd.cbSize = sizeof(NOTIFYICONDATA);
+    nd.hWnd = m_hWnd;
+    nd.uID = IDR_MAINFRAME;
+    nd.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
+    //nd.uCallbackMessage = WM_NOTIFYICON;
+    nd.hIcon = m_hIcon;
+
+    lstrcpyn(nd.szTip, TEXT("信息管理系统"), sizeof(TEXT("信息管理系统")));
+    Shell_NotifyIcon(NIM_ADD, &nd);
+#endif // 1 /*创建系统托盘图标*/
+
     return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
