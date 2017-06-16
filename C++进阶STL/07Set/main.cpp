@@ -213,7 +213,6 @@ void test04()
     }
 }
 
-
 template <typename T> void print_elem(const T& t) {
     cout << "(" << t << ") ";
 }
@@ -221,7 +220,8 @@ template <typename T> void print_elem(const T& t) {
 template <typename T> void print_collection(const T& t) {
     cout << t.size() << " elements: ";
 
-    for (const auto& p : t) {
+    for (const auto& p : t)
+    {
         print_elem(p);
     }
     cout << endl;
@@ -238,8 +238,7 @@ template <typename C, class T> void findit(const C& c, T val) {
     }
 }
 
-
-void teste05_multiset()
+void teste05_multiset1()
 {
     multiset<int> s1({ 40, 45 });
     cout << "The starting multiset s1 is: " << endl;
@@ -263,12 +262,89 @@ void teste05_multiset()
     cout << endl;
     findit(s1, 45);
     findit(s1, 6);
-
 }
+
+template <typename S> void print(const S& s)
+{
+    cout << s.size() << " elements: ";
+
+    for (const auto& p : s)
+    {
+        cout << "(" << p << ") ";
+    }
+
+    cout << endl;
+}
+
+void teste05_multiset2()
+{
+    // insert single values
+    multiset<int> s1;
+    // call insert(const value_type&) version
+    s1.insert({ 1, 10 });
+    // call insert(ValTy&&) version
+    s1.insert(20);
+
+    cout << "The original multiset values of s1 are:" << endl;
+    print(s1);
+
+    // intentionally attempt a duplicate, single element
+    s1.insert(1);
+    cout << "The modified multiset values of s1 are:" << endl;
+    print(s1);
+    cout << endl;
+
+    // single element, with hint
+    s1.insert(s1.end(), 30);
+    cout << "The modified multiset values of s1 are:" << endl;
+    print(s1);
+    cout << endl;
+
+    // The templatized version inserting a jumbled range
+    multiset<int> s2;
+    vector<int> v;
+    v.push_back(43);
+    v.push_back(294);
+    v.push_back(41);
+    v.push_back(330);
+    v.push_back(42);
+    v.push_back(45);
+
+    cout << "Inserting the following vector data into s2:" << endl;
+    print(v);
+
+    s2.insert(v.begin(), v.end());
+
+    cout << "The modified multiset values of s2 are:" << endl;
+    print(s2);
+    cout << endl;
+
+    // The templatized versions move-constructing elements
+    multiset<string>  s3;
+    string str1("blue"), str2("green");
+
+    // single element
+    s3.insert(move(str1));
+    cout << "After the first move insertion, s3 contains:" << endl;
+    print(s3);
+
+    // single element with hint
+    s3.insert(s3.end(), move(str2));
+    cout << "After the second move insertion, s3 contains:" << endl;
+    print(s3);
+    cout << endl;
+
+    multiset<int> s4;
+    // Insert the elements from an initializer_list
+    s4.insert({ 4, 44, 2, 22, 3, 33, 1, 11, 5, 55 });
+    cout << "After initializer_list insertion, s4 contains:" << endl;
+    print(s4);
+    cout << endl;
+}
+
 int main()
 {
-    test04();
-
+    teste05_multiset2();
     system("pause");
     return 0;
 }

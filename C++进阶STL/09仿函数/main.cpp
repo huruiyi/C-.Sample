@@ -48,7 +48,7 @@ void test_foreach_vector_int(vector<int> &v)
 }
 void MyPrint2(int num)
 {
-	cout << num << endl;
+    cout << num << endl;
 }
 
 void test01()
@@ -305,7 +305,6 @@ void test07()
     for_each(v.begin(), v.end(), [](int v) {cout << v << "\t"; });
 }
 
-
 class PrintVectorInt :public binary_function<int, int, void>
 {
 public:
@@ -403,7 +402,6 @@ void test_cout_if()
     int num1 = count_if(v.begin(), v.end(), [](int val) {return val > 5; });
     int num2 = count_if(v.begin(), v.end(), Cout_if());
     int num3 = count_if(v.begin(), v.end(), cout_if_gt5);
-
 
     int data[] = { 1, 2, 3, 4, 4, 3, 7, 8, 9, 10 };
     std::vector<int> v2(data, data + 10);
@@ -515,8 +513,6 @@ void test_difference()
     copy(v3.begin(), v3.end(), ostream_iterator<int>(cout, "  "));
 }
 
-
-
 template<class InputIt, class T>
 InputIt find1(InputIt first, InputIt last, const T& value)
 {
@@ -551,15 +547,14 @@ InputIt find_if_not1(InputIt first, InputIt last, UnaryPredicate q)
     return last;
 }
 
-template<class InputIt, class UnaryPredicate>
-InputIt find_if_not2(InputIt first, InputIt last, UnaryPredicate q)
+template<class InputIt, class UnaryPredicate>InputIt find_if_not2
+(InputIt first, InputIt last, UnaryPredicate q)
 {
     return find_if1(first, last, not1(q));
 }
 
-template<class InputIt, class ForwardIt>
-InputIt find_first_of1(InputIt first, InputIt last,
-    ForwardIt s_first, ForwardIt s_last)
+template<class InputIt, class ForwardIt>InputIt find_first_of1
+(InputIt first, InputIt last,    ForwardIt s_first, ForwardIt s_last)
 {
     for (; first != last; ++first) {
         for (ForwardIt it = s_first; it != s_last; ++it) {
@@ -571,10 +566,8 @@ InputIt find_first_of1(InputIt first, InputIt last,
     return last;
 }
 
-template<class InputIt, class ForwardIt, class BinaryPredicate>
-InputIt find_first_of2(InputIt first, InputIt last,
-    ForwardIt s_first, ForwardIt s_last,
-    BinaryPredicate p)
+template<class InputIt, class ForwardIt, class BinaryPredicate>InputIt find_first_of2
+(InputIt first, InputIt last, ForwardIt s_first, ForwardIt s_last,    BinaryPredicate p)
 {
     for (; first != last; ++first) {
         for (ForwardIt it = s_first; it != s_last; ++it) {
@@ -611,22 +604,24 @@ void test_find2()
     auto result1 = find1(v.begin(), v.end(), n1);
     auto result2 = find1(v.begin(), v.end(), n2);
 
-    if (result1 != v.end()) {
+    if (result1 != v.end()) 
+    {
         cout << "v contains: " << n1 << '\n';
     }
-    else {
+    else 
+    {
         cout << "v does not contain: " << n1 << '\n';
     }
 
-    if (result2 != v.end()) {
+    if (result2 != v.end()) 
+    {
         cout << "v contains: " << n2 << '\n';
     }
-    else {
+    else 
+    {
         cout << "v does not contain: " << n2 << '\n';
     }
 }
-
-
 
 int main()
 {
