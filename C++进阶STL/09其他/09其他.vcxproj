@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{EAC6F48C-632F-4B91-98C5-D000821BA977}</ProjectGuid>
-    <RootNamespace>My09仿函数</RootNamespace>
+    <ProjectGuid>{2F809D95-7078-4613-9FD7-92C0C03EC578}</ProjectGuid>
+    <RootNamespace>My09其他</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

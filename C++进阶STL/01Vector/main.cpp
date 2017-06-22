@@ -319,7 +319,6 @@ void test11()
     cout << endl;
 }
 
-
 struct Sum {
     Sum() { sum = 0; }
     void operator()(int n) { sum += n; }

@@ -688,7 +688,7 @@ void test_map_value_comp()
     //pr1 = m1.insert(map <int, int> ::value_type(1, 10));
     //pr2 = m1.insert(map <int, int> ::value_type(2, 5));
 
-    auto a=*pr1.first;
+    auto a = *pr1.first;
 
     if (vc1(*pr1.first, *pr2.first) == true)
     {

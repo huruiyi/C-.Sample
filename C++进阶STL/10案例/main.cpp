@@ -183,7 +183,7 @@ void test_fileManger()
     for (list<vector<string>>::iterator iter = li.begin(); iter != li.end(); iter++)
     {
         vector<string> v = *iter;
-        for (vector<string>::iterator  i = v.begin(); i !=v.end(); i++)
+        for (vector<string>::iterator i = v.begin(); i != v.end(); i++)
         {
             cout << *i << "\t";
         }

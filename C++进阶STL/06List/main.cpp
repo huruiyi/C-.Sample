@@ -13,7 +13,6 @@ using namespace std;
  4:删除元素会删除所有满足条件的值
  */
 
-
 class Person
 {
 public:
@@ -196,7 +195,7 @@ void test02()
 
     lip.sort(Cmpare()); //自定义类型不支持排序
     lip.sort(myCompare2);
-    
+
     //lip.sort([](Person p1, Person p2) {return p1.mAge > p2.mAge; });
     for_each(lip.begin(), lip.end(), [](Person p)
     {

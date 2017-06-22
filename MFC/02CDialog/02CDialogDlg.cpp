@@ -161,7 +161,7 @@ void CMy02CDialogDlg::OnBnClickedButtonExec()
 void CMy02CDialogDlg::OnBnClickedButtonShow()
 {
     ////dlg.Create(IDD_DIALOG_Show);//对话框只能创建一次
- 
+
     //第一种方法
     //dlg.ShowWindow(SW_SHOWNORMAL);
 

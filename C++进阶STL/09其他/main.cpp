@@ -46,6 +46,7 @@ void test_foreach_vector_int(vector<int> &v)
     for_each(v.begin(), v.end(), [](int val) {cout << val << "\t"; });
     cout << endl;
 }
+;
 void MyPrint2(int num)
 {
     cout << num << endl;
@@ -554,7 +555,7 @@ template<class InputIt, class UnaryPredicate>InputIt find_if_not2
 }
 
 template<class InputIt, class ForwardIt>InputIt find_first_of1
-(InputIt first, InputIt last,    ForwardIt s_first, ForwardIt s_last)
+(InputIt first, InputIt last, ForwardIt s_first, ForwardIt s_last)
 {
     for (; first != last; ++first) {
         for (ForwardIt it = s_first; it != s_last; ++it) {
@@ -567,7 +568,7 @@ template<class InputIt, class ForwardIt>InputIt find_first_of1
 }
 
 template<class InputIt, class ForwardIt, class BinaryPredicate>InputIt find_first_of2
-(InputIt first, InputIt last, ForwardIt s_first, ForwardIt s_last,    BinaryPredicate p)
+(InputIt first, InputIt last, ForwardIt s_first, ForwardIt s_last, BinaryPredicate p)
 {
     for (; first != last; ++first) {
         for (ForwardIt it = s_first; it != s_last; ++it) {
@@ -604,20 +605,20 @@ void test_find2()
     auto result1 = find1(v.begin(), v.end(), n1);
     auto result2 = find1(v.begin(), v.end(), n2);
 
-    if (result1 != v.end()) 
+    if (result1 != v.end())
     {
         cout << "v contains: " << n1 << '\n';
     }
-    else 
+    else
     {
         cout << "v does not contain: " << n1 << '\n';
     }
 
-    if (result2 != v.end()) 
+    if (result2 != v.end())
     {
         cout << "v contains: " << n2 << '\n';
     }
-    else 
+    else
     {
         cout << "v does not contain: " << n2 << '\n';
     }
