@@ -187,7 +187,7 @@ void test_find()
     v.push_back(30);
     v.push_back(70);
 
-    //简单类型只需要提供查找的函数
+    //简单类型只需要提供查找的函数  查找的是第一个大于20的值
     vector<int>::iterator pos1 = find_if(v.begin(), v.end(), [](int a) {return a > 20; });
     vector<int>::iterator pos2 = find_if(v.begin(), v.end(), GradeThan20());
     vector<int>::iterator pos3 = find_if(v.begin(), v.end(), fun_GradeThan20);
@@ -278,7 +278,7 @@ void test_find_if_p()
     }
 }
 
-//内建函数对象  头文件：functional
+//内建函数对象（negate，plus，greater，less）  头文件：functional
 void test05()
 {
     negate<int> n;

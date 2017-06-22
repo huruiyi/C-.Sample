@@ -421,24 +421,25 @@ struct CmpByValue
 //只通过值来排序
 bool cmp_only_by_value(const PAIR& lhs, const PAIR& rhs)
 {
-    return lhs.second > rhs.second;
+    return lhs.second < rhs.second;
 }
 
+//map 按照value排序
 void test_multimap3()
 {
-    multimap<int, int>a;
-    a.insert(make_pair(7, 6));
-    a.insert(make_pair(3, 4));
-    a.insert(make_pair(1, 2));
-    a.insert(make_pair(3, 2));
-    a.insert(make_pair(3, 1));
-    a.insert(make_pair(4, 2));
-    a.insert(make_pair(9, 10));
-    a.insert(make_pair(11, 2));
-    a.insert(make_pair(14, 6));
-    a.insert(make_pair(4, 2));
-    vector<PAIR> nsv(a.begin(), a.end());
-    // sort(nsv.begin(), nsv.end(), CmpByValue());
+    multimap<int, int, less<int> >mulp;
+    mulp.insert(make_pair(7, 6));
+    mulp.insert(make_pair(3, 4));
+    mulp.insert(make_pair(1, 2));
+    mulp.insert(make_pair(3, 5));
+    mulp.insert(make_pair(3, 1));
+    mulp.insert(make_pair(4, 7));
+    mulp.insert(make_pair(9, 10));
+    mulp.insert(make_pair(11, 2));
+    mulp.insert(make_pair(14, 6));
+    mulp.insert(make_pair(4, 3));
+    vector<PAIR> nsv(mulp.begin(), mulp.end());
+    //sort(nsv.begin(), nsv.end(), CmpByValue());
     //sort(nsv.begin(), nsv.end(), cmp_by_value);
     sort(nsv.begin(), nsv.end(), cmp_only_by_value);
     for (int i = 0; i != nsv.size(); ++i)
@@ -490,77 +491,6 @@ void test_multimap5()
     for (map<int, int, myCompareMap>::iterator it = m.begin(); it != m.end(); it++)
     {
         cout << "key = " << it->first << " value = " << it->second << endl;
-    }
-}
-
-/*
- 在映射包含的全部元素之间 value_types 的 value_compare 提供的比较条件从在单个元素的键之间的一种比较会导致辅助由类构造。
- 成员函数在 value_compare 运算符提供的函数对象使用对象存储的 key_compare 类型 组件 比较两元素 SORT 键组件。
-
-对于设置和多集，是简单容器的键值与值元素相同， value_compare 等效于 key_compare;
-对于映射和 multimaps 没有，因为 pair 类型元素的值与元素的键的值不相同。
-
-示例
- */
-
- /*
- template<class value_type>
- class value_compare : public binary_function<value_type, value_type, bool>
- {
- public:
-     bool operator()(const value_type& _Left, const value_type& _Right) const;
-     value_compare(key_compare _Pred) : comp(_Pred);
- protected:
-     key_compare comp;
- };
- */
- /*
-  value_compare value_comp( ) const;
- value_compare value_comp( ) const;
-
- 返回值
- --------------------------------------------------------------------------------
-
- 返回映射使用对其元素进行比较函数对象。
-
- 备注
- --------------------------------------------------------------------------------
-
- 对于映射 m，如果两个元素 e1( k1, d1) 和 e2( k2, d2) 类型的对象， value_type, where k1 and k2 类型自己的键 key_type and d1 and d2 类型的数据， mapped_type, then m. value_comp( e1, e2) 等效于 m. key_comp (k1, k2)。 一个存储的对象成员函数定义
-
- bool operator value_type&  value_type& (_Left，_Right);
-
- 后者返回 true，如果关键 _Left 值前面并与键值不相等在排序顺序的 _Right。
-
-  */
-
-void test_map_value_comp()
-{
-    // compile with: /EHsc
-
-    map <int, int, less<int> > m1;
-    map <int, int, less<int> >::value_compare vc1 = m1.value_comp();
-    pair< map<int, int>::iterator, bool > pr1, pr2;
-
-    pr1 = m1.insert(map <int, int> ::value_type(1, 10));
-    pr2 = m1.insert(map <int, int> ::value_type(2, 5));
-
-    if (vc1(*pr1.first, *pr2.first) == true)
-    {
-        cout << "The element ( 1,10 ) precedes the element ( 2,5 )." << endl;
-    }
-    else
-    {
-        cout << "The element ( 1,10 ) does not precede the element ( 2,5 )." << endl;
-    }
-
-    if (vc1(*pr2.first, *pr1.first) == true)
-    {
-        cout << "The element ( 2,5 ) precedes the element ( 1,10 )." << endl;
-    }
-    else
-    {
-        cout << "The element ( 2,5 ) does not precede the element ( 1,10 )." << endl;
     }
 }
 
@@ -707,10 +637,80 @@ void test_multimap9()
         cout << "kc2( 2,3 ) returns value of false, " << "where kc2 is the function object of m2." << endl;
     }
 }
+/*
+在映射包含的全部元素之间 value_types 的 value_compare 提供的比较条件从在单个元素的键之间的一种比较会导致辅助由类构造。
+成员函数在 value_compare 运算符提供的函数对象使用对象存储的 key_compare 类型 组件 比较两元素 SORT 键组件。
 
+对于设置和多集，是简单容器的键值与值元素相同， value_compare 等效于 key_compare;
+对于映射和 multimaps 没有，因为 pair 类型元素的值与元素的键的值不相同。
+
+示例
+
+template<class value_type>
+class value_compare : public binary_function<value_type, value_type, bool>
+{
+public:
+bool operator()(const value_type& _Left, const value_type& _Right) const;
+value_compare(key_compare _Pred) : comp(_Pred);
+protected:
+key_compare comp;
+};
+
+value_compare value_comp( ) const;
+value_compare value_comp( ) const;
+
+返回值
+--------------------------------------------------------------------------------
+
+返回映射使用对其元素进行比较函数对象。
+
+备注
+--------------------------------------------------------------------------------
+
+对于映射 m，如果两个元素 e1( k1, d1) 和 e2( k2, d2) 类型的对象， value_type, where k1 and k2 类型自己的键 key_type and d1 and d2 类型的数据， mapped_type, then m. value_comp( e1, e2) 等效于 m. key_comp (k1, k2)。 一个存储的对象成员函数定义
+
+bool operator value_type&  value_type& (_Left，_Right);
+
+后者返回 true，如果关键 _Left 值前面并与键值不相等在排序顺序的 _Right。
+
+*/
+
+void test_map_value_comp()
+{
+    map <int, int, less<int> > m1;
+
+    map <int, int, less<int> >::value_compare vc1 = m1.value_comp();
+    pair< map<int, int>::iterator, bool > pr1, pr2;
+
+    pr1 = m1.insert(make_pair(1, 10));
+    pr2 = m1.insert(make_pair(2, 5));
+
+    //pr1 = m1.insert(map <int, int> ::value_type(1, 10));
+    //pr2 = m1.insert(map <int, int> ::value_type(2, 5));
+
+    auto a=*pr1.first;
+
+    if (vc1(*pr1.first, *pr2.first) == true)
+    {
+        cout << "The element ( 1,10 ) precedes the element ( 2,5 )." << endl;
+    }
+    else
+    {
+        cout << "The element ( 1,10 ) does not precede the element ( 2,5 )." << endl;
+    }
+
+    if (vc1(*pr2.first, *pr1.first) == true)
+    {
+        cout << "The element ( 2,5 ) precedes the element ( 1,10 )." << endl;
+    }
+    else
+    {
+        cout << "The element ( 2,5 ) does not precede the element ( 1,10 )." << endl;
+    }
+}
 int main()
 {
-    test_multimap3();
+    test_map_value_comp();
     system("pause");
     return 0;
 }

@@ -50,7 +50,8 @@ void test02()
     vector<Teacher>::iterator pStart = v.begin(); //拿到指向第一元素的迭代器
     vector<Teacher>::iterator pEnd = v.end();//指向最后一个元素下一个位置
 
-    while (pStart != pEnd) {
+    while (pStart != pEnd)
+    {
         Teacher t = *pStart;
         cout << "ID：" << t.ID << " AGE:" << t.age << endl;
         pStart++;
@@ -82,8 +83,17 @@ void test03()
     cout << endl;
 }
 
+void test04()
+{
+    vector<int> v;
+    v.insert(v.begin(), { 12, 13, 14, 15, 16, 17 });
+    for_each(v.begin(), v.end(), [](int v) {cout << v << " "; });
+    v.assign({ 18,19,20,21 });
+    for_each(v.begin(), v.end(), [](int v) {cout << v << " "; });
+}
 int main()
 {
+    test04();
     system("pause");
     return EXIT_SUCCESS;
 }
