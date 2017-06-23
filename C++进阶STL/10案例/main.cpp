@@ -177,18 +177,9 @@ void test03()
 void test_fileManger()
 {
     FIleManger fm;
-    list<vector<string>> li;
+    map<int, map<string, string>> li;
     fm.LoadFile("Hero.csv", li);
     cout << "test_fileManger............................" << endl;
-    for (list<vector<string>>::iterator iter = li.begin(); iter != li.end(); iter++)
-    {
-        vector<string> v = *iter;
-        for (vector<string>::iterator i = v.begin(); i != v.end(); i++)
-        {
-            cout << *i << "\t";
-        }
-        cout << endl;
-    }
 }
 
 void print(std::string::size_type n, std::string const &s)

@@ -47,13 +47,13 @@
     <ClInclude Include="Person.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Student.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MyArray.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="MyString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

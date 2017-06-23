@@ -112,13 +112,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FIleManger.cpp" />
-    <ClCompile Include="Hero.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FIleManger.h" />
-    <ClInclude Include="Hero.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="weapon.h" />
   </ItemGroup>
