@@ -6,9 +6,12 @@
 
 using namespace std;
 /*
+ *set
 1 ：元素会自动去重
 2：添加重复元素编译不报错，但不能添加成功
 3：默认从小到大排序，（用仿函数 指定排序规则）可重载从大到小排序
+multiset
+1:元素不会去重
  */
 void test01()
 {
@@ -238,7 +241,7 @@ template <typename C, class T> void findit(const C& c, T val) {
     }
 }
 
-void teste05_multiset1()
+void test_multiset1()
 {
     multiset<int> s1({ 40, 45 });
     cout << "The starting multiset s1 is: " << endl;
@@ -276,7 +279,7 @@ template <typename S> void print(const S& s)
     cout << endl;
 }
 
-void teste05_multiset2()
+void test_multiset2()
 {
     // insert single values
     multiset<int> s1;
@@ -342,9 +345,32 @@ void teste05_multiset2()
     cout << endl;
 }
 
+void test_multiset3()
+{
+    multiset<int> mset{ 1,2,3,7,8,7,3,5,5,4,7,4,4,5,6,6,6,7,7,8,5,8,9,10 };
+
+    multiset<int>::iterator i = mset.find(7);
+    cout << "默认查找第一个：" << *i << endl;
+    int fiveCount = mset.count(7);
+    while (i != mset.end() && fiveCount)
+    {
+        cout << *i << endl;
+        i++;
+        fiveCount--;
+    }
+
+    cout << "equal_range查找结果：" << endl;
+    auto it = mset.equal_range(7);
+    cout << typeid(it).name() << endl;//返回值，pair
+    for (auto i = it.first; i != it.second; i++)//pair first起始点，secontd代表终点
+    {
+        cout << *i << endl;
+    }
+}
+
 int main()
 {
-    teste05_multiset2();
+    test_multiset3();
     system("pause");
     return 0;
 }

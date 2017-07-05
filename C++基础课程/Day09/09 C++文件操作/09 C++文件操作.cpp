@@ -284,7 +284,82 @@ int tese05()
 
     return 0;
 }
+void test06()
+{
+    //二进制方式打开
+    FILE *fp1 = fopen("./如何学习3D游戏.avi", "rb");
+    //二进制方式写入
+    FILE *fp2 = fopen("./a.avi", "wb");
+    if (!fp1 || !fp2)
+    {
+        cout << "文件打开失败" << endl;
+        return;
+    }
+    //栈上开辟一个数组,大小为512*512字节
+    char buf[BUFSIZ*BUFSIZ] = { 0 };
 
+    while (!feof(fp1))
+    {
+        //读入buf每次读取1块,大小为BUFSIZ*BUFSIZ,读取成功返回读到的有效字节,读取失败返回0
+        int len = fread(buf, 1, BUFSIZ*BUFSIZ, fp1);
+        //printf("len = %d\n", len);
+        cout << "len= " << len << endl;
+        //写入文件,文件源buf,每次写入1块,大小为len个有效字节
+        fwrite(buf, 1, len, fp2);
+        memset(buf, 0, BUFSIZ*BUFSIZ);
+    }
+    fclose(fp1);
+    fclose(fp2);
+}
+
+void test070()
+{
+    //此版本效率低
+    ifstream is("./如何学习3D游戏.avi", ios::in | ios::binary);
+    ofstream os("aa.avi", ios::out | ios::binary);
+    /*is.open("./如何学习3D游戏.avi", ios::in | ios::binary);
+    os.open("aa.avi", ios::out | ios::binary);*/
+
+    if (is.fail() || os.fail())
+    {
+        is.close();
+        os.close();
+        cout << "文件打开失败" << endl;
+        return;
+    }
+    //将文件流向os对象
+    os << is.rdbuf();
+
+    is.close();
+    os.close();
+}
+
+void test07()
+{
+    ifstream is("./如何学习3D游戏.avi", ios::in | ios::binary);
+    ofstream os("./aa.avi", ios::out | ios::binary);
+    if (!is || !os)
+    {
+        cout << "文件打开失败" << endl;
+        return;
+    }
+    char buf[BUFSIZ*BUFSIZ] = { 0 };
+    long long nRead = 0;
+    while (!is.eof())
+    {
+        //gcount()函数返回值是langlang类型,所以要用langlang类型来接
+        istream & temp = is.read(buf, BUFSIZ*BUFSIZ);
+        nRead = temp.gcount();
+
+        //is.read(buf, BUFSIZ*BUFSIZ)返回的是对象,可以进行链式编程
+        //nRead = is.read(buf, BUFSIZ*BUFSIZ).gcount();
+        cout << "nRead= " << nRead << endl;
+        //写入,每次写入nRead大小
+        os.write(buf, nRead);
+    }
+    is.close();
+    os.close();
+}
 int main()
 {
     test04();

@@ -13,6 +13,8 @@ public:
     //简答题
     virtual void answerSubject() = 0;
 
+    virtual void other();
+
     void startTest()
     {
         selectSubject();
@@ -69,6 +71,7 @@ public:
 
 void test()
 {
+    //AbstractPaper per = new AbstractPaper;//包含纯虚函数的类不能实例化
     AbstractPaper *paper = NULL;
     paper = new ChinesePaper;
     paper->startTest();

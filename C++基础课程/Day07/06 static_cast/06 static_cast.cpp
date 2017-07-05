@@ -22,7 +22,8 @@ void test()
     //Other *o = static_cast<Other *>(animal);
 }
 
-int main() {
+int main()
+{
     system("pause");
     return EXIT_SUCCESS;
 }
