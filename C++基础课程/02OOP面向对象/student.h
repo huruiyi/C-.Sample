@@ -1,5 +1,5 @@
-#ifndef _Student_h_
-#define _Student_h_
+#ifndef _Student_he_
+#define _Student_he_
 #include "Person.h"
 
 class Student
