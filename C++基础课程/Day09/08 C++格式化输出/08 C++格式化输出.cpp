@@ -44,9 +44,9 @@ void test02()
         << endl;
 }
 
-int main1() {
+int main()
+{
     test01();
-    //test02();
 
     system("pause");
     return EXIT_SUCCESS;

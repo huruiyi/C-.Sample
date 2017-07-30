@@ -13,8 +13,6 @@ public:
     //¼ò´ğÌâ
     virtual void answerSubject() = 0;
 
-    virtual void other();
-
     void startTest()
     {
         selectSubject();

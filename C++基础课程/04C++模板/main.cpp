@@ -213,9 +213,6 @@ namespace 类模版
 
 int main()
 {
-    LinkList<int> list;
-
-    list.Push(132);
-    system("pause");
+ 
     return 0;
 }

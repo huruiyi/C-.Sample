@@ -13,56 +13,6 @@ using namespace std;
  4:删除元素会删除所有满足条件的值
  */
 
-class Person
-{
-public:
-    Person(string name, int age, int heigth)
-    {
-        this->mName = name;
-        this->mAge = age;
-        this->mHeight = heigth;
-    }
-    bool operator==(const Person p) const
-    {
-        if (p.mName == this->mName&&p.mAge == this->mAge)
-        {
-            return true;
-        }
-        return false;
-    }
-
-public:
-    string mName;
-    int mAge;
-    int mHeight;
-};
-//对于自定义数据类型，必须指定排序规则
-bool myCompare2(Person & p1, Person & p2)
-{
-    if (p1.mAge == p2.mAge)
-    {
-        return p1.mHeight > p2.mHeight;
-    }
-    else
-    {
-        return p1.mAge < p2.mAge;
-    }
-}
-
-class Cmpare
-{
-public:
-    bool operator()(const Person p1, const Person  p2) const
-    {
-        return p1.mAge < p2.mAge;
-    }
-};
-
-bool myCompare(const int v1, const int v2)
-{
-    //从大到小
-    return v1 > v2;
-}
 void test_foreach(const list<int>& L)
 {
     //list<int>::const_iterator itx;
@@ -75,13 +25,15 @@ void test_foreach(const list<int>& L)
 }
 void test_foreach_reverse(const list<int>& L)
 {
-    //L.reverse();
+    //const修饰不能改变list
+   //L.reverse();
 
-    for (list<int>::const_reverse_iterator i = L.rbegin(); i < L.rend(); i++)
+    //for (list<int>::const_reverse_iterator i = L.rbegin(); i < L.rend(); i++)//错误
+    for (list<int>::const_reverse_iterator i = L.rbegin(); i != L.rend(); i++)
     {
         cout << *i << " ";
     }
-    cout << endl;
+    //cout << endl;
 }
 void test_empty_size_resize(list<int>& L)
 {
@@ -105,7 +57,6 @@ void test_init_Insert(list<int>& L)
         list(n,elem);//构造函数将n个elem拷贝给本身。
         list(const list &lst);//拷贝构造函数。
     */
-    list<int>L;
     list<int>L2(10, 10);
     list<int>L3(L2.begin(), L2.end());
     L3.push_back(100);
@@ -145,6 +96,12 @@ void test_erase(list<int>& L)
     L.erase(L.begin());
     L.erase(L.begin(), L.end());
 }
+
+bool CompareIntList(const int v1, const int v2)
+{
+    //从大到小
+    return v1 > v2;
+}
 void test01()
 {
     list<int> li;
@@ -158,7 +115,7 @@ void test01()
     //li.sort();//默认从小到大
     //li.sort([](int a, int b) {return a < b; });//从小到大
     //li.sort([](int a, int b) {return a > b; });//从大到下
-    li.sort(myCompare);
+    li.sort(CompareIntList);
     test_foreach(li);
 
     for_each(li.begin(), li.end(), [](int a) {cout << a << endl; });
@@ -173,6 +130,49 @@ void test01()
     li.sort();
 }
 
+class Person
+{
+public:
+    Person(string name, int age, int heigth)
+    {
+        this->mName = name;
+        this->mAge = age;
+        this->mHeight = heigth;
+    }
+    bool operator==(const Person p) const
+    {
+        if (p.mName == this->mName&&p.mAge == this->mAge)
+        {
+            return true;
+        }
+        return false;
+    }
+
+public:
+    string mName;
+    int mAge;
+    int mHeight;
+};
+class Cmpare
+{
+public:
+    bool operator()(const Person p1, const Person  p2) const
+    {
+        return p1.mAge < p2.mAge;
+    }
+};
+//对于自定义数据类型，必须指定排序规则
+bool ComparePerson(Person & p1, Person & p2)
+{
+    if (p1.mAge == p2.mAge)
+    {
+        return p1.mHeight > p2.mHeight;
+    }
+    else
+    {
+        return p1.mAge < p2.mAge;
+    }
+}
 void test02()
 {
     list<Person> lip;
@@ -182,19 +182,20 @@ void test02()
     Person p4("D", 22, 138);
     Person p5("E", 27, 169);
     Person p6("F", 21, 159);
-    Person p6("F", 25, 155);
+    Person p7("F", 25, 155);
     lip.push_back(p1);
     lip.push_back(p2);
     lip.push_back(p3);
     lip.push_back(p4);
     lip.push_back(p5);
     lip.push_back(p6);
+    lip.push_back(p7);
 
     //自定义数据类型需要重载“==”运算符，才能remove
     lip.remove(p4);
 
     lip.sort(Cmpare()); //自定义类型不支持排序
-    lip.sort(myCompare2);
+    lip.sort(ComparePerson);
 
     //lip.sort([](Person p1, Person p2) {return p1.mAge > p2.mAge; });
     for_each(lip.begin(), lip.end(), [](Person p)
@@ -205,6 +206,7 @@ void test02()
 
 int main()
 {
+    test02();
     system("pause");
     return 0;
 }
