@@ -7,10 +7,10 @@ using namespace std;
 
 int main()
 {
-    //cout 标准输入流对象
-    //endl是个函数 输出换行并且刷新缓冲区
-    cout << "hello C++" << endl;
+	//cout 标准输入流对象
+	//endl是个函数 输出换行并且刷新缓冲区
+	cout << "hello C++" << endl;
 
-    system("pause");
-    return 0;
+	system("pause");
+	return 0;
 }

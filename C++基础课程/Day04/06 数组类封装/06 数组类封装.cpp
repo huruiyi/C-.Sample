@@ -5,25 +5,25 @@ using namespace std;
 
 void test()
 {
-    MyArray arr(20);
-    for (int i = 0; i < arr.capacity(); ++i)
-    {
-        arr.pushBack(i);
-    }
-    arr.foreach();
-    cout << "------------" << endl;
-    arr.popBack();
-    arr.popFront();
-    arr.foreach();
-    cout << "------------" << endl;
-    arr.insert(0, 200);
-    arr.foreach();
-    cout << "------------" << endl;
+	MyArray arr(20);
+	for (int i = 0; i < arr.capacity(); ++i)
+	{
+		arr.pushBack(i);
+	}
+	arr.foreach();
+	cout << "------------" << endl;
+	arr.popBack();
+	arr.popFront();
+	arr.foreach();
+	cout << "------------" << endl;
+	arr.insert(0, 200);
+	arr.foreach();
+	cout << "------------" << endl;
 }
 
 int main() {
-    test();
+	test();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

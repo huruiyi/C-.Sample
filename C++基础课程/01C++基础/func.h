@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif // __cplusplus
-    int CAdd(int a, int b);
+	int CAdd(int a, int b);
 #ifdef __cplusplus
 }
 #endif // __cplusplus

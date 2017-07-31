@@ -6,30 +6,30 @@ using namespace std;
 class Circle
 {
 public:
-    //赋值函数 成员函数 成员方法
-    //在类的内部，成员函数可以直接访问类的成员变量
-    void setR(int r)
-    {
-        if (r <= 0)
-        {
-            return;
-        }
-        mR = r;
-    }
-    int getZhouLength()
-    {
-        return 2 * mR *3.14;
-    }
+	//赋值函数 成员函数 成员方法
+	//在类的内部，成员函数可以直接访问类的成员变量
+	void setR(int r)
+	{
+		if (r <= 0)
+		{
+			return;
+		}
+		mR = r;
+	}
+	int getZhouLength()
+	{
+		return (int)(2 * mR *3.14);
+	}
 public:
-    //半径
-    int mR; //成员变量 成员属性
+	//半径
+	int mR; //成员变量 成员属性
 };
 
 void test()
 {
-    Circle c;
-    c.setR(10);
-    cout << "周长是:" << c.getZhouLength() << endl;
+	Circle c;
+	c.setR(10);
+	cout << "周长是:" << c.getZhouLength() << endl;
 }
 
 //1. 类具有那些属性(只定义业务中需要的属性)
@@ -38,35 +38,35 @@ void test()
 class Student
 {
 public:
-    void setName(string name)
-    {
-        mName = name;
-    }
-    void setAge(int age)
-    {
-        if (age < 0 || age > 100)
-        {
-            return;
-        }
+	void setName(string name)
+	{
+		mName = name;
+	}
+	void setAge(int age)
+	{
+		if (age < 0 || age > 100)
+		{
+			return;
+		}
 
-        mAge = age;
-    }
+		mAge = age;
+	}
 
-    void printStudent()
-    {
-        cout << "Name:" << mName << " Age:" << mAge << endl;
-    }
+	void printStudent()
+	{
+		cout << "Name:" << mName << " Age:" << mAge << endl;
+	}
 public:
-    string mName;
-    int mAge;
+	string mName;
+	int mAge;
 };
 
 void test02()
 {
-    Student s;
-    s.setName("aaa");
-    s.setAge(10);
-    s.printStudent();
+	Student s;
+	s.setName("aaa");
+	s.setAge(10);
+	s.printStudent();
 }
 
 //内联函数不一定进行内联编译
@@ -75,9 +75,9 @@ void test02()
 //有些比较好的编译器，即使我们不写inline关键字，也会帮我们优化程序，对函数进行内联编译
 
 int main() {
-    //test();
-    test02();
+	//test();
+	test02();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

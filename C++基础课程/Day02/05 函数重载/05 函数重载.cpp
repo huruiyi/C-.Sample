@@ -15,27 +15,27 @@ using namespace std;
 
 void func()
 {
-    cout << "void func()" << endl;
+	cout << "void func()" << endl;
 }
 
 void func(int a)
 {
-    cout << "void func(int a)" << endl;
+	cout << "void func(int a)" << endl;
 }
 
 void func(double a)
 {
-    cout << "void func(double a)" << endl;
+	cout << "void func(double a)" << endl;
 }
 
 void func(int a, double b)
 {
-    cout << "func(int a, double b)" << endl;
+	cout << "func(int a, double b)" << endl;
 }
 
 void func(double a, int b)
 {
-    cout << "void func(double a,int b)" << endl;
+	cout << "void func(double a,int b)" << endl;
 }
 
 //返回类型不能作为重载的依据
@@ -43,27 +43,27 @@ void func(double a, int b)
 #if 0
 int func(double a, int b)
 {
-    cout << "void func(double a,int b)" << endl;
+	cout << "void func(double a,int b)" << endl;
 }
 #endif
 
 void test()
 {
-    int a = 10;
-    int b = 20;
-    double c = 3.14;
+	int a = 10;
+	int b = 20;
+	double c = 3.14;
 
-    //1. 函数调用首先严格匹配参数的类型，如果匹配成功则调用成功。
-    //2. 如果没有严格类型的参数，那么编译器会对参数进行隐式类型转换，如果转换成功之后能
-    //匹配调用，那么也视为函数调用成功
-    func(b, c);
-    //函数重载中使用默认参数可能会导致二义性
-    //func(a);
+	//1. 函数调用首先严格匹配参数的类型，如果匹配成功则调用成功。
+	//2. 如果没有严格类型的参数，那么编译器会对参数进行隐式类型转换，如果转换成功之后能
+	//匹配调用，那么也视为函数调用成功
+	func(b, c);
+	//函数重载中使用默认参数可能会导致二义性
+	//func(a);
 }
 
 int main() {
-    test();
+	test();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

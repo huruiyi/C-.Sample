@@ -6,8 +6,8 @@ using namespace  std;
 #if 0
 void main()
 {
-    int a = CAdd(1, 2);
-    cout << a << endl;
-    system("pause");
+	int a = CAdd(1, 2);
+	cout << a << endl;
+	system("pause");
 }
 #endif 

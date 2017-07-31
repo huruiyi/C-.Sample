@@ -8,22 +8,22 @@ using namespace  std;
 class Person
 {
 public:
-    Person();
-    ~Person();
-    void SetAge(int age);
-    int GetAge() const;
+	Person();
+	~Person();
+	void SetAge(int age);
+	int GetAge() const;
 
-    void SetName(string name);
-    string GetName() const;
+	void SetName(string name);
+	string GetName() const;
 
-    void ShowPersonInfo();
+	void ShowPersonInfo();
 
 private:
-    string Name;
-    int Age;
+	string Name;
+	int Age;
 
 protected:
-    string ProtectedInfo;
+	string ProtectedInfo;
 };
 
 #endif

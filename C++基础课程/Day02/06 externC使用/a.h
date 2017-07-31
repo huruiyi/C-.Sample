@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 
-    void func();
+	void func();
 
 #ifdef __cplusplus
 }

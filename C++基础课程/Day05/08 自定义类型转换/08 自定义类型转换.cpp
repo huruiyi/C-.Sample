@@ -5,69 +5,69 @@ using namespace std;
 class Student
 {
 public:
-    Student(int a, int b)
-    {
-        mA = a;
-        mB = b;
-    }
+	Student(int a, int b)
+	{
+		mA = a;
+		mB = b;
+	}
 public:
-    int mA;
-    int mB;
+	int mA;
+	int mB;
 };
 
 class Person
 {
 public:
-    Person(int age)
-    {
-        mAge = age;
-    }
+	Person(int age)
+	{
+		mAge = age;
+	}
 
-    //定义如何将Person类型转换为Int类型
-    operator int()
-    {
-        return 1000;
-    }
+	//定义如何将Person类型转换为Int类型
+	operator int()
+	{
+		return 1000;
+	}
 
-    //如何将Person类型转换为Bool类型
-    operator bool()
-    {
-        return mAge > 0;
-    }
+	//如何将Person类型转换为Bool类型
+	operator bool()
+	{
+		return mAge > 0;
+	}
 
-    //将Person类型转换为Student类型
-    operator Student()
-    {
-        return Student(mAge, mAge);
-    }
+	//将Person类型转换为Student类型
+	operator Student()
+	{
+		return Student(mAge, mAge);
+	}
 
 public:
-    int mAge;
+	int mAge;
 };
 
 void test()
 {
-    Student s1 = Person(10);
-    Person p(100);
-    int ret = p;
-    cout << "ret = " << ret << endl;
+	Student s1 = Person(10);
+	Person p(100);
+	int ret = p;
+	cout << "ret = " << ret << endl;
 
-    if (p)
-    {
-        cout << "true" << endl;
-    }
-    else
-    {
-        cout << "false" << endl;
-    }
+	if (p)
+	{
+		cout << "true" << endl;
+	}
+	else
+	{
+		cout << "false" << endl;
+	}
 
-    Student s = p;
+	Student s = p;
 }
 
 int main()
 {
-    test();
+	test();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

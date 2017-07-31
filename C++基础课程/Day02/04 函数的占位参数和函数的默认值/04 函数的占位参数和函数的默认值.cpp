@@ -4,14 +4,14 @@ using namespace std;
 
 void func(int a, int b = 0, int c = 0)
 {
-    cout << "a = " << a << endl;
-    cout << "b = " << b << endl;
+	cout << "a = " << a << endl;
+	cout << "b = " << b << endl;
 }
 
 void test01()
 {
-    func(10);
-    func(10, 20);
+	func(10);
+	func(10, 20);
 }
 
 //函数的声明和定义不能同时有默认值
@@ -27,11 +27,11 @@ void func01(int a, int = 0)
 }
 void test02()
 {
-    func01(10);
+	func01(10);
 }
 int main() {
-    test01();
+	test01();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

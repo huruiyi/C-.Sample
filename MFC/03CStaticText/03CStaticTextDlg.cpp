@@ -15,19 +15,19 @@
 class CAboutDlg : public CDialogEx
 {
 public:
-    CAboutDlg();
+	CAboutDlg();
 
-    // 对话框数据
+	// 对话框数据
 #ifdef AFX_DESIGN_TIME
-    enum { IDD = IDD_ABOUTBOX };
+	enum { IDD = IDD_ABOUTBOX };
 #endif
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
 // 实现
 protected:
-    DECLARE_MESSAGE_MAP()
+	DECLARE_MESSAGE_MAP()
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
@@ -36,7 +36,7 @@ CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
 
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
-    CDialogEx::DoDataExchange(pDX);
+	CDialogEx::DoDataExchange(pDX);
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
@@ -45,132 +45,132 @@ END_MESSAGE_MAP()
 // CMy03CStaticTextDlg 对话框
 
 CMy03CStaticTextDlg::CMy03CStaticTextDlg(CWnd* pParent /*=NULL*/)
-    : CDialogEx(IDD_MY03CSTATICTEXT_DIALOG, pParent)
+	: CDialogEx(IDD_MY03CSTATICTEXT_DIALOG, pParent)
 {
-    m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
 void CMy03CStaticTextDlg::DoDataExchange(CDataExchange* pDX)
 {
-    CDialogEx::DoDataExchange(pDX);
-    DDX_Control(pDX, IDC_TEXT, m_text);
-    DDX_Control(pDX, IDC_PIC, m_pic);
-    DDX_Control(pDX, IDC_BUTTON_Setter, m_btn_setter);
-    DDX_Control(pDX, IDC_COMBOX_Grade, m_cmb_grade);
-    DDX_Control(pDX, IDC_BUTTON_AddItem, m_btn_AddItem);
-    DDX_Control(pDX, IDC_BUTTON_Fly, m_btn_fly);
-    DDX_Control(pDX, IDC_LIS_Person, m_list_Control);
+	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_TEXT, m_text);
+	DDX_Control(pDX, IDC_PIC, m_pic);
+	DDX_Control(pDX, IDC_BUTTON_Setter, m_btn_setter);
+	DDX_Control(pDX, IDC_COMBOX_Grade, m_cmb_grade);
+	DDX_Control(pDX, IDC_BUTTON_AddItem, m_btn_AddItem);
+	DDX_Control(pDX, IDC_BUTTON_Fly, m_btn_fly);
+	DDX_Control(pDX, IDC_LIS_Person, m_list_Control);
 }
 
 BEGIN_MESSAGE_MAP(CMy03CStaticTextDlg, CDialogEx)
-    ON_WM_SYSCOMMAND()
-    ON_WM_PAINT()
-    ON_WM_QUERYDRAGICON()
-    ON_BN_CLICKED(IDC_BUTTON_SetHehe, &CMy03CStaticTextDlg::OnBnClickedButtonSethehe)
-    ON_BN_CLICKED(IDC_BUTTON_GetText, &CMy03CStaticTextDlg::OnBnClickedButtonGettext)
-    ON_BN_CLICKED(IDC_BUTTON_Setter, &CMy03CStaticTextDlg::OnBnClickedButtonSetter)
-    ON_WM_MOUSEMOVE()
-    ON_CBN_EDITCHANGE(IDC_COMBOX_Grade, &CMy03CStaticTextDlg::OnCbnEditchangeComboxGrade)
-    ON_BN_CLICKED(IDC_BUTTON_AddItem, &CMy03CStaticTextDlg::OnBnClickedButtonAdditem)
-    ON_CBN_SELCHANGE(IDC_COMBOX_Grade, &CMy03CStaticTextDlg::OnCbnSelchangeComboxGrade)
+	ON_WM_SYSCOMMAND()
+	ON_WM_PAINT()
+	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BUTTON_SetHehe, &CMy03CStaticTextDlg::OnBnClickedButtonSethehe)
+	ON_BN_CLICKED(IDC_BUTTON_GetText, &CMy03CStaticTextDlg::OnBnClickedButtonGettext)
+	ON_BN_CLICKED(IDC_BUTTON_Setter, &CMy03CStaticTextDlg::OnBnClickedButtonSetter)
+	ON_WM_MOUSEMOVE()
+	ON_CBN_EDITCHANGE(IDC_COMBOX_Grade, &CMy03CStaticTextDlg::OnCbnEditchangeComboxGrade)
+	ON_BN_CLICKED(IDC_BUTTON_AddItem, &CMy03CStaticTextDlg::OnBnClickedButtonAdditem)
+	ON_CBN_SELCHANGE(IDC_COMBOX_Grade, &CMy03CStaticTextDlg::OnCbnSelchangeComboxGrade)
 END_MESSAGE_MAP()
 
 // CMy03CStaticTextDlg 消息处理程序
 
 BOOL CMy03CStaticTextDlg::OnInitDialog()
 {
-    CDialogEx::OnInitDialog();
+	CDialogEx::OnInitDialog();
 
-    // 将“关于...”菜单项添加到系统菜单中。
+	// 将“关于...”菜单项添加到系统菜单中。
 
-    // IDM_ABOUTBOX 必须在系统命令范围内。
-    ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
-    ASSERT(IDM_ABOUTBOX < 0xF000);
+	// IDM_ABOUTBOX 必须在系统命令范围内。
+	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
+	ASSERT(IDM_ABOUTBOX < 0xF000);
 
-    CMenu* pSysMenu = GetSystemMenu(FALSE);
-    if (pSysMenu != NULL)
-    {
-        BOOL bNameValid;
-        CString strAboutMenu;
-        bNameValid = strAboutMenu.LoadString(IDS_ABOUTBOX);
-        ASSERT(bNameValid);
-        if (!strAboutMenu.IsEmpty())
-        {
-            pSysMenu->AppendMenu(MF_SEPARATOR);
-            pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
-        }
-    }
+	CMenu* pSysMenu = GetSystemMenu(FALSE);
+	if (pSysMenu != NULL)
+	{
+		BOOL bNameValid;
+		CString strAboutMenu;
+		bNameValid = strAboutMenu.LoadString(IDS_ABOUTBOX);
+		ASSERT(bNameValid);
+		if (!strAboutMenu.IsEmpty())
+		{
+			pSysMenu->AppendMenu(MF_SEPARATOR);
+			pSysMenu->AppendMenu(MF_STRING, IDM_ABOUTBOX, strAboutMenu);
+		}
+	}
 
-    // 设置此对话框的图标。  当应用程序主窗口不是对话框时，框架将自动
-    //  执行此操作
-    SetIcon(m_hIcon, TRUE);			// 设置大图标
-    SetIcon(m_hIcon, FALSE);		// 设置小图标
+	// 设置此对话框的图标。  当应用程序主窗口不是对话框时，框架将自动
+	//  执行此操作
+	SetIcon(m_hIcon, TRUE);			// 设置大图标
+	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
-    // TODO: 在此添加额外的初始化代码
+	// TODO: 在此添加额外的初始化代码
 
-    m_pic.ModifyStyle(0xf, SS_BITMAP | SS_CENTERIMAGE);
+	m_pic.ModifyStyle(0xf, SS_BITMAP | SS_CENTERIMAGE);
 #define HBMP(filepath,width,height) (HBITMAP)LoadImage(AfxGetInstanceHandle(),filepath,IMAGE_BITMAP,width,height,LR_LOADFROMFILE|LR_CREATEDIBSECTION)
 
-    CRect rect;
-    m_pic.GetWindowRect(rect);
-    m_pic.SetBitmap(HBMP(TEXT("./res/pic.bmp"), rect.Width(), rect.Height()));
+	CRect rect;
+	m_pic.GetWindowRect(rect);
+	m_pic.SetBitmap(HBMP(TEXT("./res/pic.bmp"), rect.Width(), rect.Height()));
 
-    this->SetWindowTextW(TEXT("XXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
-    //this->SetWindowPos(NULL, 220, 220, 0, 0, SW_SHOWNORMAL);//1禁止改变窗口大小
-    //this->ShowWindow(SW_MAXIMIZE);//窗口最大化
-    //this->ShowWindow(SW_MINIMIZE);//窗口最小化
-    //
+	this->SetWindowTextW(TEXT("XXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
+	//this->SetWindowPos(NULL, 220, 220, 0, 0, SW_SHOWNORMAL);//1禁止改变窗口大小
+	//this->ShowWindow(SW_MAXIMIZE);//窗口最大化
+	//this->ShowWindow(SW_MINIMIZE);//窗口最小化
+	//
 
-    this->MoveWindow(50, 100, 900, 900);  //调整对话框的位置和大小
+	this->MoveWindow(50, 100, 900, 900);  //调整对话框的位置和大小
 
 //SW_SHOWMAXIMIZED：激活窗口并将其最大化。
 //
 //SW_SHOWMINIMIZED：激活窗口并将其最小化。
 
-    m_cmb_grade.AddString(TEXT("1级"));
-    m_cmb_grade.AddString(TEXT("2级"));
-    m_cmb_grade.AddString(TEXT("3级"));
-    m_cmb_grade.AddString(TEXT("4级"));
-    m_cmb_grade.AddString(TEXT("5级"));
-    m_cmb_grade.AddString(TEXT("6级"));
+	m_cmb_grade.AddString(TEXT("1级"));
+	m_cmb_grade.AddString(TEXT("2级"));
+	m_cmb_grade.AddString(TEXT("3级"));
+	m_cmb_grade.AddString(TEXT("4级"));
+	m_cmb_grade.AddString(TEXT("5级"));
+	m_cmb_grade.AddString(TEXT("6级"));
 
-    m_cmb_grade.SetCurSel(2);
-    //设置： data:1;2;3;4;5;6;
+	m_cmb_grade.SetCurSel(2);
+	//设置： data:1;2;3;4;5;6;
 
-    m_list_Control.InsertColumn(0, TEXT("第一列"), LVCFMT_CENTER, 80, 0);
-    m_list_Control.InsertColumn(1, TEXT("第二列"), LVCFMT_CENTER, 80, 0);
-    m_list_Control.InsertColumn(2, TEXT("第三列"), LVCFMT_CENTER, 80, 0);
-    m_list_Control.InsertColumn(3, TEXT("第四列"), LVCFMT_CENTER, 80, 0);
-    // m_list_Control View==>Report
+	m_list_Control.InsertColumn(0, TEXT("第一列"), LVCFMT_CENTER, 80, 0);
+	m_list_Control.InsertColumn(1, TEXT("第二列"), LVCFMT_CENTER, 80, 0);
+	m_list_Control.InsertColumn(2, TEXT("第三列"), LVCFMT_CENTER, 80, 0);
+	m_list_Control.InsertColumn(3, TEXT("第四列"), LVCFMT_CENTER, 80, 0);
+	// m_list_Control View==>Report
 
 #if 1 /*创建系统托盘图标*/
-    NOTIFYICONDATA nd;//类成员变量
-                      //创建托盘图标
-    nd.cbSize = sizeof(NOTIFYICONDATA);
-    nd.hWnd = m_hWnd;
-    nd.uID = IDR_MAINFRAME;
-    nd.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
-    //nd.uCallbackMessage = WM_NOTIFYICON;
-    nd.hIcon = m_hIcon;
+	NOTIFYICONDATA nd;//类成员变量
+					  //创建托盘图标
+	nd.cbSize = sizeof(NOTIFYICONDATA);
+	nd.hWnd = m_hWnd;
+	nd.uID = IDR_MAINFRAME;
+	nd.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;
+	//nd.uCallbackMessage = WM_NOTIFYICON;
+	nd.hIcon = m_hIcon;
 
-    lstrcpyn(nd.szTip, TEXT("信息管理系统"), sizeof(TEXT("信息管理系统")));
-    Shell_NotifyIcon(NIM_ADD, &nd);
+	lstrcpyn(nd.szTip, TEXT("信息管理系统"), sizeof(TEXT("信息管理系统")));
+	Shell_NotifyIcon(NIM_ADD, &nd);
 #endif // 1 /*创建系统托盘图标*/
 
-    return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
+	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
 void CMy03CStaticTextDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
-    if ((nID & 0xFFF0) == IDM_ABOUTBOX)
-    {
-        CAboutDlg dlgAbout;
-        dlgAbout.DoModal();
-    }
-    else
-    {
-        CDialogEx::OnSysCommand(nID, lParam);
-    }
+	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
+	{
+		CAboutDlg dlgAbout;
+		dlgAbout.DoModal();
+	}
+	else
+	{
+		CDialogEx::OnSysCommand(nID, lParam);
+	}
 }
 
 // 如果向对话框添加最小化按钮，则需要下面的代码
@@ -179,102 +179,102 @@ void CMy03CStaticTextDlg::OnSysCommand(UINT nID, LPARAM lParam)
 
 void CMy03CStaticTextDlg::OnPaint()
 {
-    if (IsIconic())
-    {
-        CPaintDC dc(this); // 用于绘制的设备上下文
+	if (IsIconic())
+	{
+		CPaintDC dc(this); // 用于绘制的设备上下文
 
-        SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
+		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-        // 使图标在工作区矩形中居中
-        int cxIcon = GetSystemMetrics(SM_CXICON);
-        int cyIcon = GetSystemMetrics(SM_CYICON);
-        CRect rect;
-        GetClientRect(&rect);
-        int x = (rect.Width() - cxIcon + 1) / 2;
-        int y = (rect.Height() - cyIcon + 1) / 2;
+		// 使图标在工作区矩形中居中
+		int cxIcon = GetSystemMetrics(SM_CXICON);
+		int cyIcon = GetSystemMetrics(SM_CYICON);
+		CRect rect;
+		GetClientRect(&rect);
+		int x = (rect.Width() - cxIcon + 1) / 2;
+		int y = (rect.Height() - cyIcon + 1) / 2;
 
-        // 绘制图标
-        dc.DrawIcon(x, y, m_hIcon);
-    }
-    else
-    {
-        CDialogEx::OnPaint();
-    }
+		// 绘制图标
+		dc.DrawIcon(x, y, m_hIcon);
+	}
+	else
+	{
+		CDialogEx::OnPaint();
+	}
 }
 
 //当用户拖动最小化窗口时系统调用此函数取得光标
 //显示。
 HCURSOR CMy03CStaticTextDlg::OnQueryDragIcon()
 {
-    return static_cast<HCURSOR>(m_hIcon);
+	return static_cast<HCURSOR>(m_hIcon);
 }
 
 void CMy03CStaticTextDlg::OnBnClickedButtonSethehe()
 {
-    // TODO: 在此添加控件通知处理程序代码
+	// TODO: 在此添加控件通知处理程序代码
 
-    m_text.SetWindowTextW(TEXT("呵呵🙂"));
+	m_text.SetWindowTextW(TEXT("呵呵🙂"));
 }
 
 void CMy03CStaticTextDlg::OnBnClickedButtonGettext()
 {
-    // TODO: 在此添加控件通知处理程序代码
-    CString  str;
-    m_text.GetWindowTextW(str);
-    MessageBox(str);
+	// TODO: 在此添加控件通知处理程序代码
+	CString  str;
+	m_text.GetWindowTextW(str);
+	MessageBox(str);
 }
 
 void CMy03CStaticTextDlg::OnBnClickedButtonSetter()
 {
-    // TODO: 在此添加控件通知处理程序代码
-    m_btn_setter.SetWindowTextW(TEXT("HELLO"));
+	// TODO: 在此添加控件通知处理程序代码
+	m_btn_setter.SetWindowTextW(TEXT("HELLO"));
 
-    CString str;
-    m_btn_setter.GetWindowTextW(str);
-    MessageBox(str);
+	CString str;
+	m_btn_setter.GetWindowTextW(str);
+	MessageBox(str);
 
-    m_btn_setter.EnableWindow(FALSE);
+	m_btn_setter.EnableWindow(FALSE);
 }
 
 void CMy03CStaticTextDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
-    // TODO: 在此添加消息处理程序代码和/或调用默认值
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
 
-    CDialogEx::OnMouseMove(nFlags, point);
+	CDialogEx::OnMouseMove(nFlags, point);
 
-    CString str;
-    str.Format(TEXT("X=%d   Y=%d"), point.x, point.y);
-    m_text.SetWindowTextW(str);
+	CString str;
+	str.Format(TEXT("X=%d   Y=%d"), point.x, point.y);
+	m_text.SetWindowTextW(str);
 
-    m_btn_fly.SetWindowPos(NULL, point.x, point.y, 0, 0, SW_SHOWNORMAL);
+	m_btn_fly.SetWindowPos(NULL, point.x, point.y, 0, 0, SW_SHOWNORMAL);
 }
 
 void CMy03CStaticTextDlg::OnCbnEditchangeComboxGrade()
 {
-    // TODO: 在此添加控件通知处理程序代码
-    CString str;
+	// TODO: 在此添加控件通知处理程序代码
+	CString str;
 
-    //m_cmb_grade.GetWindowTextW(str);
+	//m_cmb_grade.GetWindowTextW(str);
 
-    MessageBox(str);
+	MessageBox(str);
 
-    MessageBox(TEXT("4级"));
+	MessageBox(TEXT("4级"));
 }
 
 void CMy03CStaticTextDlg::OnBnClickedButtonAdditem()
 {
-    // TODO: 在此添加控件通知处理程序代码
-    m_cmb_grade.AddString(TEXT("9级"));
+	// TODO: 在此添加控件通知处理程序代码
+	m_cmb_grade.AddString(TEXT("9级"));
 }
 
 void CMy03CStaticTextDlg::OnCbnSelchangeComboxGrade()
 {
-    // TODO: 在此添加控件通知处理程序代码
+	// TODO: 在此添加控件通知处理程序代码
 
-    CString str;
-    int index = m_cmb_grade.GetCurSel();
-    m_cmb_grade.GetLBText(index, str);
-    MessageBox(str);
+	CString str;
+	int index = m_cmb_grade.GetCurSel();
+	m_cmb_grade.GetLBText(index, str);
+	MessageBox(str);
 }
 
 /*

@@ -7,9 +7,9 @@ class Person;
 
 void SwapInt(int &a, int &b)
 {
-    int temp = a;
-    a = b;
-    b = temp;
+	int temp = a;
+	a = b;
+	b = temp;
 }
 void SwapDouble(double &a, double &b) {}
 void SwapPerson(Person &a, Person &b) {}
@@ -30,37 +30,37 @@ void SwapPerson(Person &a, Person &b) {}
 template<class T>
 void mySwap(T &a, T &b)
 {
-    T temp = a;
-    a = b;
-    b = temp;
+	T temp = a;
+	a = b;
+	b = temp;
 }
 
 template<class T = int, int n = 100>
 void func()
 {
-    cout << "n = " << n << endl;
-    cout << "func()" << endl;
+	cout << "n = " << n << endl;
+	cout << "func()" << endl;
 }
 
 void test()
 {
-    //函数模板如何调用
-    int a = 10;
-    int b = 20;
-    double c = 3.14;
-    //1. 显式指定模板参数列表
-    mySwap<int>(a, b);
+	//函数模板如何调用
+	int a = 10;
+	int b = 20;
+	double c = 3.14;
+	//1. 显式指定模板参数列表
+	mySwap<int>(a, b);
 
-    //2. 自动推导类型
-    mySwap(a, b);
+	//2. 自动推导类型
+	mySwap(a, b);
 
-    //func<int>();
-    //func();
+	//func<int>();
+	//func();
 }
 
 int main() {
-    test();
+	test();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

@@ -5,48 +5,48 @@ using namespace std;
 class Base1
 {
 public:
-    void func01()
-    {
-        cout << "Base1::func01()" << endl;
-    }
+	void func01()
+	{
+		cout << "Base1::func01()" << endl;
+	}
 
 public:
-    int mA;
+	int mA;
 };
 
 class Base2
 {
 public:
-    void func02()
-    {
-        cout << "Base2::func02()" << endl;
-    }
+	void func02()
+	{
+		cout << "Base2::func02()" << endl;
+	}
 public:
-    int mA;
+	int mA;
 };
 
 class Derived : public Base1, public Base2
 {
 public:
-    void func03()
-    {
-        cout << "Derived::func03()" << endl;
-    }
+	void func03()
+	{
+		cout << "Derived::func03()" << endl;
+	}
 public:
-    int mC;
+	int mC;
 };
 
 void test()
 {
-    //多继承容易出现二义性问题
-    Derived d;
-    d.Base1::mA;
-    d.Base2::mA;
+	//多继承容易出现二义性问题
+	Derived d;
+	d.Base1::mA;
+	d.Base2::mA;
 }
 
 int main() {
-    test();
+	test();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

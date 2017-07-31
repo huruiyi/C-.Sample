@@ -16,15 +16,15 @@
 class CMy02CDialogApp : public CWinApp
 {
 public:
-    CMy02CDialogApp();
+	CMy02CDialogApp();
 
-    // 重写
+	// 重写
 public:
-    virtual BOOL InitInstance();
+	virtual BOOL InitInstance();
 
-    // 实现
+	// 实现
 
-    DECLARE_MESSAGE_MAP()
+	DECLARE_MESSAGE_MAP()
 };
 
 extern CMy02CDialogApp theApp;

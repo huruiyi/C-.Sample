@@ -16,15 +16,15 @@
 class CMy03CStaticTextApp : public CWinApp
 {
 public:
-    CMy03CStaticTextApp();
+	CMy03CStaticTextApp();
 
-    // 重写
+	// 重写
 public:
-    virtual BOOL InitInstance();
+	virtual BOOL InitInstance();
 
-    // 实现
+	// 实现
 
-    DECLARE_MESSAGE_MAP()
+	DECLARE_MESSAGE_MAP()
 };
 
 extern CMy03CStaticTextApp theApp;

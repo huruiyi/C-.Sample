@@ -3,28 +3,28 @@
 class Cube
 {
 public:
-    void setL(int l);
+	void setL(int l);
 
-    void setW(int w);
+	void setW(int w);
 
-    void setH(int h);
+	void setH(int h);
 
-    //告诉编译器，放心吧，我不会修改成员变量的值
-    //常函数
-    int getL() const;
+	//告诉编译器，放心吧，我不会修改成员变量的值
+	//常函数
+	int getL() const;
 
-    int getW() const;
+	int getW() const;
 
-    int getH() const;
+	int getH() const;
 
-    int caculateS();
+	int caculateS();
 
-    int caculateV();
+	int caculateV();
 
-    bool CubeComapreCube(const Cube &c);
+	bool CubeComapreCube(const Cube &c);
 
 private:
-    int mL;
-    int mW;
-    int mH;
+	int mL;
+	int mW;
+	int mH;
 };

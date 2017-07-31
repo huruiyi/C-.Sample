@@ -5,42 +5,42 @@ using namespace std;
 class Base
 {
 public:
-    Base(int)
-    {
-        cout << "Base类的构造函数!" << endl;
-    }
-    ~Base()
-    {
-        cout << "Base类的析构函数!" << endl;
-    }
+	Base(int)
+	{
+		cout << "Base类的构造函数!" << endl;
+	}
+	~Base()
+	{
+		cout << "Base类的析构函数!" << endl;
+	}
 };
 
 class Car
 {
 public:
-    Car(int)
-    {
-        cout << "Car构造函数!" << endl;
-    }
+	Car(int)
+	{
+		cout << "Car构造函数!" << endl;
+	}
 
-    ~Car()
-    {
-        cout << "Car析构函数!" << endl;
-    }
+	~Car()
+	{
+		cout << "Car析构函数!" << endl;
+	}
 };
 
 class Plane
 {
 public:
-    Plane()
-    {
-        cout << "Plane构造函数!" << endl;
-    }
+	Plane()
+	{
+		cout << "Plane构造函数!" << endl;
+	}
 
-    ~Plane()
-    {
-        cout << "Plane析构函数!" << endl;
-    }
+	~Plane()
+	{
+		cout << "Plane析构函数!" << endl;
+	}
 };
 
 //1. 创建子类对象，编译器默认调用父类的默认构造函数
@@ -50,27 +50,27 @@ public:
 class Derived : public Base
 {
 public:
-    Derived() : Base(10), mCar(10)
-    {
-        cout << "Derived构造函数" << endl;
-    }
+	Derived() : Base(10), mCar(10)
+	{
+		cout << "Derived构造函数" << endl;
+	}
 
-    Derived(int) : Base(10), mCar(10)
-    {
-    }
+	Derived(int) : Base(10), mCar(10)
+	{
+	}
 
-    ~Derived()
-    {
-        cout << "Derived析构函数" << endl;
-    }
+	~Derived()
+	{
+		cout << "Derived析构函数" << endl;
+	}
 public:
-    Car mCar;
-    Plane mPlane;
+	Car mCar;
+	Plane mPlane;
 };
 
 void test1()
 {
-    Derived d;
+	Derived d;
 }
 
 //继承和组合情况下，对象构造和析构顺序
@@ -79,52 +79,52 @@ void test1()
 class A
 {
 public:
-    A()
-    {
-        cout << "构造函数  A " << endl;
-    }
+	A()
+	{
+		cout << "构造函数  A " << endl;
+	}
 
-    ~A()
-    {
-        cout << "析构函数  A" << endl;
-    }
+	~A()
+	{
+		cout << "析构函数  A" << endl;
+	}
 };
 
 class C
 {
 public:
-    C()
-    {
-        cout << "构造函数  C " << endl;
-    }
-    ~C()
-    {
-        cout << "析构函数  C" << endl;
-    }
+	C()
+	{
+		cout << "构造函数  C " << endl;
+	}
+	~C()
+	{
+		cout << "析构函数  C" << endl;
+	}
 };
 
 class B :public A
 {
 public:
-    B()
-    {
-        cout << "构造函数  B " << endl;
-    }
-    ~B()
-    {
-        cout << "析构函数  B" << endl;
-    }
+	B()
+	{
+		cout << "构造函数  B " << endl;
+	}
+	~B()
+	{
+		cout << "析构函数  B" << endl;
+	}
 private:
-    C c;
+	C c;
 };
 
 void test2()
 {
-    B b;
+	B b;
 }
 int main(void)
 {
-    test2();
-    system("pause");
-    return 0;
+	test2();
+	system("pause");
+	return 0;
 }

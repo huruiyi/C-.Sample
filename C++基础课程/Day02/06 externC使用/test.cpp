@@ -4,8 +4,8 @@ using namespace std;
 #include"a.h"
 
 int main() {
-    func();
+	func();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

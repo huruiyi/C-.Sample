@@ -6,21 +6,21 @@ using namespace std;
 class Person
 {
 public:
-    void func()
-    {
-        mPublic;
-        mPrivate;
-        mProtected;
-    }
+	void func()
+	{
+		mPublic;
+		mPrivate;
+		mProtected;
+	}
 public:
-    //公共访问权限
-    string mPublic;
+	//公共访问权限
+	string mPublic;
 private:
-    //私有权限
-    string mPrivate;
+	//私有权限
+	string mPrivate;
 protected:
-    //保护权限
-    string mProtected;
+	//保护权限
+	string mProtected;
 };
 
 //在类的内部，没有权限之分
@@ -32,39 +32,39 @@ protected:
 class Student
 {
 public:
-    string mName;
-    void func()
-    {
-    }
+	string mName;
+	void func()
+	{
+	}
 };
 
 struct Teacher
 {
-    string mName;
-    void func()
-    {
-    }
+	string mName;
+	void func()
+	{
+	}
 };
 
 void test02()
 {
-    //struct和class是一样的，都能定义一个类
-    //两者唯一的区别就是默认的访问权限不同，struct默认的访问权限是public class默认访问权限是private
+	//struct和class是一样的，都能定义一个类
+	//两者唯一的区别就是默认的访问权限不同，struct默认的访问权限是public class默认访问权限是private
 
-    Student s;
-    s.mName;
+	Student s;
+	s.mName;
 
-    Teacher t;
-    t.mName;
+	Teacher t;
+	t.mName;
 }
 
 void test()
 {
-    Person person;
-    person.mPublic;
+	Person person;
+	person.mPublic;
 }
 
 int main() {
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

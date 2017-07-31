@@ -5,45 +5,45 @@ using namespace std;
 class Base
 {
 public:
-    Base()
-    {
-        mA = 100;
-    }
+	Base()
+	{
+		mA = 100;
+	}
 public:
-    static void myfunc()
-    {
-        cout << "static void myfunc" << endl;
-    }
-    void func()
-    {
-        cout << "Base::func()" << endl;
-    }
-    void func(int)
-    {
-        cout << "Base::func(int)" << endl;
-    }
+	static void myfunc()
+	{
+		cout << "static void myfunc" << endl;
+	}
+	void func()
+	{
+		cout << "Base::func()" << endl;
+	}
+	void func(int)
+	{
+		cout << "Base::func(int)" << endl;
+	}
 public:
-    int mA;
+	int mA;
 };
 
 class Derived : public Base
 {
 public:
-    Derived()
-    {
-        mA = 200;
-    }
+	Derived()
+	{
+		mA = 200;
+	}
 public:
-    static void myfunc()
-    {
-        cout << "Derived static void myfunc" << endl;
-    }
-    void func()
-    {
-        cout << "Derived::func()" << endl;
-    }
+	static void myfunc()
+	{
+		cout << "Derived static void myfunc" << endl;
+	}
+	void func()
+	{
+		cout << "Derived::func()" << endl;
+	}
 public:
-    int mA;
+	int mA;
 };
 
 //如果子类的成员和父类成员同名，那么自动隐藏父类成员
@@ -52,19 +52,19 @@ public:
 
 void test()
 {
-    Derived d;
-    cout << d.mA << endl;
-    cout << d.Base::mA << endl;
+	Derived d;
+	cout << d.mA << endl;
+	cout << d.Base::mA << endl;
 
-    d.func();
-    d.Base::func();
+	d.func();
+	d.Base::func();
 
-    Derived::Base::myfunc();
+	Derived::Base::myfunc();
 }
 
 int main() {
-    test();
+	test();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

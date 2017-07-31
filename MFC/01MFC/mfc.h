@@ -2,21 +2,21 @@
 #include <afxwin.h>
 class WinApp :public CWinApp
 {
-    virtual BOOL InitInstance();
+	virtual BOOL InitInstance();
 };
 
 class MyFrame :public CFrameWnd
 {
 public:
-    MyFrame();
+	MyFrame();
 
-    DECLARE_MESSAGE_MAP()
+	DECLARE_MESSAGE_MAP()
 
-    afx_msg void OnLButtonDown(UINT, CPoint point);
+	afx_msg void OnLButtonDown(UINT, CPoint point);
 
-    afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
+	afx_msg void OnChar(UINT nChar, UINT nRepCnt, UINT nFlags);
 
-    afx_msg void OnPaint();
+	afx_msg void OnPaint();
 
-    afx_msg void OnPaintClipboard(CWnd* pClipAppWnd, HGLOBAL hPaintStruct);
+	afx_msg void OnPaintClipboard(CWnd* pClipAppWnd, HGLOBAL hPaintStruct);
 };

@@ -5,18 +5,18 @@ using namespace std;
 class Base
 {
 public:
-    Base()
-    {
-        mPublic = 10;
-        mPrivate = 20;
-        mProtected = 30;
-    }
+	Base()
+	{
+		mPublic = 10;
+		mPrivate = 20;
+		mProtected = 30;
+	}
 public:
-    int mPublic;
+	int mPublic;
 private:
-    int mPrivate;
+	int mPrivate;
 protected:
-    int mProtected;
+	int mProtected;
 };
 
 //比如说父类的成员是public权限，那么子类继承这个属性之后，也是Public权限吗？
@@ -27,39 +27,39 @@ protected:
 class Son : private Base
 {
 public:
-    Son()
-    {
-        mC = 40;
-    }
+	Son()
+	{
+		mC = 40;
+	}
 public:
-    void func()
-    {
-        mPublic;
-        mProtected;
-    }
+	void func()
+	{
+		mPublic;
+		mProtected;
+	}
 public:
-    int mC;
+	int mC;
 };
 
 class SonDeSon : public Son
 {
 public:
-    int mD;
+	int mD;
 };
 
 void test01()
 {
-    Son s;
-    //s.mPublic;
+	Son s;
+	//s.mPublic;
 
-    cout << *(int *)((char *)&s + 12) << endl;
+	cout << *(int *)((char *)&s + 12) << endl;
 }
 
 //父类的私有成员被子类继承了，只是子类不能够使用而已
 
 int main() {
-    test01();
+	test01();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

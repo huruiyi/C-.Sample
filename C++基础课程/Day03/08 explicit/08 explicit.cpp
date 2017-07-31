@@ -5,22 +5,22 @@ using namespace std;
 class MyString
 {
 public:
-    explicit MyString(int num)
-    {
-    }
+	explicit MyString(int num)
+	{
+	}
 
-    MyString(const char *str)
-    {
-    }
+	MyString(const char *str)
+	{
+	}
 };
 
 void test()
 {
-    //MyString str1 = 10;
-    MyString str2 = "hello world";
+	//MyString str1 = 10;
+	MyString str2 = "hello world";
 }
 
 int main() {
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

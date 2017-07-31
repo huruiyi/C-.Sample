@@ -11,7 +11,7 @@
 IMPLEMENT_DYNAMIC(CDialogExec, CDialogEx)
 
 CDialogExec::CDialogExec(CWnd* pParent /*=NULL*/)
-    : CDialogEx(IDD_DIALOG_Exec, pParent)
+	: CDialogEx(IDD_DIALOG_Exec, pParent)
 {
 }
 
@@ -21,7 +21,7 @@ CDialogExec::~CDialogExec()
 
 void CDialogExec::DoDataExchange(CDataExchange* pDX)
 {
-    CDialogEx::DoDataExchange(pDX);
+	CDialogEx::DoDataExchange(pDX);
 }
 
 BEGIN_MESSAGE_MAP(CDialogExec, CDialogEx)

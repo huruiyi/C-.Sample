@@ -2,5 +2,5 @@
 
 void func()
 {
-    printf("hello C func!");
+	printf("hello C func!");
 }

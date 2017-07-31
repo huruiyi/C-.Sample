@@ -9,20 +9,20 @@ using namespace std;
 
 void test()
 {
-    Circle circle;
-    circle.setHeart(10, 20);
-    circle.setR(100);
+	Circle circle;
+	circle.setHeart(10, 20);
+	circle.setR(100);
 
-    Point point;
-    point.setX(200);
-    point.setY(200);
+	Point point;
+	point.setX(200);
+	point.setY(200);
 
-    circle.judgeCirleAndPointRelation(point);
+	circle.judgeCirleAndPointRelation(point);
 }
 
 int main() {
-    test();
+	test();
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }

@@ -5,8 +5,8 @@ using namespace std;
 #include"test.cpp"
 
 int main() {
-    func(10, 20);
+	func(10, 20);
 
-    system("pause");
-    return EXIT_SUCCESS;
+	system("pause");
+	return EXIT_SUCCESS;
 }
