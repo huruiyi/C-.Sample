@@ -1,7 +1,4 @@
-﻿// 03CStaticTextDlg.cpp : 实现文件
-//
-
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "03CStaticText.h"
 #include "03CStaticTextDlg.h"
 #include "afxdialogex.h"
@@ -10,14 +7,11 @@
 #define new DEBUG_NEW
 #endif
 
-// 用于应用程序“关于”菜单项的 CAboutDlg 对话框
-
 class CAboutDlg : public CDialogEx
 {
 public:
 	CAboutDlg();
 
-	// 对话框数据
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_ABOUTBOX };
 #endif
@@ -25,7 +19,6 @@ public:
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
-// 实现
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -41,8 +34,6 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
-
-// CMy03CStaticTextDlg 对话框
 
 CMy03CStaticTextDlg::CMy03CStaticTextDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_MY03CSTATICTEXT_DIALOG, pParent)
@@ -75,15 +66,10 @@ BEGIN_MESSAGE_MAP(CMy03CStaticTextDlg, CDialogEx)
 	ON_CBN_SELCHANGE(IDC_COMBOX_Grade, &CMy03CStaticTextDlg::OnCbnSelchangeComboxGrade)
 END_MESSAGE_MAP()
 
-// CMy03CStaticTextDlg 消息处理程序
-
 BOOL CMy03CStaticTextDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 
-	// 将“关于...”菜单项添加到系统菜单中。
-
-	// IDM_ABOUTBOX 必须在系统命令范围内。
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -101,12 +87,8 @@ BOOL CMy03CStaticTextDlg::OnInitDialog()
 		}
 	}
 
-	// 设置此对话框的图标。  当应用程序主窗口不是对话框时，框架将自动
-	//  执行此操作
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
-
-	// TODO: 在此添加额外的初始化代码
 
 	m_pic.ModifyStyle(0xf, SS_BITMAP | SS_CENTERIMAGE);
 #define HBMP(filepath,width,height) (HBITMAP)LoadImage(AfxGetInstanceHandle(),filepath,IMAGE_BITMAP,width,height,LR_LOADFROMFILE|LR_CREATEDIBSECTION)
@@ -124,7 +106,6 @@ BOOL CMy03CStaticTextDlg::OnInitDialog()
 	this->MoveWindow(50, 100, 900, 900);  //调整对话框的位置和大小
 
 //SW_SHOWMAXIMIZED：激活窗口并将其最大化。
-//
 //SW_SHOWMINIMIZED：激活窗口并将其最小化。
 
 	m_cmb_grade.AddString(TEXT("1级"));
@@ -136,11 +117,38 @@ BOOL CMy03CStaticTextDlg::OnInitDialog()
 
 	m_cmb_grade.SetCurSel(2);
 	//设置： data:1;2;3;4;5;6;
+	//m_list_Control.InsertItem(LVIF_TEXT | LVIF_STATE, 0, TEXT("第一列"), LVIS_SELECTED, LVIS_SELECTED, 0, 0);
+	//m_list_Control.InsertItem(LVIF_TEXT | LVIF_STATE, 1, TEXT("第二列"), LVIS_SELECTED, LVIS_SELECTED, 0, 0);
+	//m_list_Control.InsertItem(LVIF_TEXT | LVIF_STATE, 2, TEXT("第三列"), LVIS_SELECTED, LVIS_SELECTED, 0, 0);
+	//m_list_Control.InsertItem(LVIF_TEXT | LVIF_STATE, 3, TEXT("第四列"), LVIS_SELECTED, LVIS_SELECTED, 0, 0);
 
-	m_list_Control.InsertColumn(0, TEXT("第一列"), LVCFMT_CENTER, 80, 0);
-	m_list_Control.InsertColumn(1, TEXT("第二列"), LVCFMT_CENTER, 80, 0);
-	m_list_Control.InsertColumn(2, TEXT("第三列"), LVCFMT_CENTER, 80, 0);
-	m_list_Control.InsertColumn(3, TEXT("第四列"), LVCFMT_CENTER, 80, 0);
+	m_list_Control.SetExtendedStyle(m_list_Control.GetExtendedStyle() | LVS_EX_HEADERDRAGDROP | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
+
+	m_list_Control.InsertColumn(0, TEXT("第一列"), LVCFMT_CENTER, 100, 0);
+	m_list_Control.InsertColumn(1, TEXT("第二列"), LVCFMT_CENTER, 100, 0);
+	m_list_Control.InsertColumn(2, TEXT("第三列"), LVCFMT_CENTER, 100, 0);
+	m_list_Control.InsertColumn(3, TEXT("第四列"), LVCFMT_CENTER, 100, 0);
+
+	m_list_Control.InsertItem(0, TEXT("第一列数据"));
+	m_list_Control.SetItemText(0, 1, TEXT("第二列数据"));
+	m_list_Control.SetItemText(0, 2, TEXT("第三列数据"));
+	m_list_Control.SetItemText(0, 3, TEXT("第四列数据"));
+
+	m_list_Control.InsertItem(1, TEXT("第一列数据"));
+	m_list_Control.SetItemText(1, 1, TEXT("第二列数据"));
+	m_list_Control.SetItemText(1, 2, TEXT("第三列数据"));
+	m_list_Control.SetItemText(1, 3, TEXT("第四列数据"));
+
+	m_list_Control.InsertItem(2, TEXT("第一列数据"));
+	m_list_Control.SetItemText(2, 1, TEXT("第二列数据"));
+	m_list_Control.SetItemText(2, 2, TEXT("第三列数据"));
+	m_list_Control.SetItemText(2, 3, TEXT("第四列数据"));
+
+	m_list_Control.InsertItem(3, TEXT("第一列数据"));
+	m_list_Control.SetItemText(3, 1, TEXT("第二列数据"));
+	m_list_Control.SetItemText(3, 2, TEXT("第三列数据"));
+	m_list_Control.SetItemText(3, 3, TEXT("第四列数据"));
+
 	// m_list_Control View==>Report
 
 #if 1 /*创建系统托盘图标*/
@@ -173,10 +181,6 @@ void CMy03CStaticTextDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// 如果向对话框添加最小化按钮，则需要下面的代码
-//  来绘制该图标。  对于使用文档/视图模型的 MFC 应用程序，
-//  这将由框架自动完成。
-
 void CMy03CStaticTextDlg::OnPaint()
 {
 	if (IsIconic())
@@ -202,8 +206,6 @@ void CMy03CStaticTextDlg::OnPaint()
 	}
 }
 
-//当用户拖动最小化窗口时系统调用此函数取得光标
-//显示。
 HCURSOR CMy03CStaticTextDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -211,14 +213,11 @@ HCURSOR CMy03CStaticTextDlg::OnQueryDragIcon()
 
 void CMy03CStaticTextDlg::OnBnClickedButtonSethehe()
 {
-	// TODO: 在此添加控件通知处理程序代码
-
 	m_text.SetWindowTextW(TEXT("呵呵🙂"));
 }
 
 void CMy03CStaticTextDlg::OnBnClickedButtonGettext()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	CString  str;
 	m_text.GetWindowTextW(str);
 	MessageBox(str);
@@ -226,7 +225,6 @@ void CMy03CStaticTextDlg::OnBnClickedButtonGettext()
 
 void CMy03CStaticTextDlg::OnBnClickedButtonSetter()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	m_btn_setter.SetWindowTextW(TEXT("HELLO"));
 
 	CString str;
@@ -238,8 +236,6 @@ void CMy03CStaticTextDlg::OnBnClickedButtonSetter()
 
 void CMy03CStaticTextDlg::OnMouseMove(UINT nFlags, CPoint point)
 {
-	// TODO: 在此添加消息处理程序代码和/或调用默认值
-
 	CDialogEx::OnMouseMove(nFlags, point);
 
 	CString str;
@@ -251,7 +247,6 @@ void CMy03CStaticTextDlg::OnMouseMove(UINT nFlags, CPoint point)
 
 void CMy03CStaticTextDlg::OnCbnEditchangeComboxGrade()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	CString str;
 
 	//m_cmb_grade.GetWindowTextW(str);
@@ -263,14 +258,11 @@ void CMy03CStaticTextDlg::OnCbnEditchangeComboxGrade()
 
 void CMy03CStaticTextDlg::OnBnClickedButtonAdditem()
 {
-	// TODO: 在此添加控件通知处理程序代码
 	m_cmb_grade.AddString(TEXT("9级"));
 }
 
 void CMy03CStaticTextDlg::OnCbnSelchangeComboxGrade()
 {
-	// TODO: 在此添加控件通知处理程序代码
-
 	CString str;
 	int index = m_cmb_grade.GetCurSel();
 	m_cmb_grade.GetLBText(index, str);

@@ -52,6 +52,11 @@ CMy02CDialogDlg::CMy02CDialogDlg(CWnd* pParent /*=NULL*/)
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
+CMy02CDialogDlg::~CMy02CDialogDlg()
+{
+	delete m_dlg;
+}
+
 void CMy02CDialogDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
@@ -98,7 +103,11 @@ BOOL CMy02CDialogDlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 
+	//初始化的时候创建（只是创建一次）
 	dlg.Create(IDD_DIALOG_Show);
+
+	m_dlg = new CDialogShow;
+	m_dlg->Create(MAKEINTRESOURCE(IDD_DIALOG_Show), this);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -152,21 +161,23 @@ HCURSOR CMy02CDialogDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+//模态对话框,有阻塞作用
 void CMy02CDialogDlg::OnBnClickedButtonExec()
 {
 	CDialogExec dlg;
 	dlg.DoModal();
 }
-
+//非模态对话框
 void CMy02CDialogDlg::OnBnClickedButtonShow()
 {
-	////dlg.Create(IDD_DIALOG_Show);//对话框只能创建一次
+	//dlg.Create(IDD_DIALOG_Show);//错误对话框只能创建一次
 
-	//第一种方法
-	//dlg.ShowWindow(SW_SHOWNORMAL);
+   //第一种方法
+	dlg.ShowWindow(SW_SHOWNORMAL);//1)
+	//m_dlg->ShowWindow(SW_SHOWNORMAL);//2)
 
-	//第二种方法
-	CDialogShow* pdlgModeless = new CDialogShow(this);
-	pdlgModeless->Create(IDD_DIALOG_Show);
-	pdlgModeless->ShowWindow(SW_SHOWNORMAL);
+	//第二种方法，放堆里
+	//CDialogShow* pdlgModeless = new CDialogShow(this);
+	//pdlgModeless->Create(IDD_DIALOG_Show);
+	//pdlgModeless->ShowWindow(SW_SHOWNORMAL);
 }

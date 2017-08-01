@@ -1,4 +1,6 @@
 #include "mfc.h"
+#include<Windows.h>
+#include<WinUser.h>
 #include "resource.h"
 
 //在共享 DLL 中使用 MFC
@@ -46,6 +48,9 @@ void MyFrame::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void MyFrame::OnPaint()
 {
+	CTime theTime = CTime::GetCurrentTime();
+	TCHAR *ch = TEXT("Hello World");
+
 	CPaintDC dc(this);
 
 	dc.Ellipse(10, 10, 500, 500);
@@ -60,6 +65,12 @@ void MyFrame::OnPaint()
 	dc.TextOut(100, 100, "Hello World,世界你好！！");
 
 	dc.Draw3dRect(100, 200, 300, 100, RGB(214, 219, 233), RGB(64, 158, 254));
+
+	HWND win = FindWindowA("Qt5QWindowIcon", "HydraViewer");//获取窗口
+	if (win)
+	{
+		SetWindowTextA(win, "23期MFC课程讲解");
+	}
 }
 
 void MyFrame::OnPaintClipboard(CWnd* pClipAppWnd, HGLOBAL hPaintStruct)
