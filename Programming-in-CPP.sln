@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C++基础课程", "C++基础课程", "{AF3BE1A7-4381-4021-AF08-C739D41E518F}"
 EndProject
@@ -218,6 +218,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10案例", "C++进阶STL\10案例\10案例.vcxproj", "{B46C8C5A-929D-4C62-B821-5BDBFB1C77EE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09其他", "C++进阶STL\09其他\09其他.vcxproj", "{2F809D95-7078-4613-9FD7-92C0C03EC578}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "99Other", "C++进阶STL\99Other\99Other.vcxproj", "{E731641D-F298-49B5-A710-4882E9B4FFD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1326,6 +1328,18 @@ Global
 		{2F809D95-7078-4613-9FD7-92C0C03EC578}.Release|x64.Build.0 = Release|x64
 		{2F809D95-7078-4613-9FD7-92C0C03EC578}.Release|x86.ActiveCfg = Release|Win32
 		{2F809D95-7078-4613-9FD7-92C0C03EC578}.Release|x86.Build.0 = Release|Win32
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Debug|ARM.ActiveCfg = Debug|Win32
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Debug|x64.ActiveCfg = Debug|x64
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Debug|x64.Build.0 = Debug|x64
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Debug|x86.ActiveCfg = Debug|Win32
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Debug|x86.Build.0 = Debug|Win32
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Release|Any CPU.ActiveCfg = Release|Win32
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Release|ARM.ActiveCfg = Release|Win32
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Release|x64.ActiveCfg = Release|x64
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Release|x64.Build.0 = Release|x64
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Release|x86.ActiveCfg = Release|Win32
+		{E731641D-F298-49B5-A710-4882E9B4FFD4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1436,5 +1450,9 @@ Global
 		{F3619254-E5B7-4A7F-A0B4-3051F7768544} = {B49F8977-5599-4A89-B7FE-2318C3E09AB0}
 		{B46C8C5A-929D-4C62-B821-5BDBFB1C77EE} = {B49F8977-5599-4A89-B7FE-2318C3E09AB0}
 		{2F809D95-7078-4613-9FD7-92C0C03EC578} = {B49F8977-5599-4A89-B7FE-2318C3E09AB0}
+		{E731641D-F298-49B5-A710-4882E9B4FFD4} = {B49F8977-5599-4A89-B7FE-2318C3E09AB0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39751834-3EE9-42A4-8482-A3B14ECF29B5}
 	EndGlobalSection
 EndGlobal
