@@ -665,6 +665,7 @@ namespace 自定义数组
 
 void MyStringTest()
 {
+	MyString s0 = {"123"};
 	/*
 	 1：初始化
 	 MyString(const char *s);
