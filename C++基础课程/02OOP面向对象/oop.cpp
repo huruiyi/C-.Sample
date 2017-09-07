@@ -1,11 +1,8 @@
 ﻿#include <iostream>
 #include <string>
-#include "Person.h"
-#include"Circle.h"
-#include"Point.h"
-#include "Student.h"
-#include "MyArray.h"
-#include "MyString.h"
+#include "Circle.h"
+#include "Point.h"
+
 using namespace std;
 
 #define Connect(X, Y) X##Y
@@ -16,6 +13,101 @@ using namespace std;
 
 namespace NDemo
 {
+	class Person
+	{
+	public:
+		Person();
+		~Person();
+		void SetAge(int age);
+		int GetAge() const;
+
+		void SetName(string name);
+		string GetName() const;
+
+		void ShowPersonInfo();
+
+	private:
+		string Name;
+		int Age;
+
+	protected:
+		string ProtectedInfo;
+	};
+
+	Person::Person()
+	{
+		cout << "Person" << this->Name << "被构造" << endl;
+	}
+	Person::~Person()
+	{
+		cout << "Person" << this->Name << "被析构" << endl;
+	}
+	void Person::SetName(string name)
+	{
+		Name = name;
+	}
+	string Person::GetName() const
+	{
+		return  Name;
+	}
+
+	void Person::SetAge(int age)
+	{
+		if (age < 0 || age>100)
+		{
+			return;
+		}
+		Age = age;
+	}
+	int Person::GetAge() const
+	{
+		return  Age;
+	}
+
+	void Person::ShowPersonInfo()
+	{
+		cout << Name << "  " << Age << endl;
+	}
+
+#if 1 class Student
+	class Student
+	{
+	public:
+		Student();
+		~Student();
+		Student(const char *name, int age);
+
+		void ShowInfo();
+	private:
+		char *sName;
+		int Age;
+	};
+
+	Student::Student()
+	{
+	}
+
+	Student::Student(const char *name, int age)
+	{
+		int length = strlen(name) + 1;
+		sName = (char *)malloc(sizeof(char)*length);
+		strcpy_s(sName, strlen(sName) + 1, name);
+		Age = age;
+	}
+	Student::~Student()
+	{
+		if (sName)
+		{
+			free(sName);
+		}
+	}
+
+	void Student::ShowInfo()
+	{
+		cout << this->sName << this->Age << endl;
+	}
+#endif // 1 class Student
+
 	void Demo0()
 	{
 		Person p;
@@ -146,10 +238,10 @@ namespace 对象模型
 			cout << this->mAge << endl;
 		}
 
-		//static  void showPerson()
-		//{
-		//    cout << this->mAge << endl;
-		//}
+		static  void showPersonInfo()
+		{
+			//cout << this->mAge << endl;
+		}
 	public:
 		int mAge;
 	};
@@ -648,120 +740,6 @@ namespace 指针运算符的重载
 	}
 }
 
-namespace 自定义数组
-{
-	void 大括号运算符重载()
-	{
-		MyArray arr = { 1,2,3,4,5,6,7,8,9 };
-		arr.foreach();
-	}
-	void  加等于运算符重载()
-	{
-		MyArray arr;
-		arr += 1, 2, 3, 4, 5, 6, 7, 8, 9;
-		arr.foreach();
-	}
-}
-
-void MyStringTest()
-{
-	MyString s0 = {"123"};
-	/*
-	 1：初始化
-	 MyString(const char *s);
-	 MyString(int n, char  ch);
-	 MyString(const MyString &str);
-  */
-	MyString s1 = "ABCDEFG";
-	s1.ShowInfo();
-
-	MyString s2(5, 'B');
-	s2.ShowInfo();
-
-	MyString s3(s1);
-	s3.ShowInfo();
-
-	/************************************************************************/
-	/*  赋值重载    MyString &operator=(const MyString &str);            */
-	/************************************************************************/
-	MyString s4 = s2;
-	s4.ShowInfo();
-
-	/************************************************************************/
-	/*    取值重载  char &operator[](int index);                                      */
-	/************************************************************************/
-	MyString s5("123456789");
-	cout << s5[2] << endl;
-
-	/************************************************************************/
-	/*         相加操作，返回的是新值
-	 *         MyString operator+(const MyString &str);
-	 *         MyString operator+(const char  *c);                                    */
-	 /************************************************************************/
-
-	MyString s6("123456");
-	MyString s7("abcdef");
-
-	MyString s8 = s6 + s7;
-	MyString s9 = s6 + "54321";
-	s6.ShowInfo();
-	s7.ShowInfo();
-	s8.ShowInfo();
-	s9.ShowInfo();
-
-	/************************************************************************/
-	/*  追加操作，返回的是自身，先前的只地址，值要处理
-				MyString &operator+=(const MyString &str);
-				MyString &operator+=(const char *c);                               */
-				/************************************************************************/
-
-	cout << "/************************************************************************/" << endl;
-	MyString s10("123456");
-	MyString s11("789");
-	s10.ShowInfo();
-	s11.ShowInfo();
-	s10 += s11;
-	s10.ShowInfo();
-	s11.ShowInfo();
-
-	cout << "/************************************************************************/" << endl;
-	MyString s12("123");
-	s12.ShowInfo();
-	s12 += "456";
-	s12.ShowInfo();
-
-	/************************************************************************/
-	/*  判断
-				bool operator==(const MyString &str);
-				bool operator==(const char *s);                                         */
-				/************************************************************************/
-
-	MyString s13 = "abc";
-	MyString s14 = "abc";
-	MyString s15 = "def";
-	cout << (s13 == s14 ? "相等" : "不相等") << endl;
-	cout << (s13 == s15 ? "相等" : "不相等") << endl;
-	const char *ch1 = "abc";
-	const char *ch2 = "def";
-	cout << (s13 == ch1 ? "相等" : "不相等") << endl;
-	cout << (s13 == ch2 ? "相等" : "不相等") << endl;
-
-	/************************************************************************/
-	/*  //获取字符大小
-					int size();
-	//  MyString->const char *
-				  const char * c_str();                                                          */
-				  /************************************************************************/
-	MyString s16 = "abcdef";
-	cout << s16.c_str() << endl;
-
-	/************************************************************************/
-	/* >>输入                                                                     */
-	/************************************************************************/
-	MyString s18 = "123";
-	cin >> s18;
-}
-
 namespace Animal多态
 {
 	class Animal
@@ -934,173 +912,6 @@ namespace 动物园多态案例
 	}
 }
 
-namespace Static_cast_Demo
-{
-	/*
-	静态转换(static_cast)
-		 1：用于类层次结构中基类（父类）和派生类（子类）之间指针或引用的转换。
-		 2：进行上行转换（把派生类的指针或引用转换成基类表示）是安全的；
-		 3：进行下行转换（把基类指针或引用转换成派生类表示）时，由于没有动态类型检查，所以是不安全的。
-		 4：用于基本数据类型之间的转换，如把int转换成char，把char转换成int。这种转换的安全性也要开发人员来保证。
-	*/
-	class Animal {};
-	class Dog : public Animal {};
-	class Other {};
-
-	//基础数据类型转换
-	void test01()
-	{
-		char a = 'a';
-		double b = static_cast<double>(a);
-	}
-
-	//继承关系指针互相转换
-	void test02()
-	{
-		//继承关系指针转换
-		Animal* animal01 = NULL;
-		Dog* dog01 = NULL;
-		//子类指针转成父类指针,安全(小类转大类)
-		Animal* animal02 = static_cast<Animal*>(dog01);
-		//父类指针转成子类指针，不安全
-		Dog* dog02 = static_cast<Dog*>(animal01);
-	}
-
-	//继承关系引用相互转换
-	void test03()
-	{
-		Animal ani_ref;
-		Dog dog_ref;
-		//继承关系指针转换
-		Animal& animal01 = ani_ref;
-		Dog& dog01 = dog_ref;
-		//子类指针转成父类指针,安全
-		Animal& animal02 = static_cast<Animal&>(dog01);
-		//父类指针转成子类指针，不安全
-		Dog& dog02 = static_cast<Dog&>(animal01);
-	}
-
-	//无继承关系指针转换
-	void test04()
-	{
-		Animal* animal01 = NULL;
-		Other* other01 = NULL;
-
-		//转换失败
-		//Animal* animal02 = static_cast<Animal*>(other01);
-	}
-}
-
-namespace Dynamic_cast_Demo
-{
-	/*
-	动态转换(dynamic_cast)
-		 dynamic_cast主要用于类层次间的上行转换和下行转换；
-		 在类层次间进行上行转换时，dynamic_cast和static_cast的效果是一样的；
-		 在进行下行转换时，dynamic_cast具有类型检查的功能，比static_cast更安全；
-		 含有virtual函数的基类和子类之间的转换。
-	 */
-	class Animal
-	{
-	public:
-		virtual void ShowName() = 0;
-	};
-	class Dog : public Animal
-	{
-		virtual void ShowName() {
-			cout << "I am a dog!" << endl;
-		}
-	};
-	class Other
-	{
-	public:
-		void PrintSomething()
-		{
-			cout << "我是其他类!" << endl;
-		}
-	};
-
-	//普通类型转换
-	void test01()
-	{
-		//不支持基础数据类型
-		int a = 10;
-		//double a = dynamic_cast<double>(a);
-	}
-
-	//继承关系指针
-	void test02()
-	{
-		Animal* animal01 = NULL;
-		Dog* dog01 = new Dog;
-
-		//子类指针转换成父类指针 可以
-		Animal* animal02 = dynamic_cast<Animal*>(dog01);
-		animal02->ShowName();
-		//父类指针转换成子类指针 不可以
-		//Dog* dog02 = dynamic_cast<Dog*>(animal01);
-	}
-
-	//继承关系引用
-	void test03()
-	{
-		Dog dog_ref;
-		Dog& dog01 = dog_ref;
-
-		//子类引用转换成父类引用 可以
-		Animal& animal02 = dynamic_cast<Animal&>(dog01);
-		animal02.ShowName();
-	}
-
-	//无继承关系指针转换
-	void test04()
-	{
-		Animal* animal01 = NULL;
-		Other* other = NULL;
-
-		//不可以
-		//Animal* animal02 = dynamic_cast<Animal*>(other);
-	}
-}
-
-namespace Const_Cast_Demo
-{
-	/*
-	 该运算符用来修改类型的const属性。。
-		 常量指针被转化成非常量指针，并且仍然指向原来的对象；
-		 常量引用被转换成非常量引用，并且仍然指向原来的对象；
-		 注意:不能直接对非指针和非引用的变量使用const_cast操作符去直接移除它的const
-	 */
-	 //常量指针转换成非常量指针
-	void test01()
-	{
-		//给指针增加const
-		int* p = new int;
-		Person* person = new Person;
-		const int* const_p = const_cast<const int*>(p);
-		const Person* const_person = const_cast<const Person*>(person);
-
-		delete person;
-		delete p;
-
-		//去掉const
-		const Person* p2 = new Person;
-		Person* p3 = const_cast<Person*>(p2);
-	}
-
-	//常量引用转换成非常量引用
-	void test02()
-	{
-		int a = 10;
-		int& p_ref = a;
-		Person person;
-		Person& person_ref = person;
-
-		const int& const_b = const_cast<const int&>(p_ref);
-		const Person& const_person = const_cast<const Person&>(person_ref);
-	}
-}
-
 namespace Test
 {
 	//非纯虚析构函数
@@ -1130,154 +941,6 @@ namespace Test
 	void test() {
 		A a; //A类不是抽象类，可以实例化对象
 		 //B b; //B   类是抽象类，不可以实例化对象
-	}
-}
-
-namespace Exception
-{
-	void FunError()
-	{
-		//throw "Char * Exception";
-		//throw string("String Exception");
-		//throw 23.456;
-		throw 123;
-	}
-	void test0()
-	{
-		try
-		{
-			FunError();
-		}
-		catch (const char* e)
-		{
-			cout << e;
-			cout << "const char *类型异常！" << endl;
-		}
-		catch (string e)
-		{
-			cout << e;
-			cout << "string类型异常！" << endl;
-		}
-		catch (double e)
-		{
-			cout << e;
-			cout << "double类型异常！" << endl;
-		}
-		catch (...)
-		{
-			cout << "其他类型异常!" << endl;
-		}
-	}
-
-	int IntException(int a, int b)
-	{
-		if (b == 0)
-		{
-			throw - 111;
-		}
-		return a / b;
-	}
-	void test1()
-	{
-		int result = -1;
-		try
-		{
-			result = IntException(12, 0);
-		}
-		catch (int e)
-		{
-			cout << "错误码" << e << endl;
-		}
-	}
-
-	void CharPException()
-	{
-		throw "Char * Exception";
-	}
-	void test2()
-	{
-		try
-		{
-			CharPException();
-		}
-		catch (const char * error)
-		{
-			cout << error << endl;
-		}
-	}
-
-	void StringException()
-	{
-		throw string("String Exception");
-	}
-	void test3()
-	{
-		try
-		{
-			StringException();
-		}
-		catch (const string error)
-		{
-			cout << error << endl;
-		}
-		//try
-		//{
-		//}
-		//catch (CMemoryException* e)
-		//{
-		//
-		//}
-		//catch (CFileException* e)
-		//{
-		//}
-		//catch (CException* e)
-		//{
-		//}
-	}
-
-	void IntStringException() throw(int, string)
-	{
-	}
-
-	void NotException() throw()
-	{
-	}
-
-	class BaseException
-	{
-	public:
-		virtual void PrintError() = 0;
-	};
-
-	class NullException :public BaseException
-	{
-	public:
-		virtual void PrintError()
-		{
-			cout << "NullException" << endl;
-		}
-	};
-
-	class ZeroException :public BaseException
-	{
-	public:
-		virtual void PrintError()
-		{
-			cout << "ZeroException" << endl;
-		}
-	};
-
-	void test4()
-	{
-		try
-		{
-			//throw NullException();
-			throw ZeroException();
-		}
-		catch (BaseException& ex)
-		{
-			ex.PrintError();
-		}
 	}
 }
 
