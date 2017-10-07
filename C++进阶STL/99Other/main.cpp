@@ -111,8 +111,8 @@ void test06()
 	int product = std::accumulate(v.begin(), v.end(), 1, std::multiplies<int>());
 
 	std::string s = std::accumulate(std::next(v.begin()), v.end(),
-		std::to_string(v[0]), 
-		[](std::string a, int b) 
+		std::to_string(v[0]),
+		[](std::string a, int b)
 	{
 		return a + '-' + std::to_string(b);
 	});
