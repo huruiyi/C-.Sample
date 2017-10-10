@@ -4,13 +4,22 @@
 #include<stdlib.h>
 
 //1. C语言中的const默认是外部连接属性
-//2. const修饰的全局变量，存放在常量区,const修饰的局部存放在栈区（可修改）
+//2. const修饰的全局变量，存放在常量区(不可修改),const修饰的局部存放在栈区（可修改）
 const int a = 0;
+
+void test00()
+{
+	int *pa = (int *)&a;
+	*pa = 100;
+	printf("%d-%d", a, *pa);
+}
 
 void test01()
 {
-	int *p = (int *)&a;
-	*p = 100;
+	const int b = 0;
+	int *pb = (int *)&b;
+	*pb = 100;
+	printf("%d-%d", b, *pb);
 }
 
 void test02()
@@ -19,10 +28,10 @@ void test02()
 	extern const int a;
 	printf("a = %d\n", a);
 }
-int main() {
+int main()
+{
+	test02();
 	const char *p = "hello world";
-
-	test01();
 
 	system("pause");
 	return EXIT_SUCCESS;

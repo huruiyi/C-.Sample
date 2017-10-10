@@ -49,7 +49,7 @@ void test04()
 }
 
 int main() {
-	test02();
+	test04();
 
 	system("pause");
 	return EXIT_SUCCESS;

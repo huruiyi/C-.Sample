@@ -145,14 +145,52 @@ namespace NDemo
 	{
 		int *p1 = new int;
 		delete p1;
-		int *p2 = new int[10];
-		p2[0] = 123;
-		p2[1] = 456;
 
-		//int *pi = new int(5);
-		//double *pd = new double();
-		//char *pc = new char[10];
-		//string *ps = new string(10);  //error
+		int *p2 = new int[5];
+		for (int i = 0; i < 5; i++)
+		{
+			p2[i] = i + 20;
+			printf("p2[%d]=%d\n", i, p2[i]);
+		}
+
+		//未初始化默认乱码
+		int i0s[5];
+		for (int i = 0; i < sizeof(i0s) / sizeof(i0s[0]); i++)
+		{
+			printf("%d=%d\t", i, i0s[i]);
+		}
+		printf("\n");
+
+		//初始化所有元素值都是0
+		int i1s[5] = { 0 };
+		for (int i = 0; i < sizeof(i1s) / sizeof(i1s[0]); i++)
+		{
+			printf("%d=%d\t", i, i1s[i]);
+		}
+		printf("\n");
+
+		//初始化第一个元素的值为1 ,其他的为0
+		int i2s[5] = { 1 };
+		for (int i = 0; i < sizeof(i2s) / sizeof(i2s[0]); i++)
+		{
+			printf("%d=%d\t", i, i2s[i]);
+		}
+		printf("\n");
+
+		int *pi = new int(5);
+		printf("%d\n", *pi);
+
+		double *pd = new double();
+		printf("%d\n", *pd);
+
+		string *ps = new string("123456");  //error
+		cout << ps << endl;
+
+		char *pc = new char[5];
+		for (int i = 0; i < 5; i++)
+		{
+			printf("pc[%d]=%d\n", i, pc[i]);
+		}
 	}
 	void Demo4()
 	{
@@ -946,6 +984,7 @@ namespace Test
 
 int main()
 {
+	NDemo::Demo3();
 	system("pause");
 	return 0;
 }
