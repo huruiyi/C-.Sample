@@ -80,12 +80,12 @@ class Zoo
 public:
 	Zoo()
 	{
-		pAnimals = new Animal*[20];
+		pAnimals = new Animal * [20];
 		mSize = 0;
 	}
 
 	//向动物园中添加新的动物
-	void addNewAnimal(Animal *animal)
+	void addNewAnimal(Animal* animal)
 	{
 		if (mSize == 20)
 		{
@@ -121,7 +121,7 @@ public:
 		mSize = 0;
 	}
 public:
-	Animal **pAnimals;
+	Animal** pAnimals;
 	int mSize;
 };
 class Person
@@ -151,7 +151,7 @@ void test()
 
 	zoo.startKTV();
 
-	Animal** animals = new Animal*[9];
+	Animal** animals = new Animal * [9];
 	animals[0] = new Tiger;
 	animals[1] = new Duck;
 	animals[2] = new Duck;
@@ -167,22 +167,22 @@ void test()
 	cout << typeid(animals[0]).name() << endl;
 	cout << typeid(Animal*).name() << endl;
 	cout << typeid(animals).name() << endl;
-	cout << typeid(Animal**).name() << endl;
+	cout << typeid(Animal * *).name() << endl;
 
 	Person p("张三丰", 100);
-	Person *p0 = &p;
+	Person* p0 = &p;
 	cout << p0->mName << "  " << p0->mAge << endl;
 	//delete p0;//p0指向的是栈上的空间，不允许用户删除
 	//p0 = NULL;
 
-	Person * p1 = new Person;
+	Person* p1 = new Person;
 	p1->mAge = 12;
 	p1->mName = "张三丰P1";
 	cout << p1->mName << "  " << p1->mAge << endl;
 	delete p1;
 	p1 = NULL;
 
-	Person **p2 = new Person *[1];
+	Person** p2 = new Person * [1];
 	p2[0] = new Person;
 	p2[0]->mName = "张君宝P2";
 	p2[0]->mAge = 110;
@@ -192,7 +192,7 @@ void test()
 	delete p2;
 	p2 = NULL;
 
-	Person **p3 = new Person *;
+	Person** p3 = new Person*;
 	p3[0] = new Person;
 	p3[0]->mName = "张君宝P3";
 	p3[0]->mAge = 110;
@@ -202,7 +202,7 @@ void test()
 	delete p3;
 	p3 = NULL;
 
-	Person **p4 = new Person *[2];
+	Person** p4 = new Person * [2];
 	p4[0] = new Person("P41", 10);
 	p4[1] = new Person("P42", 10);
 	for (int i = 0; i < 2; i++)
@@ -214,7 +214,7 @@ void test()
 	p4 = NULL;
 
 #if 0
-	Animal *animal = NULL;
+	Animal* animal = NULL;
 	animal = new Duck;
 	animal->Speak();
 	delete animal;

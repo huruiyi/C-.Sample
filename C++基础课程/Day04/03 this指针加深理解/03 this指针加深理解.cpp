@@ -43,7 +43,7 @@ public:
 
 void test()
 {
-	Person *person = new Person(10);
+	Person* person = new Person(10);
 	person->showPerson();
 	//showPerson(person);
 

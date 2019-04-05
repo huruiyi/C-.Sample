@@ -8,14 +8,14 @@ namespace 原始拷贝赋值
 	{
 	public:
 		Person() {    }
-		Person(int a, int b, const char *pname)
+		Person(int a, int b, const char* pname)
 		{
 			this->mA = a;
 			this->mB = b;
 			this->pName = new char[strlen(pname) + 1];
 			strcpy(pName, pname);
 		}
-		Person(const Person &person)
+		Person(const Person& person)
 		{
 			this->pName = person.pName;
 
@@ -24,7 +24,7 @@ namespace 原始拷贝赋值
 			cout << "拷贝构造函数!" << endl;
 		}
 
-		Person& operator=(const Person &person)
+		Person& operator=(const Person& person)
 		{
 			this->pName = person.pName;
 
@@ -42,7 +42,7 @@ namespace 原始拷贝赋值
 			}
 		}
 	public:
-		char *pName;
+		char* pName;
 		int mA;
 		int mB;
 	};
@@ -77,8 +77,8 @@ namespace 原始拷贝赋值
 		cout << p2.pName << endl;
 		cout << p3.pName << endl;
 		int a = 123;
-		int *p = &a;
-		int &r = a;
+		int* p = &a;
+		int& r = a;
 
 		printf("&p1.pName=%p，%s\n", p1.pName, p1.pName);
 		printf("&p2.pName=%p，%s\n", p2.pName, p2.pName);
@@ -92,14 +92,14 @@ namespace 自定义拷贝赋值
 	{
 	public:
 		Person() {    }
-		Person(int a, int b, const char *pname)
+		Person(int a, int b, const char* pname)
 		{
 			this->mA = a;
 			this->mB = b;
 			this->pName = new char[strlen(pname) + 1];
 			strcpy(pName, pname);
 		}
-		Person(const Person &person)
+		Person(const Person& person)
 		{
 			//在进行拷贝前本身并没有有效的值（没有构造完毕），固不需进行释放
 			this->pName = new char[strlen(person.pName) + 1];
@@ -110,7 +110,7 @@ namespace 自定义拷贝赋值
 			cout << "拷贝构造函数!" << endl;
 		}
 
-		Person& operator=(const Person &person)
+		Person& operator=(const Person& person)
 		{
 			//在赋值之前，自身的的内控空间和值都要处理
 			if (this->pName != NULL)
@@ -136,7 +136,7 @@ namespace 自定义拷贝赋值
 			}
 		}
 	public:
-		char *pName;
+		char* pName;
 		int mA;
 		int mB;
 	};
@@ -167,14 +167,14 @@ namespace 自定义拷贝赋值
 class Student
 {
 public:
-	Student(const char *str, int age)
+	Student(const char* str, int age)
 	{
-		pName = (char *)malloc(sizeof(char)* strlen(str) + 1);
+		pName = (char*)malloc(sizeof(char) * strlen(str) + 1);
 		strcpy(pName, str);
 		mAge = age;
 	}
 
-	Student(const Student &stu)
+	Student(const Student & stu)
 	{
 		this->pName = new char[strlen(stu.pName) + 1];
 
@@ -182,7 +182,7 @@ public:
 		mAge = stu.mAge;
 	}
 
-	Student &operator=(const Student &stu)
+	Student& operator=(const Student & stu)
 	{
 		if (this->pName)
 		{
@@ -206,7 +206,7 @@ public:
 	}
 
 public:
-	char *pName;
+	char* pName;
 	int mAge;
 };
 

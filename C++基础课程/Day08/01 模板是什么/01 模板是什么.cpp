@@ -5,14 +5,14 @@ using namespace std;
 #if 0
 class Person;
 
-void SwapInt(int &a, int &b)
+void SwapInt(int& a, int& b)
 {
 	int temp = a;
 	a = b;
 	b = temp;
 }
-void SwapDouble(double &a, double &b) {}
-void SwapPerson(Person &a, Person &b) {}
+void SwapDouble(double& a, double& b) {}
+void SwapPerson(Person& a, Person& b) {}
 
 #endif
 //如果把数据类型可以当做参数传递给函数、或者类
@@ -28,7 +28,7 @@ void SwapPerson(Person &a, Person &b) {}
 //调用函数模板的时候必须要确定T的类型，即使程序并没有用这个虚拟类型T
 //函数模板可以有默认值，默认值是个类型template<class T = int>
 template<class T>
-void mySwap(T &a, T &b)
+void mySwap(T& a, T& b)
 {
 	T temp = a;
 	a = b;

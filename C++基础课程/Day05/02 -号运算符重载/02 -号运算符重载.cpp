@@ -14,7 +14,7 @@ class Person
 {
 public:
 	Person(int a, int b) :mA(a), mB(b) {}
-	Person operator-(const Student &stu)
+	Person operator-(const Student& stu)
 	{
 		Person ret(this->mA - stu.mC, this->mB - stu.mC);
 		return ret;

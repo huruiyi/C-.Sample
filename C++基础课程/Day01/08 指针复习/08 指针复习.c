@@ -8,13 +8,13 @@
 void test01()
 {
 	int a = 10;
-	int *p = (int *)&a;
+	int* p = (int*)& a;
 	//指针的类型 1. 指针+1 移动多少字节 2.当解引用的时候，从你给定的首地址的地方取多少字节出来
 	//内存
 	char buf[1024] = { 0 };
 	memcpy(buf, &a, sizeof(a));
 
-	printf("ret = %d\n", *(int *)buf);
+	printf("ret = %d\n", *(int*)buf);
 }
 
 struct Person
@@ -29,8 +29,8 @@ void test02()
 {
 	struct Person person = { 10, 20, 3.14, "hello world" };
 
-	printf("person.ID:%d\n", *(int *)((char *)&person + offsetof(struct Person, ID)));
-	printf("person.buf:%s\n", (char *)&person + offsetof(struct Person, buf));
+	printf("person.ID:%d\n", *(int*)((char*)& person + offsetof(struct Person, ID)));
+	printf("person.buf:%s\n", (char*)& person + offsetof(struct Person, buf));
 }
 
 void test03()

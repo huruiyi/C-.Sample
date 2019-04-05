@@ -20,7 +20,7 @@ void test01write()
 	}
 
 	//3. 向文件中写入数据
-	char *buf[] = {
+	char* buf[] = {
 		"12345789\n",
 		"987654321\n",
 		"abcdefghi\n",
@@ -28,7 +28,7 @@ void test01write()
 	};
 
 #if 1 文件按字符写入
-	int len = sizeof(buf) / sizeof(char *);
+	int len = sizeof(buf) / sizeof(char*);
 	for (int i = 0; i < len; ++i)
 	{
 		int lineLen = strlen(buf[i]);
@@ -40,7 +40,7 @@ void test01write()
 #endif
 
 #if 0 文件按行写入
-	int len = sizeof(buf) / sizeof(char *);
+	int len = sizeof(buf) / sizeof(char*);
 	for (int i = 0; i < len; ++i)
 	{
 		ofs << buf[i];
@@ -123,7 +123,7 @@ int test011read()
 		is.seekg(0, is.beg);
 
 		// allocate memory:
-		char * buffer = new char[length];
+		char* buffer = new char[length];
 
 		// read data as a block:
 		is.read(buffer, length);
@@ -143,7 +143,7 @@ int test011read()
 class Person
 {
 public:
-	Person(const char *name, int age)
+	Person(const char* name, int age)
 	{
 		//memset(mName, 0, 64);
 		strcpy(mName, name);
@@ -164,7 +164,7 @@ void test02write()
 		cout << "打开失败!" << endl;
 	}
 	//将对象以二进制的方式写入文件
-	ofs.write((const char *)persons, sizeof(Person) * 3);
+	ofs.write((const char*)persons, sizeof(Person) * 3);
 	//关闭文件
 	ofs.close();
 }
@@ -178,12 +178,12 @@ void test02read()
 	}
 
 	//开辟内存
-	char *person = (char *)malloc(sizeof(Person) * 3);
+	char* person = (char*)malloc(sizeof(Person) * 3);
 	memset(person, 0, sizeof(Person) * 3);
 
 	ifs.read(person, sizeof(Person) * 3);
 
-	Person *ps = (Person *)person;
+	Person* ps = (Person*)person;
 
 	for (int i = 0; i < 3; ++i)
 	{
@@ -259,7 +259,7 @@ void  test04()
 	cout << b << endl;
 }
 
-void print_state(const std::ios& stream)
+void print_state(const std::ios & stream)
 {
 	std::cout << " good()=" << stream.good();
 	std::cout << " eof()=" << stream.eof();
@@ -287,26 +287,26 @@ void tese05()
 void test06()
 {
 	//二进制方式打开
-	FILE *fp1 = fopen("./如何学习3D游戏.avi", "rb");
+	FILE* fp1 = fopen("./如何学习3D游戏.avi", "rb");
 	//二进制方式写入
-	FILE *fp2 = fopen("./a.avi", "wb");
+	FILE* fp2 = fopen("./a.avi", "wb");
 	if (!fp1 || !fp2)
 	{
 		cout << "文件打开失败" << endl;
 		return;
 	}
 	//栈上开辟一个数组,大小为512*512字节
-	char buf[BUFSIZ*BUFSIZ] = { 0 };
+	char buf[BUFSIZ * BUFSIZ] = { 0 };
 
 	while (!feof(fp1))
 	{
 		//读入buf每次读取1块,大小为BUFSIZ*BUFSIZ,读取成功返回读到的有效字节,读取失败返回0
-		int len = fread(buf, 1, BUFSIZ*BUFSIZ, fp1);
+		int len = fread(buf, 1, BUFSIZ * BUFSIZ, fp1);
 		//printf("len = %d\n", len);
 		cout << "len= " << len << endl;
 		//写入文件,文件源buf,每次写入1块,大小为len个有效字节
 		fwrite(buf, 1, len, fp2);
-		memset(buf, 0, BUFSIZ*BUFSIZ);
+		memset(buf, 0, BUFSIZ * BUFSIZ);
 	}
 	fclose(fp1);
 	fclose(fp2);
@@ -343,12 +343,12 @@ void test08()
 		cout << "文件打开失败" << endl;
 		return;
 	}
-	char buf[BUFSIZ*BUFSIZ] = { 0 };
+	char buf[BUFSIZ * BUFSIZ] = { 0 };
 	long long nRead = 0;
 	while (!is.eof())
 	{
 		//gcount()函数返回值是langlang类型,所以要用langlang类型来接
-		istream & temp = is.read(buf, BUFSIZ*BUFSIZ);
+		istream& temp = is.read(buf, BUFSIZ * BUFSIZ);
 		nRead = temp.gcount();
 
 		//is.read(buf, BUFSIZ*BUFSIZ)返回的是对象,可以进行链式编程

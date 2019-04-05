@@ -5,7 +5,7 @@
 
 void DisplayError(LPTSTR lpszFunction);
 
-void __cdecl _tmain(int argc, TCHAR *argv[])
+void __cdecl _tmain(int argc, TCHAR* argv[])
 {
 	argc = 2;
 	argv[0] = "cppcreatefiledemo";
@@ -87,7 +87,7 @@ void DisplayError(LPTSTR lpszFunction)
 		NULL,
 		dw,
 		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-		(LPTSTR)&lpMsgBuf,
+		(LPTSTR)& lpMsgBuf,
 		0,
 		NULL);
 

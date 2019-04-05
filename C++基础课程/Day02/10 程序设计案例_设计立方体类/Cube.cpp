@@ -34,15 +34,15 @@ int Cube::getH() const
 
 int Cube::caculateS()
 {
-	return (mL * mH + mL * mW + mH *mW) * 2;
+	return (mL * mH + mL * mW + mH * mW) * 2;
 }
 
 int Cube::caculateV()
 {
-	return mL * mW * mH;
+	return mL * mW* mH;
 }
 
-bool Cube::CubeComapreCube(const Cube &c)
+bool Cube::CubeComapreCube(const Cube & c)
 {
 	if (getH() == c.getH() && getL() == c.getL() && getW() == c.getW())
 	{

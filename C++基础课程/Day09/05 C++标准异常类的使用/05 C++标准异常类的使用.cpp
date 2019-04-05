@@ -33,7 +33,7 @@ void test()
 	{
 		person.setAge(1000);
 	}
-	catch (exception &ex)
+	catch (exception & ex)
 	{
 		cout << ex.what() << endl;
 	}
@@ -44,19 +44,19 @@ void test()
 class MyException : public exception
 {
 public:
-	MyException(const char *msg)
+	MyException(const char* msg)
 	{
 		pErrorMsg = new char[strlen(msg) + 1];
 		strcpy(pErrorMsg, msg);
 	}
 
-	MyException(const MyException &ex)
+	MyException(const MyException& ex)
 	{
 		pErrorMsg = new char[strlen(ex.pErrorMsg) + 1];
 		strcpy(pErrorMsg, ex.pErrorMsg);
 	}
 
-	MyException& operator=(const MyException &ex)
+	MyException& operator=(const MyException& ex)
 	{
 		if (pErrorMsg != NULL)
 		{
@@ -70,7 +70,7 @@ public:
 		return *this;
 	}
 
-	virtual const char * what() const
+	virtual const char* what() const
 	{
 		return pErrorMsg;
 	}
@@ -84,7 +84,7 @@ public:
 		}
 	}
 public:
-	char *pErrorMsg;
+	char* pErrorMsg;
 };
 
 class Person
@@ -116,7 +116,7 @@ void test02()
 	{
 		person.setAge(1000);
 	}
-	catch (exception &ex)
+	catch (exception & ex)
 	{
 		cout << ex.what() << endl;
 	}

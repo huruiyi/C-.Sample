@@ -9,7 +9,7 @@ const int a = 0;
 
 void test00()
 {
-	int *pa = (int *)&a;
+	int* pa = (int*)& a;
 	*pa = 100;
 	printf("%d-%d", a, *pa);
 }
@@ -17,7 +17,7 @@ void test00()
 void test01()
 {
 	const int b = 0;
-	int *pb = (int *)&b;
+	int* pb = (int*)& b;
 	*pb = 100;
 	printf("%d-%d", b, *pb);
 }
@@ -31,7 +31,7 @@ void test02()
 int main()
 {
 	test02();
-	const char *p = "hello world";
+	const char* p = "hello world";
 
 	system("pause");
 	return EXIT_SUCCESS;

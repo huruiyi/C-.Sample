@@ -38,7 +38,7 @@ void test()
 void test02()
 {
 	Sheep s;
-	cout << ((Animal *)((char *)&s + *((int *)*(int *)&s + 1)))->mType << endl;
+	cout << ((Animal*)((char*)& s + *((int*) * (int*)& s + 1)))->mType << endl;
 	cout << sizeof(Sheep) << endl;
 	cout << sizeof(SheepTuo) << endl;
 }

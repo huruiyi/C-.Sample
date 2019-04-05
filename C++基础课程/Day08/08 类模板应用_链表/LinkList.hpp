@@ -8,7 +8,7 @@ class LinkNode
 {
 public:
 	T mData;
-	LinkNode *pNext;
+	LinkNode* pNext;
 };
 
 template<class T>
@@ -20,7 +20,7 @@ public:
 	//节点个数
 	int mSize;
 	//尾节点指针
-	LinkNode<T> *pRear;
+	LinkNode<T>* pRear;
 public:
 	//构造函数
 	LinkList()
@@ -31,13 +31,13 @@ public:
 	}
 
 	//拷贝构造
-	LinkList(const LinkList &list)
+	LinkList(const LinkList& list)
 	{
 		mHeader.pNext = NULL;
 		pRear = &mHeader;
 		mSize = 0;
 
-		LinkNode<T> *pCurrent = list.mHeader.pNext;
+		LinkNode<T>* pCurrent = list.mHeader.pNext;
 		while (pCurrent != NULL)
 		{
 			pushBack(pCurrent->mData);
@@ -48,17 +48,17 @@ public:
 	}
 
 	//赋值运算符函数
-	LinkList<T>& operator=(const LinkList &list)
+	LinkList<T>& operator=(const LinkList& list)
 	{
 		//先释放当前节点的内存
 		if (mSize > 0)
 		{
 			//遍历链表
-			LinkNode<T> *pCurrent = mHeader.pNext;
+			LinkNode<T>* pCurrent = mHeader.pNext;
 			while (pCurrent != NULL)
 			{
 				//保存下一个节点的地址
-				LinkNode<T> *pNext = pCurrent->pNext;
+				LinkNode<T>* pNext = pCurrent->pNext;
 				//释放当前节点内存
 				delete pCurrent;
 				//pCurrent指向下一个节点
@@ -71,7 +71,7 @@ public:
 		pRear = &mHeader;
 		mSize = 0;
 
-		LinkNode<T> *pCurrent = list.mHeader.pNext;
+		LinkNode<T>* pCurrent = list.mHeader.pNext;
 		while (pCurrent != NULL)
 		{
 			pushBack(pCurrent->mData);
@@ -84,10 +84,10 @@ public:
 	}
 
 	//尾部插入
-	void pushBack(const T &val)
+	void pushBack(const T& val)
 	{
 		//创建新的节点
-		LinkNode<T> *newnode = new LinkNode<T>;
+		LinkNode<T>* newnode = new LinkNode<T>;
 		newnode->mData = val;
 		newnode->pNext = NULL;
 
@@ -100,7 +100,7 @@ public:
 	}
 
 	//指定位置插入
-	void insert(int pos, const T &val)
+	void insert(int pos, const T& val)
 	{
 		//位置校验和调整
 		if (pos < 0 || pos > mSize)
@@ -109,14 +109,14 @@ public:
 		}
 
 		//寻找Pos位置前一个位置的节点
-		LinkNode<T> *pCurrent = &mHeader;
+		LinkNode<T>* pCurrent = &mHeader;
 		for (int i = 0; i < pos; ++i)
 		{
 			pCurrent = pCurrent->pNext;
 		}
 
 		//创建新的节点
-		LinkNode<T> *newnode = new LinkNode<T>;
+		LinkNode<T>* newnode = new LinkNode<T>;
 		newnode->mData = val;
 		newnode->pNext = NULL;
 
@@ -135,10 +135,10 @@ public:
 	}
 
 	//按值来删除
-	void remove(const T &val)
+	void remove(const T& val)
 	{
-		LinkNode<T> *pPrev = &mHeader;
-		LinkNode<T> *pCurrent = pPrev->pNext;
+		LinkNode<T>* pPrev = &mHeader;
+		LinkNode<T>* pCurrent = pPrev->pNext;
 
 		while (pCurrent != NULL)
 		{
@@ -152,7 +152,7 @@ public:
 
 				//找到了
 				//缓存下待删除节点的下一个节点
-				LinkNode<T> *pNext = pCurrent->pNext;
+				LinkNode<T>* pNext = pCurrent->pNext;
 				//释放当前节点的内存
 				//delete指针之后，指针的值可能会发生变化
 				delete pCurrent;
@@ -175,7 +175,7 @@ public:
 	{
 		cout << typeid(_CallBack).name() << endl;
 
-		LinkNode<T> *pCurrent = mHeader.pNext;
+		LinkNode<T>* pCurrent = mHeader.pNext;
 		while (pCurrent != NULL)
 		{
 			func(pCurrent->mData); // 	func.operator()(pCurrent->mData);
@@ -190,11 +190,11 @@ public:
 		if (mSize > 0)
 		{
 			//遍历链表
-			LinkNode<T> *pCurrent = mHeader.pNext;
+			LinkNode<T>* pCurrent = mHeader.pNext;
 			while (pCurrent != NULL)
 			{
 				//保存下一个节点的地址
-				LinkNode<T> *pNext = pCurrent->pNext;
+				LinkNode<T>* pNext = pCurrent->pNext;
 				//释放当前节点内存
 				delete pCurrent;
 				//pCurrent指向下一个节点

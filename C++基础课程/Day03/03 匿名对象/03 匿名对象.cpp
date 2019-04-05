@@ -15,7 +15,7 @@ public:
 		cout << "Person有参构造函数!" << endl;
 	}
 
-	Person(const Person &person)
+	Person(const Person& person)
 	{
 		cout << "Person拷贝构造函数!" << endl;
 	}
@@ -51,7 +51,7 @@ void test3()
 	Person p1 = Person(p);
 }
 
-void printPerson(Person &person)
+void printPerson(Person& person)
 {
 }
 
@@ -64,7 +64,7 @@ void test4()
 	Person p1;
 	Person() = p1;
 
-	const Person &p = Person();
+	const Person& p = Person();
 
 	printPerson(Person());
 

@@ -15,8 +15,8 @@ MyArray::MyArray(std::initializer_list<int> list)
 	this->pArray = new int[this->mCapacity];
 
 	//拿到指向第一个数据的指针
-	const int *beg = list.begin();
-	const int *end = list.end();
+	const int* beg = list.begin();
+	const int* end = list.end();
 
 	for (int i = 0; beg != end; ++beg, ++i)
 	{

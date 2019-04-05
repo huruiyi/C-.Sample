@@ -34,7 +34,7 @@ void test01()
 class Student
 {
 public:
-	Student(const char *name, int age)
+	Student(const char* name, int age)
 	{
 		pName = new char[strlen(name) + 1];
 		strcpy(pName, name);
@@ -43,7 +43,7 @@ public:
 
 	//重新编写赋值函数规则
 #if 1
-	Student& operator=(const Student &person)
+	Student& operator=(const Student& person)
 	{
 		//先把自身的内存释放调用
 		if (this->pName != NULL)
@@ -62,7 +62,7 @@ public:
 	}
 #endif
 
-	Student(const Student &person)
+	Student(const Student& person)
 	{
 		this->pName = new char[strlen(person.pName) + 1];
 		strcpy(this->pName, person.pName);
@@ -80,7 +80,7 @@ public:
 
 public:
 	int mAge;
-	char *pName;
+	char* pName;
 };
 
 void test02()

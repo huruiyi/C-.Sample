@@ -10,15 +10,15 @@ namespace 函数模版
 	class Person
 	{
 	public:
-		Person(const char *name)
+		Person(const char* name)
 		{
 			this->pName = new char[strlen(name) + 1];
 			strcpy(this->pName, name);
 		}
-		char *pName;
+		char* pName;
 	};
 
-	void SwapInt(int &a, int& b)
+	void SwapInt(int& a, int& b)
 	{
 		int temp = a;
 		a = b;
@@ -37,7 +37,7 @@ namespace 函数模版
 	//函数模版可以有默认值，值是类型
 	//template<class T = int>或
 	template<typename T = int>
-	void Swap(T &a, T &b)
+	void Swap(T & a, T & b)
 	{
 		T   temp = a;
 		a = b;
@@ -60,7 +60,7 @@ namespace 函数模版
 	}
 
 	template<class T>
-	void PrintArr(T *arr, int len)
+	void PrintArr(T* arr, int len)
 	{
 		for (int i = 0; i < len; ++i)
 		{
@@ -69,7 +69,7 @@ namespace 函数模版
 		cout << endl;
 	}
 	template<class T>
-	void SelectSort(T *arr, int len)
+	void SelectSort(T* arr, int len)
 	{
 		for (int i = 0; i < len; ++i)
 		{
@@ -145,13 +145,13 @@ namespace 类模版
 	class Person
 	{
 	public:
-		Person(const char *name)
+		Person(const char* name)
 		{
 			this->pName = new char[strlen(name) + 1];
 			strcpy(this->pName, name);
 		}
 	public:
-		char *pName;
+		char* pName;
 		int mA;
 		int mB;
 	};
@@ -159,7 +159,7 @@ namespace 类模版
 	class Teacher
 	{
 	public:
-		char *pName;
+		char* pName;
 		int mA;
 		int mB;
 	};
@@ -169,7 +169,7 @@ namespace 类模版
 	public:
 		MyArray()
 		{
-			pArr = new T*[10];
+			pArr = new T * [10];
 		}
 		~MyArray()
 		{
@@ -188,7 +188,7 @@ namespace 类模版
 			}
 		}
 	public:
-		T **pArr;
+		T** pArr;
 	};
 
 	void test1()

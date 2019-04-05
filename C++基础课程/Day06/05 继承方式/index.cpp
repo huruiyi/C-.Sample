@@ -52,7 +52,7 @@ void test01()
 	Son s;
 	//s.mPublic;
 
-	cout << *(int *)((char *)&s + 12) << endl;
+	cout << *(int*)((char*)& s + 12) << endl;
 }
 
 //父类的私有成员被子类继承了，只是子类不能够使用而已

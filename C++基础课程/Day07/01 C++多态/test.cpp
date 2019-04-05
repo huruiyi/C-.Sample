@@ -10,7 +10,7 @@ void test01()
 {
 	//子类对象的大小>=父类大小的
 	//对象的大小影响对象指针的寻址范围
-	Base *b = new Derived;
+	Base* b = new Derived;
 
 	//Derived d;
 	//Base b = d;
@@ -43,7 +43,7 @@ public:
 	}
 };
 
-void doLogic(Animal &animal)
+void doLogic(Animal& animal)
 {
 	//编译器根据指针或者引用的类型在编译阶段确定Speak函数的调用
 	//由于调用的是Speak是Animal类型对象，所以编译器就将此函数调用在编译阶段绑定为Animal的Speak函数
@@ -66,7 +66,7 @@ void test02()
 	doLogic(dog);
 
 	cout << "---------" << endl;
-	((void(*)())*((int *)*(int *)&dog + 0))();
+	((void(*)()) * ((int*) * (int*)& dog + 0))();
 
 	//dog.Animal::Speak();
 

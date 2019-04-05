@@ -37,7 +37,7 @@ void test02()
 //任何两个不一样的类型不能够直接赋值，必须显式的类型强转
 void test03()
 {
-	char *p = (char *)malloc(sizeof(char) * 64);
+	char* p = (char*)malloc(sizeof(char) * 64);
 }
 
 //4. 函数加强

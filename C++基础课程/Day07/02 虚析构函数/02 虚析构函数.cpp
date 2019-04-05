@@ -27,7 +27,7 @@ public:
 	//纯虚析构函数必须在类外实现
 	virtual ~Animal() = 0;
 public:
-	char *pName;
+	char* pName;
 };
 
 Animal::~Animal()
@@ -58,12 +58,12 @@ public:
 		}
 	}
 public:
-	char *pName;
+	char* pName;
 };
 
 void test()
 {
-	Animal *animal = new Dog;
+	Animal* animal = new Dog;
 	animal->func();
 
 	delete animal;

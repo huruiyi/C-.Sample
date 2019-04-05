@@ -65,14 +65,14 @@ void TemplatePrint()
 	// OK: stdext::checked_array_iterator is checked in debug mode
 	// (i.e. an overrun will trigger a debug assertion)
 	int a7[16];
-	int * p7 = a7;
+	int* p7 = a7;
 	transform(v.begin(), v.end(), stdext::make_checked_array_iterator(p7, 16), [](int n) { return n * 7; });
 	print("a7: ", a7);
 
 	// WARNING SILENCED: stdext::unchecked_array_iterator is marked as checked in debug mode
 	// (i.e. it performs no checking, so an overrun will trigger undefined behavior)
 	int a8[16];
-	int * p8 = a8;
+	int* p8 = a8;
 	transform(v.begin(), v.end(), stdext::make_unchecked_array_iterator(p8), [](int n) { return n * 8; });
 	print("a8: ", a8);
 

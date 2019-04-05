@@ -21,7 +21,7 @@ public:
 		this->mAge = age;
 	}
 
-	bool operator==(const Person&p)
+	bool operator==(const Person& p)
 	{
 		if (this->mName == p.mName && this->mAge == p.mAge)
 		{
@@ -41,7 +41,7 @@ public:
 	int count = 0; //统计MyPring调用次数
 };
 
-void test_foreach_vector_int(vector<int> &v)
+void test_foreach_vector_int(vector<int>& v)
 {
 	for_each(v.begin(), v.end(), [](int val) {cout << val << "\t"; });
 	cout << endl;
@@ -110,18 +110,18 @@ struct MyStruct
 {
 	MyStruct(int i) : mInt(i) {}
 
-	bool operator < (const MyStruct & rhs) const
+	bool operator < (const MyStruct& rhs) const
 	{
 		return mInt < rhs.mInt;
 	}
-	bool operator > (const MyStruct & rhs) const
+	bool operator > (const MyStruct& rhs) const
 	{
 		return mInt > rhs.mInt;
 	}
 	int mInt;
 };
 
-void foreach_MyStruct(vector<MyStruct> &strct)
+void foreach_MyStruct(vector<MyStruct>& strct)
 {
 	for_each(strct.begin(), strct.end(), [](MyStruct  stru) {cout << stru.mInt << "\t"; });
 	cout << endl;
@@ -267,8 +267,8 @@ void test_find_if_p()
 		new Person("E",24)
 	};
 
-	Person * p = new Person("D", 23);
-	vector<Person *>::iterator pos = find_if(v.begin(), v.end(), bind2nd(MyCompare03(), p));
+	Person* p = new Person("D", 23);
+	vector<Person*>::iterator pos = find_if(v.begin(), v.end(), bind2nd(MyCompare03(), p));
 	if (pos != v.end())
 	{
 		cout << "找到值：" << (*pos)->mName << endl;
@@ -515,7 +515,7 @@ void test_difference()
 }
 
 template<class InputIt, class T>
-InputIt find1(InputIt first, InputIt last, const T& value)
+InputIt find1(InputIt first, InputIt last, const T & value)
 {
 	for (; first != last; ++first)
 	{

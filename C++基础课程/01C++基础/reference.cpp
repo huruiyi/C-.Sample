@@ -5,8 +5,8 @@ using namespace std;
 void IntRefenceDemo()
 {
 	int a = 10;
-	int &b = a;
-	int &c = b;
+	int& b = a;
+	int& c = b;
 	//a,b,c指的都是同一块空间
 	b = 100;
 	cout << "a= " << a << "------&a=" << &a << endl;
@@ -22,11 +22,11 @@ struct Person
 	int Age;
 };
 
-void ShowPerson(const Person &person)
+void ShowPerson(const Person& person)
 {
 	cout << person.Name << "  " << person.Age << endl;
 }
-void ChagePerson(Person &person)
+void ChagePerson(Person& person)
 {
 	person.Name = "BBB";
 }
@@ -39,7 +39,7 @@ void StructDemo()
 }
 #endif // 0
 
-int &  RturnRefence()
+int& RturnRefence()
 {
 	//static 的生命周期
 	//int a = 123;
@@ -49,7 +49,7 @@ int &  RturnRefence()
 
 void RturnRefenceDemo()
 {
-	int &a = RturnRefence();
+	int& a = RturnRefence();
 	RturnRefence() = 456;
 	cout << "&a   =      " << a << endl;
 }
@@ -75,7 +75,7 @@ void ArrayRefenceDemo()
 	cout << "arr[0]= " << arr[0] << endl;
 
 	typedef int(ARR_TYPE)[10];
-	ARR_TYPE &arrRef = arr;
+	ARR_TYPE& arrRef = arr;
 	arrRef[1] = 456;
 	cout << "arr[0]= " << arrRef[0] << endl;
 	cout << "arr[1]= " << arrRef[1] << endl;

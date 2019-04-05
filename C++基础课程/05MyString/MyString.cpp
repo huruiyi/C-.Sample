@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include "MyString.h"
 using namespace std;
@@ -9,7 +11,7 @@ MyString::MyString()
 }
 
 //初始化
-MyString::MyString(const char *s)
+MyString::MyString(const char* s)
 {
 	int len = strlen(s);
 	this->pString = new char[len + 1];
@@ -27,7 +29,7 @@ MyString::MyString(int n, char  ch)
 	}
 	this->mSize = len;
 }
-MyString::MyString(const MyString &str)
+MyString::MyString(const MyString& str)
 {
 	int len = strlen(str.pString);
 	this->pString = new char[len + 1];
@@ -36,7 +38,7 @@ MyString::MyString(const MyString &str)
 }
 
 //赋值重载
-MyString & MyString::  operator=(const MyString &str)
+MyString& MyString::  operator=(const MyString& str)
 {
 	if (this->pString)
 	{
@@ -52,13 +54,13 @@ MyString & MyString::  operator=(const MyString &str)
 }
 
 //取值重载
-char & MyString::  operator[](int index)
+char& MyString::  operator[](int index)
 {
 	return this->pString[index];
 }
 
 //相加操作，返回的是新值 。如果为空返回自身
-MyString  MyString::  operator+(const MyString &str)
+MyString  MyString::  operator+(const MyString& str)
 {
 	//if (NULL == str.pString)
 	//{
@@ -79,7 +81,7 @@ MyString  MyString::  operator+(const MyString &str)
 		return *this;
 	}
 	int len = this->mSize + str.mSize;
-	char *newP = new char[len + 1];
+	char* newP = new char[len + 1];
 	memset(newP, 0, len + 1);
 	MyString newStr;
 
@@ -90,7 +92,7 @@ MyString  MyString::  operator+(const MyString &str)
 	newStr.mSize = len;
 	return newStr;
 }
-MyString  MyString::  operator+(const char  *c)
+MyString  MyString::  operator+(const char* c)
 {
 	if (NULL == c)
 	{
@@ -109,7 +111,7 @@ MyString  MyString::  operator+(const char  *c)
 }
 
 //追加操作，返回的是自身，先前的地址，值要处理
-MyString & MyString::  operator+=(const MyString &str)
+MyString& MyString::  operator+=(const MyString & str)
 {
 	if (NULL == str.pString)
 	{
@@ -117,7 +119,7 @@ MyString & MyString::  operator+=(const MyString &str)
 	}
 
 	int len = this->mSize + str.mSize;
-	char *newP = new char[len + 1];;
+	char* newP = new char[len + 1];;
 	memset(newP, 0, len + 1);
 
 	strcat(newP, this->pString);
@@ -133,7 +135,7 @@ MyString & MyString::  operator+=(const MyString &str)
 	this->mSize = len;
 	return *this;
 }
-MyString & MyString::  operator+=(const char *c)
+MyString& MyString::  operator+=(const char* c)
 {
 	if (NULL == c)
 	{
@@ -141,7 +143,7 @@ MyString & MyString::  operator+=(const char *c)
 	}
 
 	int len = this->mSize + strlen(c);
-	char *newP = new char[len + 1];;
+	char* newP = new char[len + 1];;
 	memset(newP, 0, len + 1);
 
 	strcat(newP, this->pString);
@@ -159,7 +161,7 @@ MyString & MyString::  operator+=(const char *c)
 }
 
 //判断
-bool  MyString::  operator==(const MyString &str)
+bool  MyString::  operator==(const MyString & str)
 {
 	//str==NULL ||
 	if (NULL == str.pString || mSize != str.mSize)
@@ -168,7 +170,7 @@ bool  MyString::  operator==(const MyString &str)
 	}
 	return !strcmp(this->pString, str.pString);
 }
-bool  MyString::  operator==(const char *s)
+bool  MyString::  operator==(const char* s)
 {
 	if (NULL == s || mSize != strlen(s))
 	{
@@ -184,7 +186,7 @@ int  MyString::size()
 }
 
 //MyString->const char *
-const char *  MyString::c_str()
+const char* MyString::c_str()
 {
 	return this->pString;
 }
@@ -204,13 +206,13 @@ MyString::  ~MyString()
 }
 
 //输出
-std::ostream & operator<<(std::ostream &out, const MyString &str)
+std::ostream& operator<<(std::ostream & out, const MyString & str)
 {
 	out << str.pString;
 	return out;
 }
 //输入
-std::istream & operator>>(std::istream &in, MyString &str)
+std::istream& operator>>(std::istream & in, MyString & str)
 {
 	char    ch[1024] = { 0 };
 	in.getline(ch, 1024);

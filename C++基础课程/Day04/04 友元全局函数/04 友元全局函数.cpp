@@ -24,12 +24,12 @@ private:
 class GoodFriend
 {
 public:
-	void visit(Building &building)
+	void visit(Building& building)
 	{
 		building.mBedRoom;
 	}
 
-	void clean(Building &building)
+	void clean(Building& building)
 	{
 		building.mBedRoom;
 	}
@@ -67,7 +67,7 @@ public:
 		pBuilding->mBedRoom;
 	}
 public:
-	Building *pBuilding;
+	Building* pBuilding;
 };
 
 //บรป๙ำั

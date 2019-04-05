@@ -23,7 +23,7 @@ void SetwDemo()
 
 	cout << *a << endl;
 
-	char * ps = "Good Morning";
+	char* ps = "Good Morning";
 
 	while (*ps)
 	{
@@ -103,7 +103,7 @@ void AverageDemo()
 #if 1
 void main()
 {
-	char *p = "123456789";
+	char* p = "123456789";
 	while (*p != '\0')
 	{
 		printf("%c %c\n", *p, p[0]);

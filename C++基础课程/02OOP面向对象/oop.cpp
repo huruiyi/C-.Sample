@@ -75,11 +75,11 @@ namespace NDemo
 	public:
 		Student();
 		~Student();
-		Student(const char *name, int age);
+		Student(const char* name, int age);
 
 		void ShowInfo();
 	private:
-		char *sName;
+		char* sName;
 		int Age;
 	};
 
@@ -87,10 +87,10 @@ namespace NDemo
 	{
 	}
 
-	Student::Student(const char *name, int age)
+	Student::Student(const char* name, int age)
 	{
 		int length = strlen(name) + 1;
-		sName = (char *)malloc(sizeof(char)*length);
+		sName = (char*)malloc(sizeof(char) * length);
 		strcpy_s(sName, strlen(sName) + 1, name);
 		Age = age;
 	}
@@ -117,7 +117,7 @@ namespace NDemo
 		cout << p.GetName() << "  " << p.GetAge() << endl;
 		p.ShowPersonInfo();
 
-		Person *per = new Person();
+		Person* per = new Person();
 		per->SetName("张三");
 		delete per;
 	}
@@ -133,7 +133,7 @@ namespace NDemo
 
 		circle.judgeCirleAndPointRelation(point);
 
-		Circle *c = new Circle();
+		Circle* c = new Circle();
 		delete c;
 	}
 	void Demo2()
@@ -143,10 +143,10 @@ namespace NDemo
 	}
 	void Demo3()
 	{
-		int *p1 = new int;
+		int* p1 = new int;
 		delete p1;
 
-		int *p2 = new int[5];
+		int* p2 = new int[5];
 		for (int i = 0; i < 5; i++)
 		{
 			p2[i] = i + 20;
@@ -177,16 +177,16 @@ namespace NDemo
 		}
 		printf("\n");
 
-		int *pi = new int(5);
+		int* pi = new int(5);
 		printf("%d\n", *pi);
 
-		double *pd = new double();
+		double* pd = new double();
 		printf("%d\n", *pd);
 
-		string *ps = new string("123456");  //error
+		string* ps = new string("123456");  //error
 		cout << ps << endl;
 
-		char *pc = new char[5];
+		char* pc = new char[5];
 		for (int i = 0; i < 5; i++)
 		{
 			printf("pc[%d]=%d\n", i, pc[i]);
@@ -334,11 +334,11 @@ namespace this指针加强
 
 	void test()
 	{
-		Person *person = NULL;
+		Person* person = NULL;
 		person->showPerson(); //正常
 							  //person->mA = 123;      //异常
 
-		const Person *person1 = new Person;
+		const Person* person1 = new Person;
 		//person1->printperson1();//常对象只能调用个常函数
 		person1->printPerson2();
 		//55 person1->mA = 123; //常对象不能修改类的普通成员变量，除了mutabel修饰的
@@ -354,7 +354,7 @@ namespace friend友元全局函数
 	{
 		//友元只是声明，不是类的成员
 		friend class GoodFriend;
-		friend void GoodGay(Building &building);
+		friend void GoodGay(Building& building);
 	public:
 		Building()
 		{
@@ -369,7 +369,7 @@ namespace friend友元全局函数
 	class GoodFriend
 	{
 	public:
-		void Visit(Building &xbuilding)
+		void Visit(Building& xbuilding)
 		{
 			xbuilding.mBedRoom;
 			xbuilding.mSittingRoom;
@@ -387,9 +387,9 @@ namespace friend友元全局函数
 		}
 	private:
 		Building building;
-		Building *pBuilding;
+		Building* pBuilding;
 	};
-	void GoodGay(Building &building)
+	void GoodGay(Building& building)
 	{
 		building.mBedRoom = "";
 		building.mSittingRoom = "";
@@ -409,22 +409,22 @@ namespace 友元成员函数
 	class GirlFriend
 	{
 	public:
-		void Talk(Person &person);
-		void Beat(Person &person);
+		void Talk(Person& person);
+		void Beat(Person& person);
 	};
 
 	class Person
 	{
-		friend void GirlFriend::Beat(Person &person);
+		friend void GirlFriend::Beat(Person& person);
 
 	private:
 		string mName;
 	};
 
-	void GirlFriend::Talk(Person &person)
+	void GirlFriend::Talk(Person& person)
 	{
 	}
-	void GirlFriend::Beat(Person &person)
+	void GirlFriend::Beat(Person& person)
 	{
 		person.mName;
 	}
@@ -442,7 +442,7 @@ namespace 运算符重载加号
 			this->mA = a;
 			this->mB = b;
 		}
-		Person operator+(const Person &person)
+		Person operator+(const Person& person)
 		{
 			Person p(this->mA + person.mA, this->mB + person.mB);
 			return p;
@@ -453,7 +453,7 @@ namespace 运算符重载加号
 			return p;
 		}
 	};
-	Person  operator+(int val, const Person &person)
+	Person  operator+(int val, const Person & person)
 	{
 		Person p(person.mA + val, person.mB + val);
 		return p;
@@ -493,7 +493,7 @@ namespace 运算符重载减号
 		{
 		}
 
-		Person operator -(const Student &stu)
+		Person operator -(const Student& stu)
 		{
 			Person p(this->mA - stu.mA, this->mB - stu.mB);
 			return p;
@@ -507,12 +507,12 @@ namespace 运算符重载减号
 	{
 		stu.mA = 1;
 	}
-	void test1(Student & stu)
+	void test1(Student& stu)
 	{
 		stu.mA = 2;
 	}
 
-	void test2(Student * stu)
+	void test2(Student* stu)
 	{
 		stu->mA = 3;
 	}
@@ -523,7 +523,7 @@ namespace 运算符重载减号
 		Student stus[] = { s1,s2 };
 		Student sx1 = stus[0];
 
-		Student &s3 = s1;
+		Student& s3 = s1;
 
 		Student s4(123, 789);
 		test0(s4);//不会修改s4的值
@@ -570,7 +570,7 @@ namespace 运算符重载左移
 {
 	class Person
 	{
-		friend   ostream& operator<<(ostream &out, Person &person);
+		friend   ostream& operator<<(ostream& out, Person& person);
 	public:
 		Person(int a, int b)
 		{
@@ -582,7 +582,7 @@ namespace 运算符重载左移
 		int mB;
 	};
 
-	ostream& operator<<(ostream &out, Person &person)
+	ostream& operator<<(ostream& out, Person& person)
 	{
 		out << person.mA << " " << person.mB;
 		return out;
@@ -610,15 +610,15 @@ namespace 运算符重载赋值
 	class Student
 	{
 	public:
-		char *pName;
+		char* pName;
 		int mAge;
-		Student(const char *name, int age)
+		Student(const char* name, int age)
 		{
 			this->pName = new char[strlen(name) + 1];
 			strcpy_s(this->pName, strlen(name) + 1, name);
 			this->mAge = age;
 		}
-		Student(const Student &stu)
+		Student(const Student& stu)
 		{
 			cout << "拷贝" << endl;
 			this->pName = new char[strlen(stu.pName) + 1];
@@ -626,7 +626,7 @@ namespace 运算符重载赋值
 			this->mAge = stu.mAge;
 		}
 
-		Student &operator=(const Student &stu)
+		Student& operator=(const Student& stu)
 		{
 			cout << "赋值重载" << endl;
 			if (this->pName)
@@ -746,15 +746,15 @@ namespace 指针运算符的重载
 	class SmartPointer
 	{
 	public:
-		SmartPointer(Person * p)
+		SmartPointer(Person* p)
 		{
 			pPerson = p;
 		}
-		Person *operator->()
+		Person* operator->()
 		{
 			return pPerson;
 		}
-		Person &operator*()
+		Person& operator*()
 		{
 			return *pPerson;
 		}
@@ -767,7 +767,7 @@ namespace 指针运算符的重载
 			}
 		}
 	private:
-		Person *pPerson;
+		Person* pPerson;
 	};
 
 	void test()
@@ -807,7 +807,7 @@ namespace Animal多态
 		}
 	};
 
-	void DoLogic(Animal &animal)
+	void DoLogic(Animal& animal)
 	{
 		animal.Speak();
 	}
@@ -825,7 +825,7 @@ namespace Animal多态
 
 	void test2()
 	{
-		Animal *animal = new Dog;
+		Animal* animal = new Dog;
 		animal->Speak();
 	}
 }
@@ -898,10 +898,10 @@ namespace 动物园多态案例
 		{
 			cout << "构造Zoo" << endl;
 
-			this->pAnimals = new Animal*[20];
+			this->pAnimals = new Animal * [20];
 			this->mSize = 0;
 		}
-		void Add(Animal *animal)
+		void Add(Animal* animal)
 		{
 			if (this->mSize == 20)
 			{
@@ -933,7 +933,7 @@ namespace 动物园多态案例
 			this->pAnimals = NULL;
 		}
 	public:
-		Animal **pAnimals;
+		Animal** pAnimals;
 		int mSize;
 	};
 	void test()

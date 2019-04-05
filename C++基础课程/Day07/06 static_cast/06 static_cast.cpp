@@ -13,11 +13,11 @@ void test()
 	int b = static_cast<int>(a);
 
 	//2. 对具有继承关系的指针或者引用之间进行类型转
-	Animal *animal = new Animal;
-	Dog *dog = static_cast<Dog *>(animal); //不安全
+	Animal* animal = new Animal;
+	Dog* dog = static_cast<Dog*>(animal); //不安全
 
-	Dog *d = new Dog;
-	Animal *aa = static_cast<Animal *>(d); //安全
+	Dog* d = new Dog;
+	Animal* aa = static_cast<Animal*>(d); //安全
 
 	//Other *o = static_cast<Other *>(animal);
 }

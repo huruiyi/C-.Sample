@@ -108,7 +108,7 @@ void test04()
 //5. person.score = Æ½¾ù·Ö
 */
 
-void createPerson(vector<Person>&v)
+void createPerson(vector<Person> & v)
 {
 	string nameSeed = "ABCDE";
 	for (int i = 0; i < 5; i++)
@@ -123,7 +123,7 @@ void createPerson(vector<Person>&v)
 	}
 }
 
-void setScore(vector<Person>&v)
+void setScore(vector<Person> & v)
 {
 	for (vector<Person>::iterator it = v.begin(); it != v.end(); it++)
 	{
@@ -160,7 +160,7 @@ void setScore(vector<Person>&v)
 	}
 }
 
-void showScore(vector<Person>&v)
+void showScore(vector<Person> & v)
 {
 	for (vector<Person>::iterator it = v.begin(); it != v.end(); it++)
 	{

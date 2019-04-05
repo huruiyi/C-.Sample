@@ -18,7 +18,7 @@ namespace CAndCPP
 	{
 		//C++必须显示的类型转化
 		//char *p = malloc(sizeof(char) * 10); //C可以
-		char *p = (char *)malloc(sizeof(char) * 10);
+		char* p = (char*)malloc(sizeof(char) * 10);
 	}
 
 	/*

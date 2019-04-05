@@ -20,7 +20,7 @@ public:
 		mB = b;
 	}
 
-	Person operator+(const Person &person)
+	Person operator+(const Person& person)
 	{
 		Person ret(this->mA + person.mA, this->mB + person.mB);
 
@@ -46,7 +46,7 @@ public:
 };
 
 #if 0
-Person operator+(const Person &p1, const Person &p2)
+Person operator+(const Person & p1, const Person & p2)
 {
 	Person person(p1.mA + p2.mA, p1.mB + p2.mB);
 
@@ -54,7 +54,7 @@ Person operator+(const Person &p1, const Person &p2)
 }
 #endif
 
-Person operator+(int val, const Person &p2)
+Person operator+(int val, const Person & p2)
 {
 	Person person(val + p2.mA, val + p2.mB);
 

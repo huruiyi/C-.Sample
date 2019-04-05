@@ -6,7 +6,7 @@ MyString::MyString()
 	this->mSize = 0;
 }
 
-MyString::MyString(const char *s)
+MyString::MyString(const char* s)
 {
 	this->pString = new char[strlen(s) + 1];
 	strcpy(this->pString, s);
@@ -24,14 +24,14 @@ MyString::MyString(int n, char ch)
 	}
 }
 
-MyString::MyString(const MyString &str)
+MyString::MyString(const MyString& str)
 {
 	this->pString = new char[strlen(str.pString) + 1];
 	strcpy(this->pString, str.pString);
 	this->mSize = str.mSize;
 }
 
-MyString& MyString::operator=(const MyString &str)
+MyString& MyString::operator=(const MyString& str)
 {
 	//ÏÈÊÍ·ÅÄÚ´æ
 	if (pString != NULL)
@@ -55,7 +55,7 @@ char& MyString::operator[](int index)
 }
 
 //×Ö·û´®Æ´½Ó²Ù×÷  mystring str1 + str2
-MyString MyString::operator+(const MyString &str)
+MyString MyString::operator+(const MyString& str)
 {
 	if (NULL == str.pString)
 	{
@@ -63,7 +63,7 @@ MyString MyString::operator+(const MyString &str)
 	}
 
 	int size = this->mSize + str.mSize;
-	char *newspace = new char[size + 1];
+	char* newspace = new char[size + 1];
 	memset(newspace, 0, size + 1);
 
 	//strcat
@@ -77,7 +77,7 @@ MyString MyString::operator+(const MyString &str)
 	return temp;
 }
 
-MyString MyString::operator+(const char *s)
+MyString MyString::operator+(const char* s)
 {
 	if (NULL == s)
 	{
@@ -85,7 +85,7 @@ MyString MyString::operator+(const char *s)
 	}
 
 	int size = this->mSize + strlen(s);
-	char *newspace = new char[size + 1];
+	char* newspace = new char[size + 1];
 	memset(newspace, 0, size + 1);
 
 	//strcat
@@ -100,7 +100,7 @@ MyString MyString::operator+(const char *s)
 }
 
 //×Ö·û´®×·¼Ó²Ù×÷  MyString s = "aaa";  s += "ssssss";
-MyString& MyString::operator+=(const MyString &str)
+MyString& MyString::operator+=(const MyString & str)
 {
 	if (NULL == str.pString)
 	{
@@ -108,7 +108,7 @@ MyString& MyString::operator+=(const MyString &str)
 	}
 
 	int size = this->mSize + str.mSize;
-	char *newspace = new char[size + 1];
+	char* newspace = new char[size + 1];
 	memset(newspace, 0, size + 1);
 
 	strcat(newspace, this->pString);
@@ -127,7 +127,7 @@ MyString& MyString::operator+=(const MyString &str)
 	return *this;
 }
 
-MyString& MyString::operator+=(const char *s)
+MyString& MyString::operator+=(const char* s)
 {
 	if (NULL == s)
 	{
@@ -135,7 +135,7 @@ MyString& MyString::operator+=(const char *s)
 	}
 
 	int size = this->mSize + strlen(s);
-	char *newspace = new char[size + 1];
+	char* newspace = new char[size + 1];
 	memset(newspace, 0, size + 1);
 
 	strcat(newspace, this->pString);
@@ -155,7 +155,7 @@ MyString& MyString::operator+=(const char *s)
 }
 
 //±È½Ï²Ù×÷
-bool MyString::operator==(const MyString &str)
+bool MyString::operator==(const MyString & str)
 {
 	if (NULL == str.pString)
 	{
@@ -175,7 +175,7 @@ bool MyString::operator==(const MyString &str)
 	return true;
 }
 
-bool MyString::operator==(const char *s)
+bool MyString::operator==(const char* s)
 {
 	if (NULL == s)
 	{
@@ -218,14 +218,14 @@ MyString::~MyString()
 }
 
 //Êä³ö×Ö·û´®
-std::ostream& operator<<(std::ostream &out, const MyString &str)
+std::ostream& operator<<(std::ostream & out, const MyString & str)
 {
 	out << str.pString;
 	return out;
 }
 
 //ÊäÈë×Ö·û´® MyString str; cin >> str;
-std::istream& operator>>(std::istream &in, MyString &str)
+std::istream& operator>>(std::istream & in, MyString & str)
 {
 	char buf[1024] = { 0 };
 	in.getline(buf, 1024);

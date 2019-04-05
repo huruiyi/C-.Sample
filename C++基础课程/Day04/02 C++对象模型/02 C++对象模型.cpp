@@ -28,7 +28,7 @@ struct Person
 	int mAge;
 };
 
-void showPerson(Person *this)
+void showPerson(Person* this)
 {
 	cout << this->mAge << endl;
 }

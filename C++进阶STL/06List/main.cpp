@@ -141,7 +141,7 @@ public:
 	}
 	bool operator==(const Person p) const
 	{
-		if (p.mName == this->mName&&p.mAge == this->mAge)
+		if (p.mName == this->mName && p.mAge == this->mAge)
 		{
 			return true;
 		}
@@ -162,7 +162,7 @@ public:
 	}
 };
 //对于自定义数据类型，必须指定排序规则
-bool ComparePerson(Person & p1, Person & p2)
+bool ComparePerson(Person& p1, Person& p2)
 {
 	if (p1.mAge == p2.mAge)
 	{

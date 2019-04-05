@@ -8,14 +8,14 @@ public:
 	~Circle();
 
 	void setHeart(int x, int y);
-	void setHeart(const Point &point);
+	void setHeart(const Point& point);
 
 	void setR(int r);
 	int getR();
 
 	Point getHeart();
 	//判断点和圆的关系
-	void judgeCirleAndPointRelation(Point &point);
+	void judgeCirleAndPointRelation(Point& point);
 private:
 	//圆心
 	Point mHeart;

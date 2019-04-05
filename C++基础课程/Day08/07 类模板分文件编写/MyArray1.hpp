@@ -20,14 +20,14 @@ class MyArray1
 	//friend void showArray<>(MyArray1<T> &arr);
 
 public:
-	T *pAddress;
+	T* pAddress;
 	int mSize;
 	int mCapcity;
 
 public:
 	MyArray1(int size);
 	~MyArray1();
-	void Push(const T &pAddress)
+	void Push(const T& pAddress)
 	{
 		if (this->mSize >= mCapcity)
 		{
@@ -62,13 +62,13 @@ template<class T> MyArray1<T>::~MyArray1()
 	delete this->pAddress;
 }
 
-template<class T> std::ostream& operator<<(std::ostream& out, MyArray1<T> &arr)
+template<class T> std::ostream& operator<<(std::ostream& out, MyArray1<T>& arr)
 {
 	showArray(arr);
 	return out;
 }
 
-template<class T> void showArray(MyArray1<T> &arr)
+template<class T> void showArray(MyArray1<T>& arr)
 {
 	for (int i = 0; i < arr.mSize; i++)
 	{

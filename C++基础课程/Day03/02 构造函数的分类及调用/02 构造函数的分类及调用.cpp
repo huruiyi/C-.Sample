@@ -22,12 +22,12 @@ public:
 	}
 
 	//拷贝构造函数，注意const可以省略，但是&符号不能省略
-	Person(const Person &person)
+	Person(const Person& person)
 	{
 		cout << "拷贝构造函数!" << endl;
 	}
 
-	Person& operator=(const Person &person)
+	Person& operator=(const Person& person)
 	{
 		cout << "赋值函数!" << endl;
 		return *this;
@@ -76,8 +76,8 @@ void test02()
 
 void test03()
 {
-	char *ch1 = "Hello";
-	char * ch2 = new char[strlen(ch1) + 1];
+	char* ch1 = "Hello";
+	char* ch2 = new char[strlen(ch1) + 1];
 
 	strcpy(ch2, "Hello");
 	cout << ch1 << "   " << ch2 << endl;

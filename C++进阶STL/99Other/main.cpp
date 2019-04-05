@@ -29,6 +29,7 @@ fill算法 向容器中添加元素
 @param end 容器结束迭代器
 @param value t填充元素
 */
+
 void test02()
 {
 	vector<int>v;
@@ -80,8 +81,10 @@ void test04()
 	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
 	cout << endl;
 	replace_if(v.begin(), v.end(), myReplace(), 4000);
-	replace_if(v.begin(), v.end(), myReplace(), [](int a) {return a > 5; });
+	//replace_if(v.begin(), v.end(), myReplace(), [](int a) {return a > 5; });
+
 	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+	for_each(v.begin(), v.end(), [](int v) {cout << v << " "; });
 }
 
 void test05()
@@ -123,9 +126,7 @@ void test06()
 }
 int main()
 {
-	//test01();
-	test02();
-
+	test04();
 	system("pause");
 	return EXIT_SUCCESS;
 }

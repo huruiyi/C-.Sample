@@ -82,8 +82,8 @@ int main()
 	MyString s15 = "def";
 	cout << (s13 == s14 ? "相等" : "不相等") << endl;
 	cout << (s13 == s15 ? "相等" : "不相等") << endl;
-	const char *ch1 = "abc";
-	const char *ch2 = "def";
+	const char* ch1 = "abc";
+	const char* ch2 = "def";
 	cout << (s13 == ch1 ? "相等" : "不相等") << endl;
 	cout << (s13 == ch2 ? "相等" : "不相等") << endl;
 
@@ -104,7 +104,6 @@ int main()
 	s18.ShowInfo();
 
 	getchar();
-
 
 	return 0;
 }

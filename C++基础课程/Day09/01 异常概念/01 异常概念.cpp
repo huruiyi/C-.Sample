@@ -67,7 +67,7 @@ void test02()
 	{
 		myFunc();
 	}
-	catch (const char * e)
+	catch (const char* e)
 	{
 		cout << e;
 		cout << "const char *ÀàÐÍÒì³££¡" << endl;

@@ -26,7 +26,7 @@ using namespace std;
 	equal_range(keyElem);//返回容器中key与keyElem相等的上下限的两个迭代器。
  **/
 
-void test_insert(map<int, int> &mp)
+void test_insert(map<int, int>& mp)
 {
 	// call insert(ValTy&&) version
 	mp.insert(make_pair(2, 20));
@@ -37,7 +37,7 @@ void test_insert(map<int, int> &mp)
 	mp.insert(pair<int, int>(3, 30));
 	cout << "mp size:" << mp.size() << endl;
 }
-void test_empty(map<int, int> &mp)
+void test_empty(map<int, int>& mp)
 {
 	if (mp.empty())
 	{
@@ -48,7 +48,7 @@ void test_empty(map<int, int> &mp)
 		cout << "map非空" << endl;
 	}
 }
-void test_foreach(map<int, int> &mp)
+void test_foreach(map<int, int>& mp)
 {
 	for (map<int, int>::iterator i = mp.begin(); i != mp.end(); i++)
 	{
@@ -56,14 +56,14 @@ void test_foreach(map<int, int> &mp)
 	}
 	cout << endl;
 }
-void test_clear_erase(map<int, int> &mp)
+void test_clear_erase(map<int, int>& mp)
 {
 	//mp.clear();//删除所有元素
 	//mp.erase(3); //删除key为3的元素
 	//mp.erase(mp.begin());//删除第一个元素
 	mp.erase(mp.begin(), mp.end());//从头删到尾
 }
-void test_find(map<int, int> &mp, int val)
+void test_find(map<int, int>& mp, int val)
 {
 	map<int, int>::iterator pos = mp.find(val);
 	if (pos != mp.end())
@@ -75,7 +75,7 @@ void test_find(map<int, int> &mp, int val)
 		cout << "未找到" << endl;
 	}
 }
-void test_cout(map<int, int> &mp)
+void test_cout(map<int, int>& mp)
 {
 	int num = mp.count(8);
 	cout << num << endl;
@@ -88,7 +88,7 @@ void test_cout(map<int, int> &mp)
 		cout << "不存在" << endl;
 	}
 }
-void test_bound(map<int, int> &m)
+void test_bound(map<int, int>& m)
 {
 	//lower_bound(keyElem);//返回第一个key>=keyElem元素的迭代器。
 	map<int, int>::iterator it = m.lower_bound(3);
@@ -131,7 +131,7 @@ namespace Multimap_Sample
 		int mMoney; //工资
 	};
 
-	void createWorker(vector<Worker>&v)
+	void createWorker(vector<Worker>& v)
 	{
 		string nameSeed = "ABCDE";
 		for (int i = 0; i < 5; i++)
@@ -148,7 +148,7 @@ namespace Multimap_Sample
 		}
 	}
 
-	void setGroup(vector<Worker>&v, multimap<int, Worker>&m)
+	void setGroup(vector<Worker>& v, multimap<int, Worker>& m)
 	{
 		for (vector<Worker>::iterator it = v.begin(); it != v.end(); it++)
 		{
@@ -159,7 +159,7 @@ namespace Multimap_Sample
 		}
 	}
 
-	void showGroup1(multimap<int, Worker>&m)
+	void showGroup1(multimap<int, Worker>& m)
 	{
 		// 0  A  0  B   1 C   2 D  2 E 假数据
 
@@ -193,7 +193,7 @@ namespace Multimap_Sample
 		cout << "-----------------------" << endl;
 	}
 
-	void showGroup2(multimap<int, Worker>&m)
+	void showGroup2(multimap<int, Worker>& m)
 	{
 		multimap<int, Worker>::iterator cPos = m.find(CAIWU);
 		multimap<int, Worker>::iterator rPos = m.find(RENLI);
@@ -474,7 +474,7 @@ void test_multimap4()
 class myCompareMap
 {
 public:
-	bool operator()(const int & v1, const int & v2)const
+	bool operator()(const int& v1, const int& v2)const
 	{
 		return v1 > v2;
 	}

@@ -17,16 +17,16 @@ public:
 void test()
 {
 	//1. 没有发生多态的时候
-	Animal *animal = new Animal;
-	Dog *d = dynamic_cast<Dog *>(animal);
+	Animal* animal = new Animal;
+	Dog* d = dynamic_cast<Dog*>(animal);
 
-	Dog *dog = new Dog;
-	Animal *a = dynamic_cast<Animal *>(dog);
+	Dog* dog = new Dog;
+	Animal* a = dynamic_cast<Animal*>(dog);
 
 	//2. 发生多态
-	Animal *aa = new Dog;
-	Dog *dd = dynamic_cast<Dog *>(aa);
-	dynamic_cast<Animal *>(dd);
+	Animal* aa = new Dog;
+	Dog* dd = dynamic_cast<Dog*>(aa);
+	dynamic_cast<Animal*>(dd);
 }
 
 int main() {

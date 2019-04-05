@@ -83,7 +83,7 @@ void test02()
 
 void test03()
 {
-	vector<Person *> v;
+	vector<Person*> v;
 	Person p1("aaa", 10);
 	Person p2("bbb", 20);
 	Person p3("ccc", 30);
@@ -97,7 +97,7 @@ void test03()
 	v.push_back(&p5);
 	v.push_back(&p6);
 
-	for (vector<Person *>::iterator itBegin = v.begin(); itBegin < v.end(); itBegin++)
+	for (vector<Person*>::iterator itBegin = v.begin(); itBegin < v.end(); itBegin++)
 	{
 		cout << (*itBegin)->mName << (*itBegin)->mAge << endl;
 	}
@@ -283,7 +283,7 @@ void test10()
 	//Ô¤Áô¿Õ¼ä
 	v.reserve(100000);
 
-	int *p = NULL;
+	int* p = NULL;
 	int num = 0;
 	for (int i = 0; i < 100000; i++)
 	{
@@ -335,7 +335,7 @@ void test_foreach()
 	}
 	cout << '\n';
 
-	for_each(nums.begin(), nums.end(), [](int &n) { n++; });
+	for_each(nums.begin(), nums.end(), [](int& n) { n++; });
 	Sum s = for_each(nums.begin(), nums.end(), Sum());
 
 	cout << "after:  ";

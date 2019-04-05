@@ -73,7 +73,7 @@ BOOL CMy03CStaticTextDlg::OnInitDialog()
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
-	CMenu* pSysMenu = GetSystemMenu(FALSE);
+	CMenu * pSysMenu = GetSystemMenu(FALSE);
 	if (pSysMenu != NULL)
 	{
 		BOOL bNameValid;

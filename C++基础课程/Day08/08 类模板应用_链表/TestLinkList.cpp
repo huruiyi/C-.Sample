@@ -80,7 +80,7 @@ public:
 	{
 	}
 
-	Person(const int & a)
+	Person(const int& a)
 	{
 		this->mA = a;
 	}

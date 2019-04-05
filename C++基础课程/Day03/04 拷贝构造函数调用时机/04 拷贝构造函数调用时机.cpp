@@ -15,7 +15,7 @@ public:
 		cout << "Person有参构造函数!" << endl;
 	}
 
-	Person(const Person &person)
+	Person(const Person& person)
 	{
 		cout << "Person拷贝构造函数!" << endl;
 	}
@@ -25,7 +25,7 @@ public:
 		cout << "Person析构函数" << endl;
 	}
 public:
-	char *pName;
+	char* pName;
 };
 
 //对象以值传递的方式传给函数参数
@@ -47,7 +47,7 @@ Person CreatePerson()
 {
 	cout << "-----------------" << endl;
 	Person person;
-	cout << "CreatePerson:" << (int)&person << endl;
+	cout << "CreatePerson:" << (int)& person << endl;
 	return person;
 }
 
@@ -55,11 +55,11 @@ void test02()
 {
 	Person person = CreatePerson();
 	cout << "-----------------" << endl;
-	cout << "test02:" << (int)&person << endl;
+	cout << "test02:" << (int)& person << endl;
 }
 
 #if 0
-void CreatePerson(Person *person)
+void CreatePerson(Person* person)
 {
 	//对person构造
 	*person
@@ -71,7 +71,7 @@ void test02()
 	//只是分配内存
 	Person person;
 	CreatePerson(person);
-	cout << (int)&person << endl;
+	cout << (int)& person << endl;
 }
 #endif
 

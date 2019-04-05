@@ -7,23 +7,23 @@ class Person;
 class GirlFriend
 {
 public:
-	void talk(Person &person);
+	void talk(Person& person);
 
-	void beat(Person &person);
+	void beat(Person& person);
 };
 
 class Person
 {
-	friend void GirlFriend::beat(Person &person);
+	friend void GirlFriend::beat(Person& person);
 private:
 	string mName;
 };
 
-void GirlFriend::talk(Person &person)
+void GirlFriend::talk(Person& person)
 {
 }
 
-void GirlFriend::beat(Person &person)
+void GirlFriend::beat(Person& person)
 {
 	person.mName;
 }

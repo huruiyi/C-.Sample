@@ -9,6 +9,6 @@ using namespace std;
 class FIleManger
 {
 public:
-	void LoadFile(string fileName, map<int, map<string, string>> &mp);
-	void ParseLineToVector(string line, vector<string> &vf);
+	void LoadFile(string fileName, map<int, map<string, string>>& mp);
+	void ParseLineToVector(string line, vector<string>& vf);
 };

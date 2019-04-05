@@ -3,7 +3,7 @@
 #include"Cube.h"
 using namespace std;
 
-bool CubeComapreCube(const Cube &c1, const Cube &c2)
+bool CubeComapreCube(const Cube& c1, const Cube& c2)
 {
 	if (c1.getH() == c2.getH() && c1.getL() == c2.getL() && c1.getW() == c2.getW())
 	{

@@ -9,12 +9,12 @@ using namespace std;
 void test01()
 {
 	int a = 10;
-	const int &ret = a;
+	const int& ret = a;
 
 	//普通引用不能引用字面量
 	//int &intRef = 10;
 	//常量引用可以引用字面量,常量引用可以引用右值
-	const int &intRef = 10; //int temp = 10; const int& intRef = temp;
+	const int& intRef = 10; //int temp = 10; const int& intRef = temp;
 }
 
 struct Person
@@ -23,7 +23,7 @@ struct Person
 	int mAge;
 };
 
-void printPerson(const Person &person)
+void printPerson(const Person& person)
 {
 	cout << person.mName << " " << person.mAge << endl;
 }
@@ -48,7 +48,7 @@ void test03()
 {
 	//不要返回局部变量的引用
 	//编程的时候，一定要注意变量的生命周期
-	int &ref = func();
+	int& ref = func();
 	ref = 100;
 
 	//一般情况下，如果函数的返回值是一个引用，那么可以当左值，也可以当右值
@@ -58,7 +58,7 @@ void test03()
 }
 
 //普通引用不能引用字面量
-void myFunc(const int &a)
+void myFunc(const int& a)
 {
 	cout << "a = " << a << endl;
 }

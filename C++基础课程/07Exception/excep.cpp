@@ -68,7 +68,7 @@ void test2()
 	{
 		CharPException();
 	}
-	catch (const char * error)
+	catch (const char* error)
 	{
 		cout << error << endl;
 	}
@@ -142,7 +142,7 @@ void test4()
 		//throw NullException();
 		throw ZeroException();
 	}
-	catch (BaseException& ex)
+	catch (BaseException & ex)
 	{
 		ex.PrintError();
 	}

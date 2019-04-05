@@ -11,7 +11,7 @@ class CMy02CDialogDlg : public CDialogEx
 public:
 	CMy02CDialogDlg(CWnd* pParent = NULL);	// 标准构造函数
 	~CMy02CDialogDlg();
-// 对话框数据
+	// 对话框数据
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_MY02CDIALOG_DIALOG };
 #endif
@@ -34,5 +34,5 @@ public:
 	afx_msg void OnBnClickedButtonShow();
 private:
 	CDialogShow dlg;
-	CDialogShow *m_dlg;
+	CDialogShow* m_dlg;
 };

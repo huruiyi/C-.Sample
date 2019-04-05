@@ -5,7 +5,7 @@ using namespace std;
 
 class Person
 {
-	friend ostream& operator<<(ostream &out, Person &person);
+	friend ostream& operator<<(ostream& out, Person& person);
 public:
 	Person(int a, int b)
 	{
@@ -17,7 +17,7 @@ private:
 	int mB;
 };
 
-ostream& operator<<(ostream &out, Person &person)
+ostream& operator<<(ostream& out, Person& person)
 {
 	out << person.mA << " " << person.mB;
 	return out;
@@ -30,7 +30,7 @@ void test01()
 	cout << a;
 	cout.operator<<(a);//int
 
-	const char *str = "hello world!";
+	const char* str = "hello world!";
 	cout << str;
 	cout.operator<<(str); //const char *
 

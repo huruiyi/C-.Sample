@@ -8,7 +8,7 @@ WinApp app;
 
 BOOL WinApp::InitInstance()
 {
-	MyFrame * frame = new  MyFrame;
+	MyFrame* frame = new  MyFrame;
 	frame->ShowWindow(SW_SHOWNORMAL);
 	frame->UpdateWindow();
 	m_pMainWnd = frame;
@@ -49,7 +49,7 @@ void MyFrame::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 void MyFrame::OnPaint()
 {
 	CTime theTime = CTime::GetCurrentTime();
-	TCHAR *ch = TEXT("Hello World");
+	TCHAR* ch = TEXT("Hello World");
 
 	CPaintDC dc(this);
 

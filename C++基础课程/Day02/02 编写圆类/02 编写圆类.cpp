@@ -18,7 +18,7 @@ public:
 	}
 	int getZhouLength()
 	{
-		return (int)(2 * mR *3.14);
+		return (int)(2 * mR * 3.14);
 	}
 public:
 	//°ë¾¶

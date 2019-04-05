@@ -70,7 +70,7 @@ public:
 void test()
 {
 	//AbstractPaper per = new AbstractPaper;//包含纯虚函数的类不能实例化
-	AbstractPaper *paper = NULL;
+	AbstractPaper* paper = NULL;
 	paper = new ChinesePaper;
 	paper->startTest();
 	delete paper;

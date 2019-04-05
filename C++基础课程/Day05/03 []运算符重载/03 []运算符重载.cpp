@@ -23,7 +23,7 @@ void test02()
 
 void func(initializer_list<int> list)
 {
-	for (int x : list)  
+	for (int x : list)
 		std::cout << x << ' ';
 }
 

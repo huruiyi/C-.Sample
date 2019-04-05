@@ -11,10 +11,10 @@
 
 void test0()
 {
-	MyArray2<int> *arr = new MyArray2<int>;
+	MyArray2<int>* arr = new MyArray2<int>;
 	arr->mSize = 100;
 	int a = 123;
-	int *p = &a;
+	int* p = &a;
 	arr->pAddress = p;
 	cout << arr;
 }
@@ -37,7 +37,7 @@ void test1()
 		int arrItem5 = arr[5];
 		cout << arrItem5 << endl;
 	}
-	catch (const string &str)
+	catch (const string & str)
 	{
 		cout << str << endl;
 	}

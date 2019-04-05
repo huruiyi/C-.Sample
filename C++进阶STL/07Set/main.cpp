@@ -24,7 +24,7 @@ void test01()
 	cout << p2.first << p2.second << endl;
 }
 
-void test_insert(set<int> &s1)
+void test_insert(set<int>& s1)
 {
 	pair< set<int>::iterator, bool > ret = s1.insert(10);
 	if (ret.second)
@@ -50,7 +50,7 @@ void test_insert(set<int> &s1)
 	s2.insert(10);
 	s2.insert(10);
 }
-void test_count(set<int> & se, int delVal)
+void test_count(set<int>& se, int delVal)
 {
 	//计数  count 对于set而言 要么0 要么1
 	int num = se.count(delVal);
@@ -194,7 +194,7 @@ public:
 class myPersonCompare
 {
 public:
-	bool operator()(const Person &p1, const Person &p2) const
+	bool operator()(const Person& p1, const Person& p2) const
 	{
 		return p1.mAge > p2.mAge;
 	}
@@ -216,11 +216,11 @@ void test04()
 	}
 }
 
-template <typename T> void print_elem(const T& t) {
+template <typename T> void print_elem(const T & t) {
 	cout << "(" << t << ") ";
 }
 
-template <typename T> void print_collection(const T& t) {
+template <typename T> void print_collection(const T & t) {
 	cout << t.size() << " elements: ";
 
 	for (const auto& p : t)
@@ -230,7 +230,7 @@ template <typename T> void print_collection(const T& t) {
 	cout << endl;
 }
 
-template <typename C, class T> void findit(const C& c, T val) {
+template <typename C, class T> void findit(const C & c, T val) {
 	cout << "Trying find() on value " << val << endl;
 	auto result = c.find(val);
 	if (result != c.end()) {
@@ -267,7 +267,7 @@ void test_multiset1()
 	findit(s1, 6);
 }
 
-template <typename S> void print(const S& s)
+template <typename S> void print(const S & s)
 {
 	cout << s.size() << " elements: ";
 

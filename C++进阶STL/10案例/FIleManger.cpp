@@ -1,6 +1,6 @@
 #include "FIleManger.h"
 
-void FIleManger::LoadFile(string fileName, map<int, map<string, string>> &mp)
+void FIleManger::LoadFile(string fileName, map<int, map<string, string>>& mp)
 {
 	ifstream ifs(fileName);
 	string firstLine;
@@ -27,7 +27,7 @@ void FIleManger::LoadFile(string fileName, map<int, map<string, string>> &mp)
 	}
 }
 
-void FIleManger::ParseLineToVector(string line, vector<string> &vf)
+void FIleManger::ParseLineToVector(string line, vector<string>& vf)
 {
 	int pos = 0;
 	int start = 0;

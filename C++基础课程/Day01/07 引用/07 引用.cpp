@@ -7,8 +7,8 @@ void test01()
 {
 	//从语法角度：引用的语法就是给一个已有变量取一个别名
 	int a = 10;
-	int &b = a;
-	int &d = b;
+	int& b = a;
+	int& d = b;
 
 	d = 100;
 	cout << "a = " << a << endl;
@@ -20,7 +20,7 @@ void test01()
 	cout << "d = " << &d << endl;
 
 	double c = 3.14;
-	double &ref = c;
+	double& ref = c;
 }
 
 //2. 使用引用注意点
@@ -29,7 +29,7 @@ void test02()
 	//1. 引用一旦初始化，不能修改
 	int a = 10;
 	int c = 20;
-	int &b = a;
+	int& b = a;
 	b = c; //赋值
 
 	//2. 引用一定要引用一块合法的内存，切记不能返回局部变量的引用
@@ -41,7 +41,7 @@ void test02()
 	cout << "Arr[0]:" << arr[0] << endl;
 
 	typedef int(ARR_TYPE)[10];
-	ARR_TYPE &arrRef = arr;
+	ARR_TYPE& arrRef = arr;
 	cout << arrRef[0] << endl;
 }
 

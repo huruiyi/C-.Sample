@@ -53,10 +53,10 @@ void test()
 class Student
 {
 public:
-	Student(const char *name, int age)
+	Student(const char* name, int age)
 	{
 		cout << "Student¹¹Ôìº¯Êı!" << endl;
-		pName = (char *)malloc(sizeof(char)* strlen(name) + 1);
+		pName = (char*)malloc(sizeof(char) * strlen(name) + 1);
 		strcpy(pName, name);
 		mAge = age;
 	}
@@ -77,7 +77,7 @@ public:
 	}
 
 public:
-	char *pName;
+	char* pName;
 	int mAge;
 };
 

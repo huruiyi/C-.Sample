@@ -9,7 +9,7 @@ public:
 	{
 	}
 
-	MyString(const char *str)
+	MyString(const char* str)
 	{
 	}
 };

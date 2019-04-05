@@ -12,7 +12,7 @@ public:
 		pAddress = new T[10];
 	}
 public:
-	T *pAddress;
+	T* pAddress;
 	int mSize;
 };
 
@@ -37,20 +37,20 @@ public:
 	AgeType mAge;
 };
 
-void printPerson(Person<string, int> &person)
+void printPerson(Person<string, int>& person)
 {
 	cout << "Name:" << person.mName << " Age:" << person.mAge << endl;
 }
 
 template<class T>
-void showPerson(T &person)
+void showPerson(T& person)
 {
 	cout << typeid(T).name() << endl;
 	cout << "Name:" << person.mName << " Age:" << person.mAge << endl;
 }
 
 template<class NameType, class AgeType>
-void lookPerson(Person<NameType, AgeType> &person)
+void lookPerson(Person<NameType, AgeType>& person)
 {
 	cout << typeid(NameType).name() << endl;
 	cout << typeid(AgeType).name() << endl;

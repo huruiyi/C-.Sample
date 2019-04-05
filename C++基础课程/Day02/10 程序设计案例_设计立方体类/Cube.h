@@ -21,7 +21,7 @@ public:
 
 	int caculateV();
 
-	bool CubeComapreCube(const Cube &c);
+	bool CubeComapreCube(const Cube& c);
 
 private:
 	int mL;

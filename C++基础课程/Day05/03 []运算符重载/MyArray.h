@@ -40,7 +40,7 @@ public:
 	void foreach();
 
 private:
-	int *pArray; //指向真正保存数据的内存
+	int* pArray; //指向真正保存数据的内存
 	int mCapacity; //容量
 	int mSize; //大小
 };

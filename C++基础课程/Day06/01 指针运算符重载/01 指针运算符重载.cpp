@@ -23,7 +23,7 @@ public:
 class SmartPointer
 {
 public:
-	SmartPointer(Person *person)
+	SmartPointer(Person* person)
 	{
 		pPerson = person;
 	}
@@ -47,7 +47,7 @@ public:
 		}
 	}
 private:
-	Person *pPerson;
+	Person* pPerson;
 };
 
 void doLogic()

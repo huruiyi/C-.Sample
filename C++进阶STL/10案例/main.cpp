@@ -25,7 +25,7 @@ public:
 	int score[3]; //得分
 };
 
-void createSpraker(vector<int>&v, map<int, Speaker>&m)
+void createSpraker(vector<int>& v, map<int, Speaker>& m)
 {
 	string nameSeed = "ABCDEFGHIJKLMNOPQRSTUVWX";
 	for (int i = 0; i < 24; i++)
@@ -46,12 +46,12 @@ void createSpraker(vector<int>&v, map<int, Speaker>&m)
 	}
 }
 
-void draw(vector<int>&v)
+void draw(vector<int> & v)
 {
 	random_shuffle(v.begin(), v.end());
 }
 
-void speechContest(int index, vector<int>&v, map<int, Speaker>&m, vector<int>&v2)
+void speechContest(int index, vector<int> & v, map<int, Speaker> & m, vector<int> & v2)
 {
 	multimap<int, int, greater<int>> groupMap; // 分数，编号 ，排序规则
 	int num = 0;
@@ -97,7 +97,7 @@ void speechContest(int index, vector<int>&v, map<int, Speaker>&m, vector<int>&v2
 	}
 }
 
-void showScore(int index, vector<int>&v, map<int, Speaker>&m)
+void showScore(int index, vector<int> & v, map<int, Speaker> & m)
 {
 	cout << "第" << index << "轮晋级人员如下：" << endl;
 	for (map<int, Speaker>::iterator it = m.begin(); it != m.end(); it++)
@@ -182,7 +182,7 @@ void test_fileManger()
 	cout << "test_fileManger............................" << endl;
 }
 
-void print(std::string::size_type n, std::string const &s)
+void print(std::string::size_type n, std::string const& s)
 {
 	if (n == std::string::npos)
 	{

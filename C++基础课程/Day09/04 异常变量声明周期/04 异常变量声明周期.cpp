@@ -39,7 +39,7 @@ void test01()
 	{
 		doLogic();
 	}
-	catch (MyException &ex)
+	catch (MyException & ex)
 	{
 		ex.printError();
 	}
@@ -85,7 +85,7 @@ void test02()
 	{
 		myFunc();
 	}
-	catch (BaseException &ex)
+	catch (BaseException & ex)
 	{
 		ex.printError();
 	}
