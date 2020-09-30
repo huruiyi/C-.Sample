@@ -9,20 +9,20 @@ int isPrime(int num)
 		return 0;
 	if (num == 2 || num == 3)
 		return 1;
-	for (int i = 2; i <= (int)sqrt(num * 1.0); i++)
+	for (int i = 2; i <= static_cast<int>(sqrt(num * 1.0)); i++)
 	{
 		if (num % i == 0)
 		{
 			flag = 0;
 			break;
 		}
-		else
-			flag = 1;//质数
+		flag = 1;
+		//质数
 	}
 	if (flag == 0)
 		return 0;
-	else
-		return 1;//质数
+	return 1;
+	//质数
 }
 
 int main6()
@@ -44,7 +44,7 @@ int main6()
 			k++;
 		}
 	}
-	/*
+ 
 	for (int i = 0; i < j; i++)
 	{
 		printf("%d\t", prm[i]);
@@ -54,7 +54,7 @@ int main6()
 	{
 		printf("%d\t", unPrm[i]);
 	}
-	*/
+	 
 	system("pause");
 	return 0;
 }

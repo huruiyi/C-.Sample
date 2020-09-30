@@ -24,12 +24,6 @@
     <ClCompile Include="03.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="04.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="05.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="06.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -42,12 +36,6 @@
     <ClCompile Include="09.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="10.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="11.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="A.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -55,6 +43,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="C.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="E.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

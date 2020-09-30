@@ -10,7 +10,7 @@ void Circle::setHeart(int x, int y)
 	mHeart.setX(x);
 	mHeart.setY(y);
 }
-void Circle::setHeart(const Point& point)
+void Circle::setHeart(const Point_V1& point)
 {
 	mHeart.setX(point.getX());
 	mHeart.setY(point.getY());
@@ -28,12 +28,12 @@ int Circle::getR()
 {
 	return mR;
 }
-Point Circle::getHeart()
+Point_V1 Circle::getHeart()
 {
 	return mHeart;
 }
 //判断点和圆的关系
-void Circle::judgeCirleAndPointRelation(Point& point)
+void Circle::judgeCirleAndPointRelation(Point_V1& point)
 {
 	//using namespace std;
 	//using std::pow;

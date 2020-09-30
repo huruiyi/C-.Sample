@@ -1,7 +1,9 @@
 #include <iostream>
 #include <climits>              // use limits.h for older systems
-using namespace std;
 #include <cmath>
+
+using namespace std;
+
 int arith();
 int assign();
 int bondini();
@@ -18,13 +20,13 @@ int limits();
 class Point
 {
 public:
-	void setPoint(int x, int y) //ÊµÏÖsetPointº¯Êý
+	void setPoint(int x, int y) //å®žçŽ°setPointå‡½æ•°
 	{
 		xPos = x;
 		yPos = y;
 	}
 
-	void printPoint()       //ÊµÏÖprintPointº¯Êý
+	void printPoint()       //å®žçŽ°printPointå‡½æ•°
 	{
 		cout << "x = " << xPos << endl;
 		cout << "y = " << yPos << endl;
@@ -328,9 +330,9 @@ int typecast()
 
 void main3_0()
 {
-	Point m;        //ÓÃ¶¨ÒåºÃµÄÀà´´½¨Ò»¸ö¶ÔÏó µãM
-	m.setPoint(10, 20); //ÉèÖÃ Mµã µÄx,yÖµ
-	m.printPoint();     //Êä³ö Mµã µÄÐÅÏ¢
+	Point m;        //ç”¨å®šä¹‰å¥½çš„ç±»åˆ›å»ºä¸€ä¸ªå¯¹è±¡ ç‚¹M
+	m.setPoint(10, 20); //è®¾ç½® Mç‚¹ çš„x,yå€¼
+	m.printPoint();     //è¾“å‡º Mç‚¹ çš„ä¿¡æ¯
 
 	cin.get();
 }

@@ -123,16 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01.cpp" />
-    <ClCompile Include="02.cpp" />
-    <ClCompile Include="03.cpp" />
-    <ClCompile Include="04.cpp" />
-    <ClCompile Include="basicAgent.cpp" />
-    <ClCompile Include="demo.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="recipe.cpp" />
+    <ClCompile Include="recipe2.cpp" />
+    <ClCompile Include="arr_op.cpp" />
     <ClCompile Include="parallel_matrix_multiply.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="arr_op.h" />
     <ClInclude Include="file_reader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

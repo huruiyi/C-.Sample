@@ -1,9 +1,13 @@
-ï»¿#include <iostream>
+#include <iostream>
 #include <iomanip>
 #include <array>
 #include <tuple>
 #include <string>
+#include <algorithm>
+#include "file_reader.h"
+#include "arr_op.h"
 
+using namespace concurrency;
 using namespace std;
 
 const size_t maxRecords{ 100 };
@@ -13,55 +17,70 @@ using namespace std;
 
 int stonetolb(int);
 
-void main1()
+int stonetolb(int sts)
+{
+	return 14 * sts;
+}
+
+struct info
+{
+	int a;
+	char b[30];
+};
+
+typedef char* PChar0;
+#define PChar1 char*
+FILE* stream, * stream2;
+
+void main01()
 {
 	const int  hj = 10;
-	int a[hj];//aæ˜¯æ•°ç»„å,ä¸‹æ ‡å¿…é¡»æ˜¯å¸¸é‡æˆ–è€…å¸¸é‡è¡¨è¾¾å¼  ï¼Œ
-	//ä¸ºäº†æœ‰æ•ˆä½¿ç”¨å†…å­˜ï¼Œå¹¶ä¸”å†…å­˜æ˜¯ç¢ç‰‡åŒ–çš„
+	int a[hj];//aÊÇÊı×éÃû,ÏÂ±ê±ØĞëÊÇ³£Á¿»òÕß³£Á¿±í´ïÊ½  £¬
+	//ÎªÁËÓĞĞ§Ê¹ÓÃÄÚ´æ£¬²¢ÇÒÄÚ´æÊÇËéÆ¬»¯µÄ
 
-	//intç±»å‹è§„å®šäº†å æ®4ä¸ªå†…å­˜å­—èŠ‚ï¼Œæœ‰10ä¸ªå…ƒç´ ï¼Œè§„å®šäº†å æ®40ä¸ªå­—èŠ‚
+	//intÀàĞÍ¹æ¶¨ÁËÕ¼¾İ4¸öÄÚ´æ×Ö½Ú£¬ÓĞ10¸öÔªËØ£¬¹æ¶¨ÁËÕ¼¾İ40¸ö×Ö½Ú
 
-	printf("%p", a);//aæ˜¯æ•°ç»„åï¼Œç­‰ä»·äºå†…å­˜åœ°å€
-	printf("\næ•°ç»„å†…å­˜å­—èŠ‚%d", sizeof(a));//æ±‚å‡ºæ•°ç»„å æ®å¤šå°‘å†…å­˜
-	printf("\næ•°ç»„å æ®%dä¸ªå…ƒç´ ", sizeof(a) / sizeof(int));//æ±‚å‡ºæ•°ç»„æœ‰å¤šå°‘ä¸ªå…ƒç´ 
-	a[0] = 100;//ç›´æ¥è®¿é—®æ•°ç»„çš„å…ƒç´ 
+	printf("%p", a);//aÊÇÊı×éÃû£¬µÈ¼ÛÓÚÄÚ´æµØÖ·
+	printf("\nÊı×éÄÚ´æ×Ö½Ú%d", sizeof(a));//Çó³öÊı×éÕ¼¾İ¶àÉÙÄÚ´æ
+	printf("\nÊı×éÕ¼¾İ%d¸öÔªËØ", sizeof(a) / sizeof(int));//Çó³öÊı×éÓĞ¶àÉÙ¸öÔªËØ
+	a[0] = 100;//Ö±½Ó·ÃÎÊÊı×éµÄÔªËØ
 	for (int i = 0; i < 10; i++)
 	{
-		//a[i]=i;//å¯¹æ•°ç»„å¾ªç¯åˆå§‹åŒ–
+		//a[i]=i;//¶ÔÊı×éÑ­»·³õÊ¼»¯
 
-		a[i] = rand() % 100;//randå°±æ˜¯éšæœºæ•°ç”Ÿæˆï¼Œé™¤ä»¥100çš„ä½™æ•°é™å®šäº†å®ƒçš„èŒƒå›´
+		a[i] = rand() % 100;//rand¾ÍÊÇËæ»úÊıÉú³É£¬³ıÒÔ100µÄÓàÊıÏŞ¶¨ÁËËüµÄ·¶Î§
 	}
 	for (int j = 0; j < 12; j++)
 	{
 		//printf("\n%d,%p,%p", a[j], &a[j], a + j);
-		//å¾ªç¯æ‰“å°æ•°ç»„çš„æ¯ä¸€ä¸ªå…ƒç´ 
+		//Ñ­»·´òÓ¡Êı×éµÄÃ¿Ò»¸öÔªËØ
 
-		//intç±»å‹ï¼Œæ¯ä¸ªå…ƒç´ åœ°å€ç›¸éš”4ä¸ªå­—èŠ‚
-		//a+jæ˜¯è®¡ç®—æœºè®¿é—®å†…å­˜çš„æ–¹æ³•ï¼Œa+0ç›¸å½“äºç¬¬ä¸€ä¸ªå…ƒç´ çš„åœ°å€ï¼Œ
-		//a+1ç›¸å½“äºç¬¬äºŒä¸ªå…ƒç´ çš„åœ°å€ï¼Œa+2ç›¸å½“äºç¬¬ä¸‰ä¸ªå…ƒç´ çš„åœ°å€
-		//&a[j]ç­‰ä»·äºa+j
+		//intÀàĞÍ£¬Ã¿¸öÔªËØµØÖ·Ïà¸ô4¸ö×Ö½Ú
+		//a+jÊÇ¼ÆËã»ú·ÃÎÊÄÚ´æµÄ·½·¨£¬a+0Ïàµ±ÓÚµÚÒ»¸öÔªËØµÄµØÖ·£¬
+		//a+1Ïàµ±ÓÚµÚ¶ş¸öÔªËØµÄµØÖ·£¬a+2Ïàµ±ÓÚµÚÈı¸öÔªËØµÄµØÖ·
+		//&a[j]µÈ¼ÛÓÚa+j
 	}
-	//æ•°ç»„ä¸å¯ä»¥è¶Šç•Œï¼Œè¶Šç•Œä»¥åè¯»å–åˆ°å…¶ä»–çš„å†…å­˜ï¼Œæ‰€ä»¥è¯»å–çš„æ•°æ®çš„å¾ˆåƒåœ¾,ç­‰ä»·äºå˜é‡æ²¡æœ‰åˆå§‹åŒ–
-	//æ•°ç»„è¶Šç•Œï¼Œåæœæ˜¯è‡ªå·±æ‰¿æ‹…ï¼Œæˆ‘ä»¬è¦éµå®ˆè§„åˆ™ï¼Œä¸è¦è¶Šç•Œ
+	//Êı×é²»¿ÉÒÔÔ½½ç£¬Ô½½çÒÔºó¶ÁÈ¡µ½ÆäËûµÄÄÚ´æ£¬ËùÒÔ¶ÁÈ¡µÄÊı¾İµÄºÜÀ¬»ø,µÈ¼ÛÓÚ±äÁ¿Ã»ÓĞ³õÊ¼»¯
+	//Êı×éÔ½½ç£¬ºó¹ûÊÇ×Ô¼º³Ğµ££¬ÎÒÃÇÒª×ñÊØ¹æÔò£¬²»ÒªÔ½½ç
 }
 /*********************************************************************************************************************/
-void main2()
+void main02()
 {
-	int hj3[10] = { 1, 2, 3, 4, 5 };//é™¤äº†å¾ªç¯åˆå§‹åŒ–ï¼Œä¹Ÿå¯ä»¥å¤§æ‹¬å·é›†åˆåˆå§‹åŒ–
-	//ä¸€å”¯æ•°ç»„åˆå§‹åŒ–çš„ä¸€èˆ¬æ ¼å¼{1,2,3,4,5,6,7,8,9,0}
-	//å¦‚æœæ•°ç»„çš„å…ƒç´ è¶…è¿‡äº†å¤§æ‹¬å·ä¸­é›†åˆçš„å…ƒç´ ï¼Œæ²¡æœ‰å¾—åˆ°èµ‹å€¼çš„å…ƒç´ ï¼Œå°±ä¼šè¢«åˆå§‹åŒ–ä¸º0
+	int hj3[10] = { 1, 2, 3, 4, 5 };//³ıÁËÑ­»·³õÊ¼»¯£¬Ò²¿ÉÒÔ´óÀ¨ºÅ¼¯ºÏ³õÊ¼»¯
+	//Ò»Î¨Êı×é³õÊ¼»¯µÄÒ»°ã¸ñÊ½{1,2,3,4,5,6,7,8,9,0}
+	//Èç¹ûÊı×éµÄÔªËØ³¬¹ıÁË´óÀ¨ºÅÖĞ¼¯ºÏµÄÔªËØ£¬Ã»ÓĞµÃµ½¸³ÖµµÄÔªËØ£¬¾Í»á±»³õÊ¼»¯Îª0
 
-	//int hj4[10];//æ•°ç»„æ²¡æœ‰åˆå§‹åŒ–ï¼Œå‡ºç°çš„åƒåœ¾æ•°æ®
+	//int hj4[10];//Êı×éÃ»ÓĞ³õÊ¼»¯£¬³öÏÖµÄÀ¬»øÊı¾İ
 
-	int hj1[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };//å…ƒç´ å¤§å°ç¡®å®šçš„åœºåˆï¼Œæ•°ç»„çš„å¤§å°å¯ä»¥çœç•¥;
-	//int hj2[];//æ•°ç»„å¿…é¡»æœ‰æ˜ç¡®çš„å¤§å°
+	int hj1[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };//ÔªËØ´óĞ¡È·¶¨µÄ³¡ºÏ£¬Êı×éµÄ´óĞ¡¿ÉÒÔÊ¡ÂÔ;
+	//int hj2[];//Êı×é±ØĞëÓĞÃ÷È·µÄ´óĞ¡
 
-	//int jk[]={};æ•°ç»„å¿…é¡»è¦æœ‰æ˜ç¡®çš„å¤§å°ï¼Œå¿…é¡»æ˜¯æ­£æ•´æ•°
+	//int jk[]={};Êı×é±ØĞëÒªÓĞÃ÷È·µÄ´óĞ¡£¬±ØĞëÊÇÕıÕûÊı
 
-	int hj5[10] = { 0 };//æ‰€æœ‰çš„å…ƒç´ åˆå§‹åŒ–ä¸º0
+	int hj5[10] = { 0 };//ËùÓĞµÄÔªËØ³õÊ¼»¯Îª0
 	/*
-	int  b[  ]={1,2,3,4};æœ‰å››ä¸ªå…ƒç´ 
-	int  b[10]={1,2,3,4};æœ‰åä¸ªå…ƒç´ ï¼Œæ‰€ä»¥ä¸ç­‰ä»·
+	int  b[  ]={1,2,3,4};ÓĞËÄ¸öÔªËØ
+	int  b[10]={1,2,3,4};ÓĞÊ®¸öÔªËØ£¬ËùÒÔ²»µÈ¼Û
 	*/
 
 	for (int i = 0; i < 10; i++)
@@ -70,26 +89,26 @@ void main2()
 	}
 }
 /*********************************************************************************************************************/
-void main3()
+void main03()
 {
 	int a[3] = { 1, 2, 3 };
 	int b[3];
-	// b=a;æ•°ç»„ä¹‹é—´ä¸å¯ä»¥ç›´æ¥èµ‹å€¼,å¯ä»¥å¯¹æŒ¨ä¸ªå…ƒç´ èµ‹å€¼
+	// b=a;Êı×éÖ®¼ä²»¿ÉÒÔÖ±½Ó¸³Öµ,¿ÉÒÔ¶Ô°¤¸öÔªËØ¸³Öµ
 	printf("%p,%p", a, b);
-	//a,bå°±æ˜¯å†…å­˜åœ°å€ï¼Œæ˜¯ä¸€ä¸ªæ•´æ•°ï¼Œ
-	//b+=a;æ•°ç»„ä¸å…è®¸ç›´æ¥è¿ç®—ï¼Œç›´æ¥èµ‹å€¼
+	//a,b¾ÍÊÇÄÚ´æµØÖ·£¬ÊÇÒ»¸öÕûÊı£¬
+	//b+=a;Êı×é²»ÔÊĞíÖ±½ÓÔËËã£¬Ö±½Ó¸³Öµ
 	if (a > b)
 	{
-		//å¯ä»¥æ¯”è¾ƒï¼Œå®é™…ä¸Šæ¯”è¾ƒçš„æ˜¯å†…å­˜åœ°å€ï¼Œå¯¹å®é™…çš„æ•°ç»„æ²¡æœ‰ä»»ä½•å½±å“
+		//¿ÉÒÔ±È½Ï£¬Êµ¼ÊÉÏ±È½ÏµÄÊÇÄÚ´æµØÖ·£¬¶ÔÊµ¼ÊµÄÊı×éÃ»ÓĞÈÎºÎÓ°Ïì
 	}
 
-	//printf("%d",a[1]);//åªèƒ½è¾“å‡ºæŸä¸ªå…ƒç´ ï¼Œä¸èƒ½æ•´ä½“æ€§è¾“å‡º;
+	//printf("%d",a[1]);//Ö»ÄÜÊä³öÄ³¸öÔªËØ£¬²»ÄÜÕûÌåĞÔÊä³ö;
 
-	char  c[3] = { 'a', 'v', '\0' };//ç”¨å­—ç¬¦æ•°ç»„ä»£è¡¨å­—ç¬¦ä¸²å¿…é¡»åŒ…å«ä¸€ä¸ª/0
-	printf("%s", c);//æŒ‰ç…§å­—ç¬¦ä¸²è¾“å‡ºï¼Œå­—ç¬¦ä¸²ä»¥/0ä¸ºç»“æŸã€‚
+	char  c[3] = { 'a', 'v', '\0' };//ÓÃ×Ö·ûÊı×é´ú±í×Ö·û´®±ØĞë°üº¬Ò»¸ö/0
+	printf("%s", c);//°´ÕÕ×Ö·û´®Êä³ö£¬×Ö·û´®ÒÔ/0Îª½áÊø¡£
 }
 /*********************************************************************************************************************/
-void main4()
+void main04()
 {
 	int a[10]; //0,1,2,3,4,5,6,7,8,9
 	for (int i = 0; i < 10; i++)
@@ -98,11 +117,11 @@ void main4()
 	}
 	for (int j = 0; j < 10; j++)
 	{
-		printf("\n%d", a[9 - j]);//Ã„Ã¦ÃÃ²ÃŠÃ¤Â³Ã¶
+		printf("\n%d", a[9 - j]);//??D¨°¨º?3?
 	}
 }
 /*********************************************************************************************************************/
-void main5()
+void main05()
 {
 	int a[40] = { 1, 1 };
 	//a[0]=1,a[1]=1;
@@ -110,48 +129,48 @@ void main5()
 	//a[3]=a[2]+a[1];
 	for (int i = 2; i <= 39; i++)
 	{
-		a[i] = a[i - 1] + a[i - 2];//å®ç°æ–æ³¢é‚£å¥‘æ•°åˆ—çš„è®¡ç®—
+		a[i] = a[i - 1] + a[i - 2];//ÊµÏÖì³²¨ÄÇÆõÊıÁĞµÄ¼ÆËã
 	}
-	//å¾ªç¯æ‰“å°å‡ºæ•°ç»„æ¯ä¸€ä¸ªå…ƒç´ 
+	//Ñ­»·´òÓ¡³öÊı×éÃ¿Ò»¸öÔªËØ
 	for (int j = 0; j < 40; j++)
 	{
-		if (j % 5 == 0)//æ£€æµ‹æ˜¯å¦è¢«5æ•´é™¤
+		if (j % 5 == 0)//¼ì²âÊÇ·ñ±»5Õû³ı
 		{
-			printf("\n");//æ‰“å°æ¢è¡Œ
+			printf("\n");//´òÓ¡»»ĞĞ
 		}
 		printf("%d    ", a[j]);
 	}
 }
 /*********************************************************************************************************************/
-//å®ç°æ‰¾å‡ºæœ€å°çš„å…ƒç´ 
-void main6()
+//ÊµÏÖÕÒ³ö×îĞ¡µÄÔªËØ
+void main06()
 {
 	int a[10];
 	for (int i = 0; i < 10; i++)
 	{
-		a[i] = rand() % 100;//å–0åˆ°100çš„éšæœºæ•°
+		a[i] = rand() % 100;//È¡0µ½100µÄËæ»úÊı
 	}
 	for (int j = 0; j < 10; j++)
 	{
 		printf("\n%d", a[j]);
 	}
-	int min;//æœ€å°çš„å…ƒç´ 
+	int min;//×îĞ¡µÄÔªËØ
 	min = a[0];
 
 	printf("\n\n\n");
 	for (int k = 1; k < 10; k++)
 	{
-		if (min > a[k])//å§ak,minçš„æœ€å°å€¼å­˜å…¥min
+		if (min > a[k])//°Éak,minµÄ×îĞ¡Öµ´æÈëmin
 		{
-			//äº¤æ¢ä¸¤ä¸ªå˜é‡
+			//½»»»Á½¸ö±äÁ¿
 			int temp;
 			temp = min;
 			min = a[k];
 			a[k] = temp;
 		}
 		printf("\nk=%d,min=%d,a[%d]=%d ", k, min, k, a[k]);
-		a[0] = min;//èµ‹å€¼ç»™ç¬¬ä¸€ä¸ªå…ƒç´ ï¼Œè®©ç¬¬ä¸€ä¸ªå…ƒç´ æœ€å°
-		for (int u = 0; u < 10; u++)//æ‰“å°å‡ºæ•°ç»„çš„çŠ¶æ€
+		a[0] = min;//¸³Öµ¸øµÚÒ»¸öÔªËØ£¬ÈÃµÚÒ»¸öÔªËØ×îĞ¡
+		for (int u = 0; u < 10; u++)//´òÓ¡³öÊı×éµÄ×´Ì¬
 		{
 			printf("\n%d", a[u]);
 		}
@@ -159,49 +178,49 @@ void main6()
 	printf("\n%d", min);
 }
 /*********************************************************************************************************************/
-void main7()
+void main07()
 {
 	const int N = 10;
 	int  a[N];
 	for (int i = 0; i < N; i++)
 	{
-		a[i] = rand() % 100;//å–0-1000ä¹‹é—´çš„éšæœºæ•°
+		a[i] = rand() % 100;//È¡0-1000Ö®¼äµÄËæ»úÊı
 	}
 	for (int j = 0; j < N; j++)
 	{
-		printf("\n%d", a[j]);//æ‰“å°å‡ºæ•°ç»„çš„æ•°æ®
+		printf("\n%d", a[j]);//´òÓ¡³öÊı×éµÄÊı¾İ
 	}
 	printf("\n\n\n");
-	int minb = 0;//ä¿å­˜ä¸´æ—¶çš„æœ€å°å€¼çš„ä¸‹æ ‡
-	int min = 0;//ä¸´æ—¶çš„æœ€å°å€¼
-	for (int u = 0; u < N - 1; u++)//10ä¸ªï¼Œä¸€ç›´åˆ°ä¸¤ä¸ªä¹‹é—´ï¼Œé€‰æ‹©æå°å€¼ã€‚
+	int minb = 0;//±£´æÁÙÊ±µÄ×îĞ¡ÖµµÄÏÂ±ê
+	int min = 0;//ÁÙÊ±µÄ×îĞ¡Öµ
+	for (int u = 0; u < N - 1; u++)//10¸ö£¬Ò»Ö±µ½Á½¸öÖ®¼ä£¬Ñ¡Ôñ¼«Ğ¡Öµ¡£
 	{
-		minb = u;//å‡å®šå½“å‰å…ƒç´ ä¸ºæœ€å°å…ƒç´ 
-		for (int v = u + 1; v < N; v++)//u=0,a[1]åˆ°a[N-1],u=1,a[2]åˆ°a[N-1]
+		minb = u;//¼Ù¶¨µ±Ç°ÔªËØÎª×îĞ¡ÔªËØ
+		for (int v = u + 1; v < N; v++)//u=0,a[1]µ½a[N-1],u=1,a[2]µ½a[N-1]
 		{
-			if (a[v] < a[minb])//å§a[v] a[minb]ä¸­é—´æœ€å°æ•°çš„ä¸‹æ ‡ä¿å­˜åˆ°minb
+			if (a[v] < a[minb])//°Éa[v] a[minb]ÖĞ¼ä×îĞ¡ÊıµÄÏÂ±ê±£´æµ½minb
 			{
-				minb = v;    //å¾ªç¯åˆ¤æ–­ï¼Œå§æœ€å°çš„ä¸‹æ ‡å­˜å…¥minb,
+				minb = v;    //Ñ­»·ÅĞ¶Ï£¬°É×îĞ¡µÄÏÂ±ê´æÈëminb,
 				//
 			}
 		}
-		printf("\n è°ƒæ•´ä»¥å‰çš„æ•°æ®\n");
+		printf("\n µ÷ÕûÒÔÇ°µÄÊı¾İ\n");
 		for (int iii = 0; iii < N; iii++)
 		{
-			printf("%d    ", a[iii]);//æ‰“å°å‡ºæ•°ç»„çš„æ•°æ®
+			printf("%d    ", a[iii]);//´òÓ¡³öÊı×éµÄÊı¾İ
 		}
 
-		if (minb != u)//å¦‚æœminbå‘ç”Ÿå˜åŒ–ï¼Œå°±äº¤æ¢ä¸¤ä¸ªå˜é‡çš„å€¼
+		if (minb != u)//Èç¹ûminb·¢Éú±ä»¯£¬¾Í½»»»Á½¸ö±äÁ¿µÄÖµ
 		{
-			//å®Œæˆä¸¤ä¸ªå˜é‡çš„äº¤æ¢
+			//Íê³ÉÁ½¸ö±äÁ¿µÄ½»»»
 			int temp = a[minb];
 			a[minb] = a[u];
 			a[u] = temp;
 		}
-		printf("\n è°ƒæ•´ä»¥åçš„æ•°æ®\n");
+		printf("\n µ÷ÕûÒÔºóµÄÊı¾İ\n");
 		for (int ii = 0; ii < N; ii++)
 		{
-			printf("%d    ", a[ii]);//æ‰“å°å‡ºæ•°ç»„çš„æ•°æ®
+			printf("%d    ", a[ii]);//´òÓ¡³öÊı×éµÄÊı¾İ
 		}
 	}
 
@@ -209,77 +228,77 @@ void main7()
 
 	for (int jj = 0; jj < N; jj++)
 	{
-		printf("\n%d", a[jj]);//æ‰“å°å‡ºæ•°ç»„çš„æ•°æ®
+		printf("\n%d", a[jj]);//´òÓ¡³öÊı×éµÄÊı¾İ
 	}
 }
 /*********************************************************************************************************************/
-//åˆ›å»ºä¸€ä¸ªæ•°ç»„ï¼Œå®ç°ä»å°åˆ°å¤§ï¼Œä»å¤§åˆ°å°
-void main8()
+//´´½¨Ò»¸öÊı×é£¬ÊµÏÖ´ÓĞ¡µ½´ó£¬´Ó´óµ½Ğ¡
+void main08()
 {
 	const  int  N = 10;
 	int a[N];
-	int  i = 10;//å¤–éƒ¨å˜é‡ï¼Œä½œäºåŸŸä¹Ÿå°±æ˜¯å¤§æ‹¬å·åŒ…å«èµ·æ¥çš„å—è¯­å¥
-	for (int i = 0; i < 10; i++)//å¦‚æœå˜é‡é‡åï¼Œä»¥å†…éƒ¨å˜é‡ä¸ºä¼˜å…ˆã€‚
+	int  i = 10;//Íâ²¿±äÁ¿£¬×÷ÓÚÓòÒ²¾ÍÊÇ´óÀ¨ºÅ°üº¬ÆğÀ´µÄ¿éÓï¾ä
+	for (int i = 0; i < 10; i++)//Èç¹û±äÁ¿ÖØÃû£¬ÒÔÄÚ²¿±äÁ¿ÎªÓÅÏÈ¡£
 	{
-		a[i] = rand() % 125;//å–0åˆ°125çš„éšæœºæ•°
+		a[i] = rand() % 125;//È¡0µ½125µÄËæ»úÊı
 		printf("%d   ", a[i]);
 	}
 
-	int min;//ä»£è¡¨æœ€å¤§æœ€å°æ•°ç»„å…ƒç´ çš„ä¸‹æ ‡
+	int min;//´ú±í×î´ó×îĞ¡Êı×éÔªËØµÄÏÂ±ê
 
 	for (int u = 0; u < N - 1; u++)
 	{
-		min = u;//å‡å®šä»uå¼€å§‹æ—¶æœ€å°çš„å˜é‡
-		printf("è½®è¯¢æ—¶åˆ»ï¼Œmin,vçš„å€¼");
-		for (int v = u + 1; v < N; v++)//ä»u+1åˆ°æœ€åä¸€ä¸ªå˜é‡åšä¸€ä¸ªè½®è®­
+		min = u;//¼Ù¶¨´Óu¿ªÊ¼Ê±×îĞ¡µÄ±äÁ¿
+		printf("ÂÖÑ¯Ê±¿Ì£¬min,vµÄÖµ");
+		for (int v = u + 1; v < N; v++)//´Óu+1µ½×îºóÒ»¸ö±äÁ¿×öÒ»¸öÂÖÑµ
 		{
 			if (a[v] < a[min])
 			{
-				min = v;//å¾ªç¯äº¤æ›¿ï¼Œä½¿å¾—æœ€åä¸€ä¸ªå€¼æ˜¯æœ€å€¼
+				min = v;//Ñ­»·½»Ìæ£¬Ê¹µÃ×îºóÒ»¸öÖµÊÇ×îÖµ
 				printf("%d,%d    ", min, v);
 			}
 		}
 
-		printf("\næ•°ç»„æ“ä½œä¹‹å‰çš„çŠ¶æ€\n");
+		printf("\nÊı×é²Ù×÷Ö®Ç°µÄ×´Ì¬\n");
 		for (int i = 0; i < N; i++)
 		{
 			printf("%d  ", a[i]);
 		}
 		if (min != u)
 		{
-			//å®ç°ä¸¤ä¸ªå˜é‡çš„äº¤æ¢
+			//ÊµÏÖÁ½¸ö±äÁ¿µÄ½»»»
 			int temp;
 			temp = a[min];
 			a[min] = a[u];
 			a[u] = temp;
 		}
-		printf("\næ•°ç»„æ“ä½œä¹‹åçš„çŠ¶æ€\n");
+		printf("\nÊı×é²Ù×÷Ö®ºóµÄ×´Ì¬\n");
 		for (int i = 0; i < N; i++)
 		{
 			printf("%d  ", a[i]);
 		}
 	}
 	//
-	printf("\næ•°ç»„æ’åºä»¥åçš„çŠ¶æ€\n");
+	printf("\nÊı×éÅÅĞòÒÔºóµÄ×´Ì¬\n");
 	for (int i = 0; i < N; i++)
 	{
 		printf("%d  ", a[i]);
 	}
 }
 /*********************************************************************************************************************/
-//å¾ªç¯æ‰“å°å‡ºäºŒç»´æ•°ç»„
-void main9()
+//Ñ­»·´òÓ¡³ö¶şÎ¬Êı×é
+void main09()
 {
 	int a[4] = { 1, 2, 3, 4 };
 	int b[3][4] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 } };
 	//  b[2][3],
 	printf("%d", sizeof(b) / sizeof(int));
-	for (int i = 0; i < 3; i++)//å¤–å±‚å¾ªç¯
+	for (int i = 0; i < 3; i++)//Íâ²ãÑ­»·
 	{
-		for (int j = 0; j < 4; j++)//å†…å±‚å¾ªç¯
+		for (int j = 0; j < 4; j++)//ÄÚ²ãÑ­»·
 		{
 			printf("\n%d,%d,%d,%p", i, j, b[i][j], &b[i][j]);
-			//å†…å­˜é‡Œé¢æ˜¯ä¸€è¡Œä¸€è¡Œæ¥è¿›è¡Œå­˜å‚¨
+			//ÄÚ´æÀïÃæÊÇÒ»ĞĞÒ»ĞĞÀ´½øĞĞ´æ´¢
 		}
 	}
 }
@@ -292,11 +311,11 @@ void main10()
 		printf("\n%d,%p,%p", hj[o], &hj[o], hj + o);
 	}
 	int a[3][2] = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
-	//3æŒ‡å®šæœ‰å‡ è¡Œï¼Œ2å°±ä»£è¡¨æ¯è¡Œæœ‰ä¸¤åˆ—
-	int  a1[][5] = { 1, 3, 4, 5, 6 };//åœ¨å…ƒç´ ç¡®å®šçš„æƒ…å†µä¸‹ï¼Œå¯ä»¥ä¸æŒ‡å®šæœ‰å‡ è¡Œ
-	//int  a2[2][5]={{1,2,3},{4,5,6}};//æ¯ä¸€è¡Œæœ‰å‡ åˆ—å¿…é¡»æŒ‡å®šã€‚
-	int  a2[2][5] = { 0 };//æ‰€æœ‰çš„å…ƒç´ éƒ½ä¸º0
-	printf("a2åœ°å€%p\n", a2);
+	//3Ö¸¶¨ÓĞ¼¸ĞĞ£¬2¾Í´ú±íÃ¿ĞĞÓĞÁ½ÁĞ
+	int  a1[][5] = { 1, 3, 4, 5, 6 };//ÔÚÔªËØÈ·¶¨µÄÇé¿öÏÂ£¬¿ÉÒÔ²»Ö¸¶¨ÓĞ¼¸ĞĞ
+	//int  a2[2][5]={{1,2,3},{4,5,6}};//Ã¿Ò»ĞĞÓĞ¼¸ÁĞ±ØĞëÖ¸¶¨¡£
+	int  a2[2][5] = { 0 };//ËùÓĞµÄÔªËØ¶¼Îª0
+	printf("a2µØÖ·%p\n", a2);
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -309,21 +328,21 @@ void main10()
 /*********************************************************************************************************************/
 void main11()
 {
-	const int N = 3;//constå®šä¹‰å¸¸é‡
+	const int N = 3;//const¶¨Òå³£Á¿
 	int a[N][N];
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < N; j++)
 		{
-			a[i][j] = i * N + j + 1;//æ•°å­¦å…¬å¼
-			printf("%d   ", a[i][j]);//æ‰“å°å‡ºæ¯ä¸ªå…ƒç´ çš„æ•°æ®
+			a[i][j] = i * N + j + 1;//ÊıÑ§¹«Ê½
+			printf("%d   ", a[i][j]);//´òÓ¡³öÃ¿¸öÔªËØµÄÊı¾İ
 		}
-		printf("\n");//éš”è¡Œæ¢è¡Œ
+		printf("\n");//¸ôĞĞ»»ĞĞ
 	}
 	int jieguo = 0;
 	for (int k = 0; k < N; k++)
 	{
-		jieguo += a[k][k];//å¯¹è§’çº¿ï¼Œæ¨ªçºµåæ ‡ç›¸ç­‰
+		jieguo += a[k][k];//¶Ô½ÇÏß£¬ºá×İ×ø±êÏàµÈ
 	}
 	printf("\n%d", jieguo);
 }
@@ -337,7 +356,7 @@ void main12()
 		{
 			printf("%d     ", a[i][j]);
 		}
-		printf("\n");//æ¯è¡Œæ‰“å°å®Œæˆä»¥åæ¢è¡Œ
+		printf("\n");//Ã¿ĞĞ´òÓ¡Íê³ÉÒÔºó»»ĞĞ
 	}
 
 	int b[4][3];
@@ -348,7 +367,7 @@ void main12()
 			b[i][j] = a[j][i];
 			printf("%d   ", b[i][j]);
 		}
-		printf("\n");//æ¢è¡Œ
+		printf("\n");//»»ĞĞ
 	}
 }
 /*********************************************************************************************************************/
@@ -358,20 +377,20 @@ void main13()
 	int a[N][N];
 
 	int data = 1;
-	//å¯¹äºæ•°ç»„è¿›è¡Œå¡«å……,N*Nä¸ªå…ƒç´ 
-	//i,jèµ·åˆ°æ§åˆ¶æ¨ªåæ ‡ä¸çºµåæ ‡
-	for (int i = 0, j = 0, k = 0; k < (N + 1) / 2; k++)//kèµ·åˆ°åˆ†å±‚çš„ä½œç”¨,å±‚<k+1/2,æ ¹æ®å±‚æ•°æ‰å¾ªç¯
+	//¶ÔÓÚÊı×é½øĞĞÌî³ä,N*N¸öÔªËØ
+	//i,jÆğµ½¿ØÖÆºá×ø±êÓë×İ×ø±ê
+	for (int i = 0, j = 0, k = 0; k < (N + 1) / 2; k++)//kÆğµ½·Ö²ãµÄ×÷ÓÃ,²ã<k+1/2,¸ù¾İ²ãÊı²ÅÑ­»·
 	{
 		while (j < N - k)
 		{
 			//a[i][j++]=data++;
-			a[i][j] = data;  //æ¨ªå‘å‘å·¦a[0][0]    a[0][1]  a[0][2] ï¼Œiä¸å˜ï¼Œjå˜åŒ–
+			a[i][j] = data;  //ºáÏòÏò×óa[0][0]    a[0][1]  a[0][2] £¬i²»±ä£¬j±ä»¯
 			j = j + 1;
 			data = data + 1;
 			//	printf("")
 		}
-		j--;//æ¶ˆé™¤æœ€åçš„å½±å“ï¼Œä¸è¶Šç•Œ
-		i++;//æ”¹å˜è¡Œï¼Œ
+		j--;//Ïû³ı×îºóµÄÓ°Ïì£¬²»Ô½½ç
+		i++;//¸Ä±äĞĞ£¬
 
 		while (i < N - k)
 		{
@@ -379,7 +398,7 @@ void main13()
 			i = i + 1;
 			data = data + 1;
 		}
-		i--;//æ¶ˆé™¤æœ€åçš„å½±å“ï¼Œä¸è¶Šç•Œ
+		i--;//Ïû³ı×îºóµÄÓ°Ïì£¬²»Ô½½ç
 		j--;
 
 		while (j > k - 1)
@@ -388,7 +407,7 @@ void main13()
 			j = j - 1;
 			data = data + 1;
 		}
-		j++;//æ¶ˆé™¤æœ€åçš„å½±å“ï¼Œä¸è¶Šç•Œ
+		j++;//Ïû³ı×îºóµÄÓ°Ïì£¬²»Ô½½ç
 		i--;
 
 		while (i > k)
@@ -397,10 +416,10 @@ void main13()
 			i = i - 1;
 			data = data + 1;
 		}
-		i++;//æ¶ˆé™¤æœ€åçš„å½±å“ï¼Œä¸è¶Šç•Œ
+		i++;//Ïû³ı×îºóµÄÓ°Ïì£¬²»Ô½½ç
 		j++;
 	}
-	//å¯¹äºæ•°ç»„è¿›è¡Œæ‰“å°
+	//¶ÔÓÚÊı×é½øĞĞ´òÓ¡
 	for (int u = 0; u < N; u++)
 	{
 		for (int v = 0; v < N; v++)
@@ -444,7 +463,7 @@ void main14()
 	}
 }
 /*********************************************************************************************************************/
-void main15_äºŒåˆ†()
+void main15_erfen()
 {
 	int a[4096];
 	for (int i = 0; i < 4096; i++)
@@ -457,23 +476,23 @@ void main15_äºŒåˆ†()
 	int wei = 4095;
 	int zhong = (tou + wei) / 2;
 	int cishu = 0;
-	int flag = 0;//å‡å®šæ‰¾ä¸åˆ°
-	while (tou <= wei)//æ‰¾åˆ°ä¸ºæ­¢
+	int flag = 0;//¼Ù¶¨ÕÒ²»µ½
+	while (tou <= wei)//ÕÒµ½ÎªÖ¹
 	{
 		cishu += 1;
 		printf("\n%d,%d,%d", tou, zhong, wei);
 		if (hj == a[zhong])
 		{
 			flag = 1;
-			printf("\næ•°æ®ç±»å‹æ‰¾åˆ°ä½ç½®%d", zhong);
+			printf("\nÊı¾İÀàĞÍÕÒµ½Î»ÖÃ%d", zhong);
 			break;
 		}
-		else if (hj > a[zhong])//å¤§äº
+		else if (hj > a[zhong])//´óÓÚ
 		{
 			tou = zhong + 1;
 			zhong = (tou + wei) / 2;
 		}
-		else if (hj < a[zhong])//å°äº
+		else if (hj < a[zhong])//Ğ¡ÓÚ
 		{
 			wei = zhong - 1;
 			zhong = (tou + wei) / 2;
@@ -482,13 +501,13 @@ void main15_äºŒåˆ†()
 
 	if (flag == 0)
 	{
-		printf("æ²¡æœ‰æ‰¾åˆ°");
+		printf("Ã»ÓĞÕÒµ½");
 	}
 
-	printf("ä¸€å…±æ‰§è¡Œ%dæ¬¡ ", cishu);
+	printf("Ò»¹²Ö´ĞĞ%d´Î ", cishu);
 }
 /*********************************************************************************************************************/
-void main16_GoToå¾ªç¯()
+void main16_GoToÑ­»·()
 {
 	int i = 1;
 	int  j = 2;
@@ -497,7 +516,7 @@ C:  printf("%d,%d", i, j);
 	goto C;
 }
 /*********************************************************************************************************************/
-void main17_GoToæ±‚å’Œ()
+void main17_GoToÇóºÍ()
 {
 	int i = 1;
 	int result = 0;
@@ -535,33 +554,33 @@ void BuildHelixmatrix(int length)
 	if (!matrix) {
 		return;
 	}
-	for (; k < (length + 1) / 2; k++)  //kä¸ºå±‚æ•°
+	for (; k < (length + 1) / 2; k++)  //kÎª²ãÊı
 	{
-		while (i < length - k)   //å‘ä¸‹
+		while (i < length - k)   //ÏòÏÂ
 		{
 			//int  a1;
 
-			matrix[i++ * length + j] = a++;  //a ä¸ºå¡«å……çš„è‡ªç„¶æ•°
+			matrix[i++ * length + j] = a++;  //a ÎªÌî³äµÄ×ÔÈ»Êı
 
 			//printf("%d",matrix[a1]);
 		}
-		i--;  //å¤ä½ä¸€æ­¥
+		i--;  //¸´Î»Ò»²½
 		j--;
 
-		while (j > k)   //å‘å·¦
+		while (j > k)   //Ïò×ó
 		{
 			matrix[i * length + j--] = a++;
 		}
-		j++;  //å¤ä½ä¸€æ­¥
+		j++;  //¸´Î»Ò»²½
 		i++;
 	}
-	while (i > k - 1)   //å‘ä¸Š
+	while (i > k - 1)   //ÏòÉÏ
 	{
 		matrix[i-- * length + j] = a++;
 	}
 	i--;
 	j--;
-	while (j < length - k)   //å‘å³
+	while (j < length - k)   //ÏòÓÒ
 	{
 		matrix[i * length + j++] = a++;
 	}
@@ -574,9 +593,9 @@ void BuildHelixmatrix(int length)
 }
 
 /*********************************************************************************************************************/
-int add(int x, int y)//åŠ æ³•çš„å‡½æ•°
+int add(int x, int y)//¼Ó·¨µÄº¯Êı
 {
-	return x + y; //è¿”å›åŠ æ³•çš„ç»“æœ
+	return x + y; //·µ»Ø¼Ó·¨µÄ½á¹û
 }
 
 int mult(int x, int y)
@@ -584,7 +603,7 @@ int mult(int x, int y)
 	return x * y;
 }
 
-//å‡½æ•°int add(int x,int y);
+//º¯Êıint add(int x,int y);
 void Point01()
 {
 	int a = 1;
@@ -592,36 +611,36 @@ void Point01()
 
 	printf("%d", add(a, b));
 
-	int(*p)(int, int);//å‡½æ•°æŒ‡é’ˆç±»å‹ï¼Œç¬¬ä¸€ä¸ªintè¿”å›å€¼ç±»å‹ï¼Œåé¢ä¸¤ä¸ªintæ˜¯å‚æ•°
+	int(*p)(int, int);//º¯ÊıÖ¸ÕëÀàĞÍ£¬µÚÒ»¸öint·µ»ØÖµÀàĞÍ£¬ºóÃæÁ½¸öintÊÇ²ÎÊı
 
-	p = add;//addå°±æ˜¯å‡½æ•°å†…å­˜åœ°å€ï¼ŒpæŒ‡é’ˆå˜é‡ï¼Œå‡½æ•°æŒ‡é’ˆ
+	p = add;//add¾ÍÊÇº¯ÊıÄÚ´æµØÖ·£¬pÖ¸Õë±äÁ¿£¬º¯ÊıÖ¸Õë
 
 	printf("%p", p);
-	printf("\n%d", p(a, b));//æ‰“å°å‡º1+2ï¼Œæ‰“å°pï¼Œä¹Ÿæ˜¯å‡½æ•°çš„å†…å­˜åœ°å€
+	printf("\n%d", p(a, b));//´òÓ¡³ö1+2£¬´òÓ¡p£¬Ò²ÊÇº¯ÊıµÄÄÚ´æµØÖ·
 	p = mult;
 	printf("\n%p", p);
 	printf("\n%d", p(a, b));
 }
 
-//æŒ‡é’ˆä¿®æ”¹å˜é‡
+//Ö¸ÕëĞŞ¸Ä±äÁ¿
 void Point02()
 {
 	int a = 1;
 	int b = 2;
 	int c = 0;
-	printf("\naåœ°å€=%p,båœ°å€=%p,cåœ°å€=%p", &a, &b, &c);
+	printf("\naµØÖ·=%p,bµØÖ·=%p,cµØÖ·=%p", &a, &b, &c);
 
 	c = a + b;
 
-	printf("\n%d", c);//æ•°å­¦è®¡ç®—
+	printf("\n%d", c);//ÊıÑ§¼ÆËã
 
 	int* p;
-	p = &a;//pç›¸å½“äºå†…å­˜åœ°å€ï¼Œç­‰ä»·äºint *, intèµ·åˆ°æŒ‡ç¤ºå æ®å››ä¸ªå­—èŠ‚ï¼Œä»è¿™ä¸ªå†…å­˜åœ°å€å¼€å§‹
-	*p = 5;//*pç›¸å½“äºintç±»å‹æ•°æ®ï¼ŒæŒ‡é’ˆPæ‰€æŒ‡å‘çš„æ•°æ®
+	p = &a;//pÏàµ±ÓÚÄÚ´æµØÖ·£¬µÈ¼ÛÓÚint *, intÆğµ½Ö¸Ê¾Õ¼¾İËÄ¸ö×Ö½Ú£¬´ÓÕâ¸öÄÚ´æµØÖ·¿ªÊ¼
+	*p = 5;//*pÏàµ±ÓÚintÀàĞÍÊı¾İ£¬Ö¸ÕëPËùÖ¸ÏòµÄÊı¾İ
 	printf("\n%d", a);
 	printf("\n%p,%d", p, *p);
 
-	printf("\n%d", add(a, b));//è°ƒç”¨å‡½æ•°å®ç°åŠ å‡
+	printf("\n%d", add(a, b));//µ÷ÓÃº¯ÊıÊµÏÖ¼Ó¼õ
 }
 /*********************************************************************************************************************/
 double func1(double num)
@@ -649,7 +668,7 @@ int func()
 }
 /*********************************************************************************************************************/
 
-void main18_æŒ‡é’ˆ()
+void main18_Ö¸Õë()
 {
 	char* p1;
 	char* p2;
@@ -663,7 +682,7 @@ void main18_æŒ‡é’ˆ()
 	p4 = &c34;
 }
 
-void listRecords(const Records & people)
+void listRecords(const Records& people)
 {
 	const size_t ID{}, firstname{ 1 }, secondname{ 2 }, age{ 3 };
 	cout << setiosflags(std::ios::left);
@@ -730,11 +749,6 @@ void main21()
 	cout << pounds << " pounds." << endl;
 	// cin.get();
 	// cin.get();
-}
-
-int stonetolb(int sts)
-{
-	return 14 * sts;
 }
 
 void main22()
@@ -899,7 +913,7 @@ void main29(void)
 	if (EOF != a)
 		printf("%c", a);
 
-	while ((c = getchar()) != '\n')//cæ¥æ”¶çš„å€¼æ˜¯è¾“å…¥ç¬¬ä¸€ä¸ªå­—ç¬¦åæŒ‰ä¸‹çš„å›è½¦æ¢è¡Œç¬¦'\n',cæ˜¯ä¸ä¼šæ˜¾ç¤ºçš„
+	while ((c = getchar()) != '\n')//c½ÓÊÕµÄÖµÊÇÊäÈëµÚÒ»¸ö×Ö·ûºó°´ÏÂµÄ»Ø³µ»»ĞĞ·û'\n',cÊÇ²»»áÏÔÊ¾µÄ
 	{
 		if (EOF == a)
 			break;
@@ -918,4 +932,344 @@ void main30()
 	std::string all_nines(10, '9');  // all_nines = "9999999999"
 }
 
-//==%pæ˜¯æ‰“å°åœ°å€çš„ï¼Œ%xæ˜¯ä»¥åå…­è¿›åˆ¶å½¢å¼æ‰“å°ï¼Œå®Œå…¨ä¸åŒï¼å¦å¤–åœ¨64ä½ä¸‹ç»“æœä¼šä¸ä¸€æ ·ï¼Œæ‰€ä»¥æ‰“å°æŒ‡é’ˆè€è€å®å®ç”¨%pã€‚=
+//==%pÊÇ´òÓ¡µØÖ·µÄ£¬%xÊÇÒÔÊ®Áù½øÖÆĞÎÊ½´òÓ¡£¬ÍêÈ«²»Í¬£¡ÁíÍâÔÚ64Î»ÏÂ½á¹û»á²»Ò»Ñù£¬ËùÒÔ´òÓ¡Ö¸ÕëÀÏÀÏÊµÊµÓÃ%p¡£=
+
+class dog
+{
+public:
+	dog()
+	{
+		_legs = 4;
+		_bark = true;
+	}
+
+	void setDogSize(string dogSize)
+	{
+		_dogSize = dogSize;
+	}
+	virtual void setEars(string type)
+	{
+		_earType = type;
+	}
+
+private:
+	string _dogSize, _earType;
+	int _legs;
+	bool _bark;
+};
+
+class breed : public dog
+{
+public:
+	breed(string color, string size)
+	{
+		_color = color;
+		setDogSize(size);
+	}
+
+	string getColor()
+	{
+		return _color;
+	}
+
+	void setEars(string length, string type)
+	{
+		_earLength = length;
+		_earType = type;
+	}
+
+protected:
+	string _color, _earLength, _earType;
+};
+
+void main31()
+{
+	dog mongrel;
+	breed labrador("yellow", "large");
+	mongrel.setEars("pointy");
+	labrador.setEars("long", "floppy");
+	cout << "Cody is a " << labrador.getColor() << " labrador" << endl;
+}
+
+void  main32_basicAgent()
+{
+	// An event object that signals the end of processing.
+	event e;
+
+	// The components of the Adler-32 sum.
+	unsigned int a = 1;
+	unsigned int b = 0;
+
+	// A call object that updates the checksum when it receives data.
+	call<string> calculate_checksum([&](string s) {
+		// If the input string is empty, set the event to signal
+		// the end of processing.
+		if (s.size() == 0)
+			e.set();
+		// Perform the Adler-32 checksum algorithm.
+		for_each(begin(s), end(s), [&](char c) {
+			a = (a + c) % 65521;
+			b = (b + a) % 65521;
+			});
+		});
+
+	// Create the agent.
+	file_reader reader("demo.cpp", calculate_checksum);
+
+	// Start the agent and wait for it to complete.
+	reader.start();
+	agent::wait(&reader);
+
+	// Wait for the call object to receive all data and complete.
+	e.wait();
+
+	// Check the file reader for errors.
+	// If no error occurred, calculate the final Adler-32 sum and print it
+	// to the console.
+	std::exception error;
+	if (reader.get_error(error))
+	{
+		wcout << error.what() << endl;
+	}
+	else
+	{
+		unsigned int adler32_sum = (b << 16) | a;
+		wcout << L"Adler-32 sum is " << hex << adler32_sum << endl;
+	}
+}
+
+void main33_concurrencydemo()
+{
+	concurrency::reader_writer_lock().lock();
+	concurrency::reader_writer_lock().lock_read();
+	concurrency::reader_writer_lock().unlock();
+	concurrency::reader_writer_lock().try_lock();
+	concurrency::reader_writer_lock().try_lock_read();
+	concurrency::reader_writer_lock().~reader_writer_lock();
+}
+
+void demo01()
+{
+	FILE* pf;
+	fopen_s(&pf, "bin1.txt", "rb");//r==read,fopen´ò¿ªÒ»¸öÎÄ¼ş
+	if (pf == NULL)
+	{
+		printf("ÎÄ¼ş´ò¿ªÊ§°Ü");
+	}
+	else
+	{
+		printf("ÎÄ¼ş´ò¿ª³É¹¦\n");
+
+		struct info  a1, a2, a3;
+		a1.a = 123;
+		const char* str1 = "abc";
+		strcpy_s(a1.b, str1);
+
+		a2.a = 123;
+		const	char* str2 = "opq";
+		strcpy_s(a2.b, str2);
+
+		a3.a = 123;
+		const	char* str3 = "xyz";
+		strcpy_s(a3.b, str3);
+
+		fwrite(&a1, sizeof(a1), 1, pf);
+		fwrite(&a2, sizeof(a2), 1, pf);
+		fwrite(&a3, sizeof(a3), 1, pf);
+
+		fclose(pf);
+	}
+	system("pause");
+}
+
+void demo02()
+{
+	FILE* fp;
+	fopen_s(&fp, "bin1.txt", "rb");
+
+	if (fp == NULL)
+	{
+		printf("ÎÄ¼ş´ò¿ªÊ§°Ü");
+	}
+	else
+	{
+		while (!feof(fp))//´Ó¹â±êµÄ¿ªÍ·
+		{
+			char str[80];
+			fgets(str, 80, fp);//Ã¿´Î¶ÁÈ¡9¸ö×Ö·û
+
+			printf("\n%s", str);
+			printf("\n%p", fp->_Placeholder);//¹â±êµÄµØÖ·
+		}
+		rewind(fp);//½«¹â±êÒÆ¶¯µ½ÎÄ¼ş¿ªÍ·
+		int  weiyi = 10;
+		fseek(fp, 10, SEEK_CUR);//´Óµ±Ç°Î»ÖÃ¶Áµ½Î²²¿
+		printf("\n\n\n\n\n\n\n\n\n");
+		while (!feof(fp))//´Ó¹â±êµÄ¿ªÍ·,¼ì²âµ½½áÊøÎª±êÖ¾
+		{
+			char str[80];
+			fgets(str, 80, fp);//Ã¿´Î¶ÁÈ¡9¸ö×Ö·û
+
+			printf("\n%s", str);
+			//printf("\n%x", fp->_ptr);//¹â±êµÄµØÖ·
+		}
+
+		rewind(fp);//½«¹â±êÒÆ¶¯µ½ÎÄ¼ş¿ªÍ·
+		fseek(fp, -80, SEEK_END);//¸ù¾İÕâ¸öÎ»ÖÃ£¬Ç°ºóÒÆ¶¯£¬
+		printf("\n\n\n\n\n\n\n\n\n");
+
+		char str[80] = { 0 };//ÍùÇ°¶Á£¬±ØĞëÊı×é³õÊ¼»¯
+		//fgets(str,80,fp);//Ã¿´Î¶ÁÈ¡9¸ö×Ö·û,
+		fread(str, 1, 79, fp);
+
+		printf("\n%s", str);
+		//printf("\n%x", fp->_ptr);//¹â±êµÄµØÖ·
+
+		fclose(fp);
+	}
+	system("pause");
+}
+
+void demo03()
+{
+	std::array<int, 3> arr = { 9, 8, 7 };
+	cout << "Array size = " << arr.size() << endl;
+	for (auto i : arr)
+	{
+		cout << i << endl;
+	}
+
+	system("pause");
+}
+
+void demo04()
+{
+	int numclosed;
+	errno_t err;
+
+	//?Open?for?read?(will?fail?if?file?"crt_fopen_s.c"?does?not?exist)
+	if ((err = fopen_s(&stream, "crt_fopen_s.c", "r")) != 0)
+	{
+		printf("The?file?'data.txt'?was?not?opened\n");
+	}
+	else
+	{
+		printf("The?file?'crt_fopen_s.c'?was?opened\n");
+	}
+	if ((err = fopen_s(&stream2, "data2", "w+")) != 0)
+	{
+		printf("The?file?'data2'?was?not?opened\n");
+	}
+	else
+	{
+		printf("The?file?'data2'?was?opened\n");
+	}
+	if (stream)
+	{
+		if (fclose(stream))
+		{
+			printf("The?file?'crt_fopen_s.c'?was?not?closed\n");
+		}
+	}
+	numclosed = _fcloseall();
+	printf("Number?of?files?closed?by?_fcloseall:?%u\n", numclosed);
+	system("pause");
+}
+
+void demo05()
+{
+	FILE* fp;
+	int re = fopen_s(&fp, "data.txt", "w");
+	if (fp) {
+		fputs("ÄãºÃÂğ", fp);
+		fclose(fp);
+	}
+}
+
+void demo06()
+{
+	char str[1024] = {};
+	gets_s(str);
+	puts(str);
+	system(str);
+}
+
+void demo07()
+{
+	struct  Student
+	{
+		int Id;
+		char UserName[10];
+		char MobilePhoe[20];
+		char UserPassword[20];
+	} stu1, stu2;
+
+	stu1.Id = 123456;
+	strcpy_s(stu1.UserName, "ºúî£Òã");
+	strcpy_s(stu1.MobilePhoe, "13612340000");
+	strcpy_s(stu1.UserPassword, "Passord");
+
+	printf("Id=%d\nUserName=%s\nMobilePhoe=%s\nUserPassword=%s\n", stu1.Id, stu1.UserName, stu1.MobilePhoe, stu1.UserPassword);
+
+	stu2 = stu1;
+	if (stu2.Id == NULL)
+	{
+		printf("Îª.0");
+	}
+	printf("Id=%d\nUserName=%s\nMobilePhoe=%s\nUserPassword=%s\n", stu2.Id, stu2.UserName, stu2.MobilePhoe, stu2.UserPassword);
+}
+
+void demo08()
+{
+	PChar0 p1, p2;
+	char c = 'a';
+	p1 = &c;
+	p2 = &c;
+}
+
+void demo09()
+{
+	PChar1 p3;
+	PChar1 p4;
+
+	char c = 2;
+	p3 = &c;
+	p4 = &c;
+}
+
+int demo10_Random_Array()
+{
+	int iArray[ArraySize] = { 0 };//³õÊ¼»¯Êı×é
+
+	for (int i = 0; i < ArraySize; i++)
+	{
+		iArray[i] = rand() % 100 + 100;
+	}
+
+	PrintArray(iArray, ArraySize);
+	bubble_sort_ascend(iArray, ArraySize);
+	PrintArray(iArray, ArraySize);
+	bubble_sort_descend(iArray, ArraySize);
+	PrintArray(iArray, ArraySize);
+	printf("In this array, the max value is:%d\n", GetMaxNum(iArray, ArraySize));
+	printf("In this array, the min value is:%d\n", GetMinNum(iArray, ArraySize));
+	bubble_sort_ascend(iArray, ArraySize);
+	printf("The element %d in this array No.%d\n", 112, BinarySearch(iArray, ArraySize, 112) + 1);
+
+	system("pause");
+
+	return 0;
+}
+
+void demo11() {
+	char c1 = '\u03a0';   // C4566
+	char c2 = '\u0642';   // C4566
+
+	wchar_t c3 = L'\u03a0';   // OK
+	wchar_t c4 = L'\u0642';   // OK
+}
+int wmain()
+{
+	demo10_Random_Array();
+	return 0;
+}

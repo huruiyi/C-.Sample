@@ -1,37 +1,24 @@
 #pragma once
 #include <agents.h>
 #include <string>
-#include <array>
 #include <iostream>
-#include <algorithm>
 #include <concrt.h>
-#include <sstream>
 
 class file_reader : public concurrency::agent
 {
 public:
-	explicit file_reader(const std::string& file_name,
-		concurrency::ITarget<std::string>& target)
-		: _file_name(file_name)
-		, _target(target)
+	explicit file_reader(const std::string& file_name, concurrency::ITarget<std::string>& target)
+		: _file_name(file_name), _target(target)
 	{
 	}
 
-	explicit file_reader(const std::string& file_name,
-		concurrency::ITarget<std::string>& target,
-		concurrency::Scheduler& scheduler)
-		: agent(scheduler)
-		, _file_name(file_name)
-		, _target(target)
+	explicit file_reader(const std::string& file_name, concurrency::ITarget<std::string>& target, concurrency::Scheduler& scheduler)
+		: agent(scheduler), _file_name(file_name), _target(target)
 	{
 	}
 
-	explicit file_reader(const std::string& file_name,
-		concurrency::ITarget<std::string>& target,
-		concurrency::ScheduleGroup& group)
-		: agent(group)
-		, _file_name(file_name)
-		, _target(target)
+	explicit file_reader(const std::string& file_name, concurrency::ITarget<std::string>& target, concurrency::ScheduleGroup& group)
+		: agent(group), _file_name(file_name), _target(target)
 	{
 	}
 
@@ -74,7 +61,7 @@ protected:
 				fclose(stream);
 			}
 		}
-		catch (const std::exception & e)
+		catch (const std::exception& e)
 		{
 			// Send the empty string to the target to indicate the end of processing.
 			asend(_target, std::string(""));

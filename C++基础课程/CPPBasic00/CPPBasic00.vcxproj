@@ -126,17 +126,15 @@
     <ClCompile Include="01.cpp" />
     <ClCompile Include="02.cpp" />
     <ClCompile Include="03.cpp" />
-    <ClCompile Include="04.cpp" />
-    <ClCompile Include="05.cpp" />
     <ClCompile Include="06.cpp" />
     <ClCompile Include="07.cpp" />
     <ClCompile Include="08.cpp" />
     <ClCompile Include="09.cpp" />
-    <ClCompile Include="10.cpp" />
-    <ClCompile Include="11.cpp" />
     <ClCompile Include="A.cpp" />
     <ClCompile Include="B.cpp" />
     <ClCompile Include="C.cpp" />
+    <ClCompile Include="D.cpp" />
+    <ClCompile Include="E.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

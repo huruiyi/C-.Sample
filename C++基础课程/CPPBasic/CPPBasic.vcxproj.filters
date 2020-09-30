@@ -18,30 +18,21 @@
     <ClCompile Include="parallel_matrix_multiply.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="01.cpp">
+    <ClCompile Include="arr_op.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="02.cpp">
+    <ClCompile Include="recipe2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="basicAgent.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="demo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="03.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="04.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="recipe.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="file_reader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="arr_op.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,5 @@
 #pragma once
-
-class Point
+class Point_V1
 {
 public:
 	void setX(int x);
@@ -8,6 +7,6 @@ public:
 	int getX() const;
 	int getY() const;
 private:
-	int mX;
-	int mY;
+	int mX = 0;
+	int mY = 0;
 };

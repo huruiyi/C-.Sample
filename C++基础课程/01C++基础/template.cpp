@@ -2,14 +2,14 @@
 #include <array>
 #include <numeric>
 #include <string>
-
 #include <iostream>
+#include <iomanip>
+#include <algorithm>
+
 using std::cout;
 using std::endl;
-
-#include <iomanip>
-using namespace std;
 using std::setw;
+using namespace std;
 
 template <typename C>
 void print(const string& s, const C& c)
@@ -76,5 +76,5 @@ void TemplatePrint()
 	transform(v.begin(), v.end(), stdext::make_unchecked_array_iterator(p8), [](int n) { return n * 8; });
 	print("a8: ", a8);
 
-	getchar();
+	//getchar();
 }

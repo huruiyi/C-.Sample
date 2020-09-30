@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <string>
 #include "Circle.h"
-#include "Point.h"
+#include "Point_V1.h"
 
 using namespace std;
 
@@ -10,6 +10,7 @@ using namespace std;
 #define ToString(X) #X
 #define ToString2(X) ToString(X)
 #include <fstream>
+#include "MyOperator.cpp"
 
 namespace NDemo
 {
@@ -127,7 +128,7 @@ namespace NDemo
 		circle.setHeart(10, 10);
 		circle.setR(20);
 
-		Point point;
+		Point_V1 point;
 		point.setX(10);
 		point.setY(30);
 
@@ -247,19 +248,19 @@ namespace 静态成员
 
 	void test()
 	{
-		Person p("A");
+		Person p("p1");
 		cout << p.GetTotal() << endl;
 		p.ShowTotal();
 
-		p = Person("B");
+		p = Person("p2");
 		cout << p.GetTotal() << endl;
 		p.ShowTotal();
 
-		p = Person("C");
+		p = Person("p3");
 		cout << p.GetTotal() << endl;
 		p.ShowTotal();
 
-		p = Person("D");
+		p = Person("p4");
 		cout << p.GetTotal() << endl;
 		p.ShowTotal();
 	}
@@ -453,7 +454,7 @@ namespace 运算符重载加号
 			return p;
 		}
 	};
-	Person  operator+(int val, const Person & person)
+	Person  operator+(int val, const Person& person)
 	{
 		Person p(person.mA + val, person.mB + val);
 		return p;
@@ -529,40 +530,6 @@ namespace 运算符重载减号
 		test0(s4);//不会修改s4的值
 		test1(s4);
 		test2(&s4);
-	}
-}
-
-namespace 运算符重载MyInteger
-{
-	class  MyInteger
-	{
-	public:
-		MyInteger()
-		{
-			mNum = 0;
-		}
-		MyInteger& operator++()
-		{
-			++mNum;
-			return *this;
-		}
-
-		MyInteger operator++(int)
-		{
-			MyInteger temp(*this);
-			++mNum;
-			return temp;
-		}
-	private:
-		int mNum;
-	};
-	void test()
-	{
-		MyInteger my;
-		MyInteger mi = ++my;
-		int a = 10;
-		cout << a++ << endl;
-		cout << a << endl;
 	}
 }
 
@@ -972,19 +939,30 @@ namespace Test
 
 	//B是抽象类
 	//则：
-	 //B fun(int); //Error
-	//B *p; //Ok
-	//int fun(B);//Error
-	//B Obj;//Error
+	//B fun(int);			//Error
+	//B *p;					//Ok
+	//int fun(B);			//Error
+	//B Obj;				//Error
 	void test() {
 		A a; //A类不是抽象类，可以实例化对象
-		 //B b; //B   类是抽象类，不可以实例化对象
+		//B b; //B   类是抽象类，不可以实例化对象
 	}
+}
+
+void Demo_A()
+{
+	MyOperator mo1;
+	mo1.test();
+
+	MyOperator* mo2 = new MyOperator;
+	mo2->test();
+
+	auto mo3 = new MyOperator;
+	mo3->test();
 }
 
 int main()
 {
-	NDemo::Demo3();
 	system("pause");
 	return 0;
 }
